@@ -1,0 +1,40 @@
+batteryiq/
+│
+├── app/                         # Streamlit UI
+│   ├── __init__.py
+│   └── main.py                  # Streamlit entrypoint
+│
+├── backend/                     # Core logic (FastAPI optional, or just funcs)
+│   ├── __init__.py
+│   ├── ingestion.py              # File parsing, validation
+│   ├── services.py               # Business logic (devices, jobs, errors)
+│   └── auth.py                   # User auth helpers
+│
+├── db/                          # SQLite DB layer
+│   ├── __init__.py
+│   ├── models.py                 # ORM models (SQLAlchemy)
+│   └── session.py                # Engine/session config
+│
+├── storage/                     # Local file storage
+│   └── file_store.py             # Handles saving uploads, error files
+│
+├── scripts/                     # Local utilities
+│   └── seed_db.py                # Seed users/devices for testing
+│
+├── tests/                       # Pytest tests
+│   ├── test_ingestion.py
+│   ├── test_models.py
+│   └── test_ui.py
+│
+├── configs/                     # Configs (YAML/JSON/ENV)
+│   └── local.yaml
+│
+├── data/                        # Uploaded files (raw/processed)
+│   ├── raw/
+│   └── processed/
+│
+├── logs/                        # Local log output
+│
+├── .env                         # Local env vars (DB path, secrets)
+├── requirements.txt             # Python deps
+└── README.md

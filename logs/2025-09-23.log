@@ -1,0 +1,14 @@
+[2025-09-23 13:16:55] [INFO] Telemetry file E:\Trimister 25B\Project\batteryIQ\data\uploads\telemetry\1\1\1\20250923\1_1_20250923_131655.csv ingested for device 1
+[2025-09-23 13:16:55] [ERROR] Processing failed: (sqlite3.OperationalError) table manual_uploads has no column named file_directory
+[SQL: INSERT INTO manual_uploads (author, recorded_date, file_directory, notes) VALUES (?, ?, ?, ?)]
+[parameters: ('Tester', '2025-09-23 13:16:55.196363', 'E:\\Trimister 25B\\Project\\batteryIQ\\data\\uploads\\manual\\20250923\\1_23092025.csv', 'Quick manual test')]
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+[2025-09-23 13:21:58] [INFO] Telemetry file E:\Trimister 25B\Project\batteryIQ\data\test\uploads\telemetry\1\1\1\20250923\1_1_20250923_132158.csv ingested for device 1
+[2025-09-23 13:21:58] [ERROR] Processing failed: (sqlite3.OperationalError) table manual_uploads has no column named file_directory
+[SQL: INSERT INTO manual_uploads (author, recorded_date, file_directory, notes) VALUES (?, ?, ?, ?)]
+[parameters: ('Tester', '2025-09-23 13:21:58.099518', 'E:\\Trimister 25B\\Project\\batteryIQ\\data\\uploads\\manual\\20250923\\1_23092025.csv', 'Quick manual test')]
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+[2025-09-23 13:23:07] [INFO] Telemetry file E:\Trimister 25B\Project\batteryIQ\data\test\uploads\telemetry\1\1\1\20250923\1_1_20250923_132307.csv ingested for device 1
+[2025-09-23 13:23:07] [INFO] Manual file E:\Trimister 25B\Project\batteryIQ\data\uploads\manual\20250923\1_23092025.csv uploaded by Tester
+[2025-09-23 13:25:05] [INFO] Telemetry file E:\Trimister 25B\Project\batteryIQ\data\test\uploads\telemetry\1\1\1\20250923\1_1_20250923_132505.csv ingested for device 1
+[2025-09-23 13:25:05] [INFO] Manual file E:\Trimister 25B\Project\batteryIQ\data\test\uploads\manual\20250923\1_23092025.csv uploaded by Tester

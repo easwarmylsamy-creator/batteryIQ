@@ -19,3 +19,4 @@ def render_header():
         if st.button("Logout", use_container_width=True):
             logout()
             st.rerun()
+        st.markdown('<div style="text-align: right;">Work on progress...</div>', unsafe_allow_html=True)

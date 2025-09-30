@@ -38,7 +38,7 @@ def render():
                             st.session_state.page = 'dashboard'
                             log_info(f"Successful login for user: {username} (Role: {user.role.value})", context="Authentication")
                             st.success(f"Welcome, {user.username}!")
-                            time.sleep(1)
+                            time.sleep(0.5)
                             st.rerun()
                         else:
                             log_warning(f"Failed login attempt for user: {username}", context="Authentication")

@@ -61,5 +61,5 @@ def render():
                     **Scientist:** scientist / password123  
                     **Client:** client / password123  
                     **Guest:** guest / password123  
-                    **Super Admin:** superAdmin / password123
+                    **Super Admin:** super_admin / password123
                 """, unsafe_allow_html=True)

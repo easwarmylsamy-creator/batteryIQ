@@ -267,8 +267,8 @@ def guest_dashboard():
 
 # Add this to app/pages/dashboards.py
 
-def god_dashboard():
-    """Render GOD mode dashboard - Ultimate system access"""
+def super_admin_dashboard():
+    """Render super_admin mode dashboard - Ultimate system access"""
     render_header()
     
     # Warning banner
@@ -276,7 +276,7 @@ def god_dashboard():
         <div style="background: linear-gradient(135deg, #7c3aed 0%, #dc2626 100%); 
                     padding: 1rem; border-radius: 10px; text-align: center; margin-bottom: 2rem;">
             <div style="font-size: 2rem; font-weight: 800; color: white;">
-                GOD MODE - ABSOLUTE SYSTEM ACCESS
+                super_admin MODE - ABSOLUTE SYSTEM ACCESS
             </div>
             <div style="color: #fecaca; font-size: 0.9rem;">
                 ⚠️ All actions are logged | Use with extreme caution
@@ -301,7 +301,7 @@ def god_dashboard():
             <div class="stat-card">
                 <div class="stat-value">{device_count}</div>
                 <div class="stat-label">Total Devices</div>
-                <div class="stat-change stat-up">God View</div>
+                <div class="stat-change stat-up">super_admin View</div>
             </div>
         """, unsafe_allow_html=True)
     
@@ -383,7 +383,7 @@ def god_dashboard():
     
     st.markdown("<br>", unsafe_allow_html=True)
     
-    # 6 Tabs for God Mode
+    # 6 Tabs for super_admin Mode
     tab1, tab2, tab3, tab4, tab5, tab6 = st.tabs([
         "System Overview",
         "Deep Telemetry",
@@ -394,27 +394,27 @@ def god_dashboard():
     ])
     
     with tab1:
-        render_god_system_overview()
+        render_super_admin_system_overview()
     
     with tab2:
-        render_god_deep_telemetry()
+        render_super_admin_deep_telemetry()
     
     with tab3:
-        render_god_all_uploads()
+        render_super_admin_all_uploads()
     
     with tab4:
-        render_god_advanced_management()
+        render_super_admin_advanced_management()
     
     with tab5:
-        render_god_system_logs()
+        render_super_admin_system_logs()
     
     with tab6:
-        render_god_database_inspector()
+        render_super_admin_database_inspector()
 
 
-def render_god_system_overview():
-    """Tab 1: Enhanced system overview for God mode"""
-    st.markdown("### System Overview (God Mode)")
+def render_super_admin_system_overview():
+    """Tab 1: Enhanced system overview for super_admin mode"""
+    st.markdown("### System Overview (super_admin Mode)")
     st.info("Enhanced view with system internals and performance metrics")
     
     col1, col2 = st.columns(2)
@@ -465,7 +465,7 @@ def render_god_system_overview():
         st.dataframe(db_stats, use_container_width=True)
 
 
-def render_god_deep_telemetry():
+def render_super_admin_deep_telemetry():
     """Tab 2: Deep telemetry analysis with minute-level data"""
     st.markdown("### Deep Telemetry Analysis")
     st.warning("Minute-level granularity | Raw data access | Full history")
@@ -480,7 +480,7 @@ def render_god_deep_telemetry():
             selected_client = st.selectbox(
                 "Select Client",
                 ["All Clients"] + list(client_options.keys()),
-                key="god_telemetry_client"
+                key="super_admin_telemetry_client"
             )
         else:
             st.warning("No clients found")
@@ -576,11 +576,11 @@ def render_god_deep_telemetry():
             st.info("No devices found")
     
     except Exception as e:
-        log_error(f"Error in god telemetry view: {str(e)}", context="God Telemetry")
+        log_error(f"Error in super_admin telemetry view: {str(e)}", context="super_admin Telemetry")
         st.error("Error loading telemetry data")
 
 
-def render_god_all_uploads():
+def render_super_admin_all_uploads():
     """Tab 3: Combined view of all uploads (telemetry + manual)"""
     st.markdown("### All Uploads (Unified View)")
     st.info("Combined telemetry and manual uploads | Complete history")
@@ -630,7 +630,7 @@ def render_god_all_uploads():
                                 'ID': file.id
                             })
                     except Exception as e:
-                        log_error(f"Error loading client files: {str(e)}", context="God All Uploads")
+                        log_error(f"Error loading client files: {str(e)}", context="super_admin All Uploads")
         
         # Get manual uploads
         if upload_filter in ["All Types", "Manual Only"]:
@@ -646,7 +646,7 @@ def render_god_all_uploads():
                         'ID': file.id
                     })
             except Exception as e:
-                log_error(f"Error loading manual files: {str(e)}", context="God All Uploads")
+                log_error(f"Error loading manual files: {str(e)}", context="super_admin All Uploads")
         
         if all_uploads:
             df = pd.DataFrame(all_uploads)
@@ -685,11 +685,11 @@ def render_god_all_uploads():
             st.info("No uploads found")
     
     except Exception as e:
-        log_error(f"Error in all uploads view: {str(e)}", context="God All Uploads")
+        log_error(f"Error in all uploads view: {str(e)}", context="super_admin All Uploads")
         st.error("Error loading uploads")
 
 
-def render_god_advanced_management():
+def render_super_admin_advanced_management():
     """Tab 4: Advanced system management"""
     st.markdown("### Advanced Management")
     st.warning("Full system control | All actions are logged")
@@ -702,7 +702,7 @@ def render_god_advanced_management():
     ])
     
     with mgmt_subtab1:
-        render_god_user_management()
+        render_super_admin_user_management()
     
     with mgmt_subtab2:
         render_management_interface()  # Reuse existing
@@ -719,19 +719,19 @@ def render_god_advanced_management():
         with st.expander("Cache Settings"):
             cache_ttl = st.number_input("Cache TTL (seconds)", min_value=10, max_value=3600, value=300)
             if st.button("Update Cache TTL"):
-                log_info(f"God updated cache TTL to {cache_ttl}", context="GOD_MODE")
+                log_info(f"super_admin updated cache TTL to {cache_ttl}", context="super_admin_MODE")
                 st.success(f"Cache TTL updated to {cache_ttl} seconds")
         
         with st.expander("Logging Settings"):
             log_level = st.selectbox("Log Level", ["DEBUG", "INFO", "WARNING", "ERROR"])
             if st.button("Update Log Level"):
-                log_info(f"God changed log level to {log_level}", context="GOD_MODE")
+                log_info(f"super_admin changed log level to {log_level}", context="super_admin_MODE")
                 st.success(f"Log level set to {log_level}")
 
 
-def render_god_user_management():
-    """God-level user management"""
-    st.markdown("#### User Management (God Mode)")
+def render_super_admin_user_management():
+    """super_admin-level user management"""
+    st.markdown("#### User Management (super_admin Mode)")
     
     try:
         from backend import services
@@ -758,16 +758,16 @@ def render_god_user_management():
             with col1:
                 st.markdown("**Change User Role:**")
                 selected_user = st.selectbox("Select User", [u['Username'] for u in user_data])
-                new_role = st.selectbox("New Role", ["admin", "scientist", "client", "guest", "god"])
+                new_role = st.selectbox("New Role", ["admin", "scientist", "client", "guest", "super_admin"])
                 if st.button("Change Role", type="primary"):
-                    log_warning(f"God changed role of {selected_user} to {new_role}", context="GOD_MODE")
+                    log_warning(f"super_admin changed role of {selected_user} to {new_role}", context="super_admin_MODE")
                     st.success(f"Role changed for {selected_user}")
             
             with col2:
                 st.markdown("**Reset Password:**")
                 user_to_reset = st.selectbox("Select User", [u['Username'] for u in user_data], key="reset_user")
                 if st.button("Reset Password", type="secondary"):
-                    log_warning(f"God reset password for {user_to_reset}", context="GOD_MODE")
+                    log_warning(f"super_admin reset password for {user_to_reset}", context="super_admin_MODE")
                     st.success(f"Password reset for {user_to_reset}")
                     st.info("New password: `NewPass123!` (tell user to change immediately)")
         
@@ -775,11 +775,11 @@ def render_god_user_management():
             st.info("No users found in system")
     
     except Exception as e:
-        log_error(f"Error in user management: {str(e)}", context="God User Management")
+        log_error(f"Error in user management: {str(e)}", context="super_admin User Management")
         st.error("Error loading users")
 
 
-def render_god_system_logs():
+def render_super_admin_system_logs():
     """Tab 5: Live system log viewer"""
     st.markdown("### System Logs (Live Viewer)")
     st.info("Real-time log monitoring | All system events")
@@ -797,7 +797,7 @@ def render_god_system_logs():
     with col2:
         context_filter = st.selectbox(
             "Context",
-            ["All", "Authentication", "Upload", "Cache", "GOD_MODE", "System"]
+            ["All", "Authentication", "Upload", "Cache", "super_admin_MODE", "System"]
         )
     
     with col3:
@@ -838,7 +838,7 @@ def render_god_system_logs():
                     log_display += f'<div style="color: #ef4444;">{line}</div>'
                 elif "WARNING" in line:
                     log_display += f'<div style="color: #f59e0b;">{line}</div>'
-                elif "GOD_MODE" in line:
+                elif "super_admin_MODE" in line:
                     log_display += f'<div style="color: #a78bfa; font-weight: bold;">{line}</div>'
                 else:
                     log_display += f'<div style="color: #94a3b8;">{line}</div>'
@@ -856,18 +856,18 @@ def render_god_system_logs():
                         st.download_button("Download", f.read(), "system_logs.log", "text/plain")
             with col_c:
                 if st.button("Clear Logs", type="secondary"):
-                    log_warning("God cleared system logs", context="GOD_MODE")
+                    log_warning("super_admin cleared system logs", context="super_admin_MODE")
                     st.warning("⚠️ This action would clear logs (disabled in demo)")
         
         else:
             st.warning(f"Log file not found: {log_file}")
     
     except Exception as e:
-        log_error(f"Error reading logs: {str(e)}", context="God Log Viewer")
+        log_error(f"Error reading logs: {str(e)}", context="super_admin Log Viewer")
         st.error("Error loading logs")
 
 
-def render_god_database_inspector():
+def render_super_admin_database_inspector():
     """Tab 6: Direct database access"""
     st.markdown("### Database Inspector")
     st.error("DIRECT DATABASE ACCESS | Use with extreme caution")
@@ -928,7 +928,7 @@ def render_god_database_inspector():
         with col_q1:
             if st.button("Execute Query", type="primary"):
                 if sql_query:
-                    log_warning(f"God executed SQL: {sql_query[:100]}", context="GOD_MODE")
+                    log_warning(f"super_admin executed SQL: {sql_query[:100]}", context="super_admin_MODE")
                     st.info("Query execution would happen here. Connect to your actual database.")
                     st.code(sql_query, language="sql")
                 else:
@@ -946,19 +946,19 @@ def render_god_database_inspector():
         with col_t1:
             st.markdown("**Backup & Restore:**")
             if st.button("Backup Database"):
-                log_info("God initiated database backup", context="GOD_MODE")
+                log_info("super_admin initiated database backup", context="super_admin_MODE")
                 st.success("Backup initiated")
             
             if st.button("Restore from Backup"):
-                log_warning("God initiated database restore", context="GOD_MODE")
+                log_warning("super_admin initiated database restore", context="super_admin_MODE")
                 st.warning("⚠️ This would restore database")
         
         with col_t2:
             st.markdown("**Optimization:**")
             if st.button("Optimize Database"):
-                log_info("God optimized database", context="GOD_MODE")
+                log_info("super_admin optimized database", context="super_admin_MODE")
                 st.success("Database optimized")
             
             if st.button("Analyze Tables"):
-                log_info("God analyzed database tables", context="GOD_MODE")
+                log_info("super_admin analyzed database tables", context="super_admin_MODE")
                 st.success("Analysis complete")

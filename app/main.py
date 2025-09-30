@@ -34,8 +34,8 @@ def main():
             welcome.render()
         
         elif page == 'login':
-            # login.render()
-            testLogin.render()
+            login.render()
+            # testLogin.render()
         
         elif page == 'dashboard':
             role = st.session_state.role
@@ -49,8 +49,8 @@ def main():
                 dashboards.client_dashboard()
             elif role == 'guest':
                 dashboards.guest_dashboard()
-            elif role == 'god': 
-                dashboards.god_dashboard()
+            elif role == 'super_admin': 
+                dashboards.super_admin_dashboard()
             else:
                 log_error(f"Invalid role '{role}' for user {st.session_state.username}", context="Navigation")
                 st.error("Invalid role. Please login again.")

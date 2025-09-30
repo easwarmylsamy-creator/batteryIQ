@@ -52,3 +52,14 @@ def render():
             if back:
                 st.session_state.page = 'welcome'
                 st.rerun()
+
+            with st.expander("🔑 Demo Credentials"):
+                st.markdown("""
+                    Use the following demo credentials to log in:
+                    
+                    **Admin:** admin / password123  
+                    **Scientist:** scientist / password123  
+                    **Client:** client / password123  
+                    **Guest:** guest / password123  
+                    **Super Admin:** superAdmin / password123
+                """, unsafe_allow_html=True)

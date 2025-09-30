@@ -38,7 +38,7 @@ def seed_users() -> None:
         ("scientist", "scientist@local", UserRole.scientist),  # role will be handled separately if you add more enums
         ("client", "client@local", UserRole.client),
         ("guest", "guest@local", UserRole.guest),
-        ("god", "god@local", UserRole.god),  # treat god as elevated admin
+        ("super_admin", "super_admin@local", UserRole.super_admin),  # treat super_admin as elevated admin
     ]
 
     with get_session() as s:

@@ -14,7 +14,7 @@ def render():
 
     option = st.selectbox(
         "Select the role to login as:",
-        ("admin", "scientist", "client", "guest", "god"),
+    ("admin", "scientist", "client", "guest", "super_admin"),
     )
     submit = st.button("Login", use_container_width=True, type="primary")
 

@@ -28,7 +28,8 @@ class UserRole(str, enum.Enum):
     scientist = "scientist"
     client = "client"
     guest = "guest"
-    god = "god"
+    super_admin = "super_admin"
+    
 
 
 # ---------------------------

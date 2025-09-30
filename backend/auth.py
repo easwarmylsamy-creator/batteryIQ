@@ -9,3 +9,10 @@ def login_user(username: str, password: str):
         if user and bcrypt.verify(password, user.hashed_password):
             return user
     return None
+
+def testMode(username: str,password: str):
+    with get_session() as s:
+        user = s.query(User).filter(User.username == username).first()
+        if user:
+            return user
+    return None

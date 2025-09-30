@@ -2,7 +2,7 @@ batteryiq/
 │
 ├── app/                         # Streamlit UI
 │   ├── __init__.py
-│   └── main.py                  # Streamlit entrypoint
+│   └── this is where i got stuck
 │
 ├── backend/                     # Core logic (FastAPI optional, or just funcs)
 │   ├── __init__.py

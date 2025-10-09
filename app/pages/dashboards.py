@@ -14,9 +14,11 @@ from app.components.telemetry_monitor import render_telemetry_monitor
 from app.components.upload_form import render_upload_interface
 from app.components.file_browser import render_file_browser
 from app.components.management import render_management_interface
-from utils.cache_utils import get_cached_clients, get_cached_devices, get_system_stats
-from utils.data_utils import generate_sample_battery_data
-from utils.logging_utils import *
+from app.components.data_gallery import render_data_gallery
+from app.components.dataset_viewer import render_dataset_viewer
+from app.utils.cache_utils import get_cached_clients, get_cached_devices, get_system_stats
+from app.utils.data_utils import generate_sample_battery_data
+from app.utils.logging_utils import *
 import backend.services as services
 
 def admin_dashboard():
@@ -78,7 +80,7 @@ def admin_dashboard():
     st.markdown("<br>", unsafe_allow_html=True)
     
     # Tabs
-    tab1, tab2, tab3, tab4 = st.tabs(["Overview", "Telemetry Monitor", "Manual Upload", "Manage"])
+    tab1, tab2, tab3, tab4, tab5 = st.tabs(["Overview", "Manage", "Datasets", "Telemetry Monitor", "Manual Upload"])
     
     with tab1:
         col1, col2 = st.columns(2)
@@ -106,13 +108,18 @@ def admin_dashboard():
             )
             st.plotly_chart(fig, use_container_width=True)
     
-    with tab2:
+    with tab4:
         render_telemetry_monitor()
     
-    with tab3:
+    with tab5:
         render_upload_interface()
     
-    with tab4:
+    with tab3:
+        render_data_gallery()
+        # render_dataset_viewer()
+        # st.text("Data Gallery coming soon...")
+
+    with tab2:
         render_management_interface()
 
 
@@ -212,7 +219,7 @@ def client_dashboard():
             })
         
         df_devices = pd.DataFrame(device_data)
-        st.dataframe(df_devices, use_container_width=True)
+        st.dataframe(df_devices, width='stretch')
     else:
         st.info("No devices found. Contact your administrator.")
     
@@ -441,7 +448,7 @@ def render_super_admin_system_overview():
             'Value': ['23%', '45%', '12 MB/s', '5.2 Mb/s'],
             'Status': ['🟢 Good', '🟢 Good', '🟢 Good', '🟢 Good']
         })
-        st.dataframe(health_metrics, use_container_width=True)
+        st.dataframe(health_metrics, width='stretch')
     
     with col2:
         st.markdown("#### 🔥 Temperature & Anomalies")
@@ -462,7 +469,7 @@ def render_super_admin_system_overview():
             'Records': [5, 3, 12, 1547, 23],
             'Size': ['2 KB', '1 KB', '5 KB', '156 MB', '45 MB']
         })
-        st.dataframe(db_stats, use_container_width=True)
+        st.dataframe(db_stats, width='stretch')
 
 
 def render_super_admin_deep_telemetry():
@@ -560,7 +567,7 @@ def render_super_admin_deep_telemetry():
                                     'ID': f.id
                                 })
                             df_files = pd.DataFrame(file_data)
-                            st.dataframe(df_files, use_container_width=True)
+                            st.dataframe(df_files, width='stretch')
                             
                             # Raw data view option
                             if show_raw:
@@ -665,7 +672,7 @@ def render_super_admin_all_uploads():
             st.markdown("<br>", unsafe_allow_html=True)
             
             # Show table
-            st.dataframe(df, use_container_width=True)
+            st.dataframe(df, width='stretch')
             
             # Export options
             st.markdown("#### Export Options")
@@ -749,7 +756,7 @@ def render_super_admin_user_management():
                 })
             
             df = pd.DataFrame(user_data)
-            st.dataframe(df, use_container_width=True)
+            st.dataframe(df, width='stretch')
             
             # Actions
             st.markdown("#### User Actions")
@@ -898,7 +905,7 @@ def render_super_admin_database_inspector():
                         'Username': u.username,
                         'Role': u.role.value
                     } for u in users]
-                    st.dataframe(pd.DataFrame(user_data), use_container_width=True)
+                    st.dataframe(pd.DataFrame(user_data), width='stretch')
                 
                 elif selected_table == "clients":
                     clients = get_cached_clients()
@@ -906,7 +913,7 @@ def render_super_admin_database_inspector():
                         'ID': c.id,
                         'Name': c.name
                     } for c in clients]
-                    st.dataframe(pd.DataFrame(client_data), use_container_width=True)
+                    st.dataframe(pd.DataFrame(client_data), width='stretch')
                 
                 else:
                     st.info(f"Direct table view for {selected_table} - Implementation depends on your needs")

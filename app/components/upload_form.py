@@ -60,13 +60,13 @@ def render_upload_interface():
                 with col_c:
                     st.metric("File Size", f"{uploaded_file.size / 1024:.1f} KB")
                 
-                st.dataframe(df.head(10), use_container_width=True)
+                st.dataframe(df.head(10), width='stretch')
                 
             except Exception as e:
                 st.error(f"Error reading file: {str(e)}")
         
         st.markdown("<br>", unsafe_allow_html=True)
-        submitted = st.form_submit_button("Upload Manual Data", type="primary", use_container_width=True)
+        submitted = st.form_submit_button("Upload Manual Data", type="primary", width='stretch')
         
         if submitted:
             if not author or not notes or not uploaded_file:

@@ -70,7 +70,7 @@ def render_filters():
         st.session_state.filter_client = st.selectbox(
             "Client",
             client_names,
-            key="client_filter"
+            key=f"{COMPONENT_ID}_client_filter"
         )
     
     with col3:
@@ -78,7 +78,7 @@ def render_filters():
         st.session_state.filter_date_range = st.selectbox(
             "Date Range",
             ["All Time", "Today", "Last 7 Days", "Last 30 Days", "Last 90 Days", "This Year", "Custom"],
-            key="date_filter"
+            key=f"{COMPONENT_ID}_date_filter"
         )
     
     with col4:
@@ -142,7 +142,7 @@ def render_filters():
     st.session_state.search_query = st.text_input(
         "🔍 Search datasets",
         placeholder="Search by filename, device, client, or keywords...",
-        key="search_input"
+        key=f"{COMPONENT_ID}_search_input"
     )
     
     # Quick action buttons
@@ -433,7 +433,7 @@ def render_dataset_card(dataset):
     # Action buttons
     col_a, col_b, col_c = st.columns(3)
     with col_a:
-        if st.button("👁️", key=f"view_{dataset['id']}", help="View", use_container_width=True):
+        if st.button("👁️", key=f"{COMPONENT_ID}_view_{dataset['id']}", help="View", use_container_width=True):
             show_dataset_details(dataset)
     with col_b:
         if st.button("📥", key=f"download_{dataset['id']}", help="Download", use_container_width=True):

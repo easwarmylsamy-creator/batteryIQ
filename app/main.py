@@ -17,6 +17,7 @@ from app.styles import apply_custom_styles
 from app.session import initialize_session_state
 from app.pages import welcome, login,testLogin, dashboards
 from app.utils.logging_utils import *
+from app.components.data_gallery import render_data_gallery
 
 def main():
     """Main application entry point"""
@@ -35,7 +36,9 @@ def main():
         
         elif page == 'login':
             login.render()
-            # testLogin.render()
+
+        elif page == 'testLogin':
+            testLogin.render()
         
         elif page == 'dashboard':
             role = st.session_state.role
@@ -58,6 +61,9 @@ def main():
                 logout()
                 st.rerun()
         
+        # elif page == 'dashboard':
+        #     render_data_gallery()  # Temporary for testing UI
+
         else:
             log_warning(f"Unknown page requested: {page}", context="Navigation")
             st.session_state.page = 'welcome'

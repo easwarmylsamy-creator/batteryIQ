@@ -59,6 +59,9 @@ def render():
     st.markdown("<br>", unsafe_allow_html=True)
     col1, col2, col3 = st.columns([1, 1, 1])
     with col2:
-        if st.button("🚀 Get Started", use_container_width=True, type="primary"):
+        if st.button("🚀 Get Started", width='stretch', type="primary"):
             st.session_state.page = 'login'
+            st.rerun()
+        if st.button("Test", width='stretch'):
+            st.session_state.page = 'testLogin'
             st.rerun()

@@ -7,7 +7,7 @@ from datetime import datetime
 
 def generate_sample_battery_data(days=30):
     """Generate sample battery data for visualization"""
-    dates = pd.date_range(end=datetime.now(), periods=days*24, freq='H')
+    dates = pd.date_range(end=datetime.now(), periods=days*24, freq='h')
     np.random.seed(42)
     
     voltage = 3.7 + 0.3 * np.sin(np.arange(len(dates)) * 0.1) + np.random.normal(0, 0.05, len(dates))

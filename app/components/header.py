@@ -16,7 +16,7 @@ def render_header():
         st.markdown(f'<div class="user-badge">{st.session_state.username} ({role_display})</div>', unsafe_allow_html=True)
     
     with col3:
-        if st.button("Logout", use_container_width=True):
+        if st.button("Logout", width='stretch'):
             logout()
             st.rerun()
         st.markdown('<div style="text-align: right;">Work on progress...</div>', unsafe_allow_html=True)

@@ -4,7 +4,6 @@ from datetime import datetime, timedelta
 from backend import services
 from app.utils.cache_utils import get_cached_clients, get_cached_devices, get_cached_locations
 from app.utils.logging_utils import log_info, log_error
-from app.session import logout
 import os
 
 
@@ -25,7 +24,7 @@ def render_data_gallery():
         'guest': '👤 Guest - Public Data Gallery'
     }
     
-    st.markdown(f"### {role_titles.get(user_role, '📊 Data Gallery')}")
+    st.markdown(f"### {role_titles.get(user_role, 'Data Gallery')}")
     
     # Role-specific description
     role_descriptions = {
@@ -38,16 +37,13 @@ def render_data_gallery():
     
     st.markdown(f"*{role_descriptions.get(user_role, 'Browse available datasets')}*")
     
-    # Log access
-    log_info(f"User {username} ({user_role}) accessed data gallery", context="Data Gallery")
-    if st.button("Logout", key="gallery_logout_btn", width='stretch'):
-            logout()
+
     # View mode selector
     col1, col2, col3 = st.columns([2, 1, 1])
     
     with col1:
         search_query = st.text_input(
-            "🔍 Search datasets",
+            "Search datasets",
             placeholder="Search by filename, client, device, or keywords...",
             key="gallery_search_input"
         )
@@ -77,10 +73,11 @@ def render_data_gallery():
     st.markdown("---")
     
     # Get filtered and sorted data
-    datasets = get_filtered_datasets(search_query)
+    with st.spinner("Loading datasets..."):
+        datasets = get_filtered_datasets(search_query)
     
     if not datasets:
-        st.info("📭 No datasets found matching your filters.")
+        st.info("No datasets found matching your filters.")
         return
     
     # Pagination
@@ -91,35 +88,36 @@ def render_data_gallery():
         st.session_state.current_page = 1
     
     # Display stats
-    col_a, col_b, col_c, col_d = st.columns(4)
-    with col_a:
-        st.metric("Total Datasets", total_items)
-    with col_b:
-        telemetry_count = len([d for d in datasets if d['type'] == 'Telemetry'])
-        st.metric("Telemetry", telemetry_count)
-    with col_c:
-        manual_count = len([d for d in datasets if d['type'] == 'Manual'])
-        # Role-based manual count display
-        if user_role in ['super_admin', 'admin', 'scientist']:
-            st.metric("Manual Uploads", manual_count)
-        else:
-            st.metric("Available Data", manual_count)
-    with col_d:
-        avg_size = sum(d['size'] for d in datasets) / len(datasets) if datasets else 0
-        st.metric("Avg Size (MB)", f"{avg_size:.1f}")
+    if user_role!='guest':
+        col_a, col_b, col_c, col_d = st.columns(4)
+        with col_a:
+            st.metric("Total Datasets", total_items)
+        with col_b:
+            telemetry_count = len([d for d in datasets if d['type'] == 'Telemetry'])
+            st.metric("Telemetry", telemetry_count)
+        with col_c:
+            manual_count = len([d for d in datasets if d['type'] == 'Manual'])
+            # Role-based manual count display
+            if user_role in ['super_admin', 'admin', 'scientist']:
+                st.metric("Manual Uploads", manual_count)
+            else:
+                st.metric("Available Data", manual_count)
+        with col_d:
+            avg_size = sum(d['size'] for d in datasets) / len(datasets) if datasets else 0
+            st.metric("Avg Size (MB)", f"{avg_size:.1f}")
     
     # Role-specific additional info
     if user_role in ['super_admin', 'admin']:
         col_e, col_f, col_g = st.columns(3)
         with col_e:
             unique_clients = len(set([d['client'] for d in datasets if d['client'] != 'N/A']))
-            st.metric("📊 Clients", unique_clients)
+            st.metric("Clients", unique_clients)
         with col_f:
             unique_devices = len(set([d['device'] for d in datasets]))
-            st.metric("🔌 Devices", unique_devices)
+            st.metric("Devices", unique_devices)
         with col_g:
             total_records = sum(d['records'] for d in datasets)
-            st.metric("📈 Total Records", f"{total_records:,}")
+            st.metric("Total Records", f"{total_records:,}")
     
     st.markdown("<br>", unsafe_allow_html=True)
     
@@ -143,67 +141,74 @@ def render_data_gallery():
 
 def render_filters():
     """Render comprehensive filter options"""
-    col1, col2, col3, col4 = st.columns(4)
-    
-    with col1:
-        st.session_state.filter_data_type = st.selectbox(
-            "📁 Data Type",
-            ["All Types", "Telemetry", "Manual"],
-            key="data_type_filter"
-        )
-    
-    with col2:
-        clients = get_cached_clients()
-        client_names = ["All Clients"] + [c.name for c in clients]
-        st.session_state.filter_client = st.selectbox(
-            "🏢 Client",
-            client_names,
-            key="gallery_client_filter"
-        )
-    
-    with col3:
-        st.session_state.filter_date_range = st.selectbox(
-            "📅 Date Range",
-            ["All Time", "Today", "Last 7 Days", "Last 30 Days", "Last 90 Days", "This Year"],
-            key="date_filter"
-        )
-    
-    with col4:
-        st.session_state.filter_file_size = st.selectbox(
-            "💾 File Size",
-            ["All Sizes", "< 1 MB", "1-10 MB", "10-100 MB", "> 100 MB"],
-            key="gallery_size_filter"
-        )
-    
-    # Second row of filters
-    col5, col6, col7, col8 = st.columns(4)
-    
-    with col5:
-        st.session_state.filter_quality = st.selectbox(
-            "⭐ Data Quality",
-            ["All Quality", "Excellent (>95%)", "Good (80-95%)", "Fair (60-80%)", "Poor (<60%)"],
-            key="gallery_quality_filter"
-        )
-    
-    with col6:
-        st.session_state.filter_device_status = st.selectbox(
-            "🔌 Device Status",
-            ["All Status", "Active", "Inactive", "Maintenance"],
-            key="gallery_device_status_filter"
-        )
-    
-    with col7:
+    prev_roles = {'super_admin', 'admin', 'scientist'}
+    if st.session_state.role in prev_roles:
+        col1, col2, col3, col4 = st.columns(4)
+        
+        with col1:
+            st.session_state.filter_data_type = st.selectbox(
+                "Data Type",
+                ["All Types", "Telemetry", "Manual"],
+                key="data_type_filter"
+            )
+        
+        with col2:
+            clients = get_cached_clients()
+            client_names = ["All Clients"] + [c.name for c in clients]
+            st.session_state.filter_client = st.selectbox(
+                "Client",
+                client_names,
+                key="gallery_client_filter"
+            )
+        
+        with col3:
+            st.session_state.filter_date_range = st.selectbox(
+                "Date Range",
+                ["All Time", "Today", "Last 7 Days", "Last 30 Days", "Last 90 Days", "This Year"],
+                key="date_filter"
+            )
+        
+        with col4:
+            st.session_state.filter_file_size = st.selectbox(
+                "File Size",
+                ["All Sizes", "< 1 MB", "1-10 MB", "10-100 MB", "> 100 MB"],
+                key="gallery_size_filter"
+            )
+        
+        # Second row of filters
+        col5, col6, col7, col8 = st.columns(4)
+        
+        with col5:
+            st.session_state.filter_quality = st.selectbox(
+                "Data Quality",
+                ["All Quality", "Excellent (>95%)", "Good (80-95%)", "Fair (60-80%)", "Poor (<60%)"],
+                key="gallery_quality_filter"
+            )
+        
+        with col6:
+            st.session_state.filter_device_status = st.selectbox(
+                "Device Status",
+                ["All Status", "Active", "Inactive", "Maintenance"],
+                key="gallery_device_status_filter"
+            )
+        
+        with col7:
+            st.session_state.sort_by = st.selectbox(
+                "Sort By",
+                ["Recent First", "Oldest First", "Name A-Z", "Name Z-A", "Size (Large)", "Size (Small)", "Quality (High)", "Quality (Low)"],
+                key="gallery_sort_filter"
+            )
+        
+        with col8:
+            if st.button("Reset All Filters", key="gallery_reset_filters", width='stretch'):
+                reset_filters()
+                # st.rerun()
+    else:
         st.session_state.sort_by = st.selectbox(
-            "🔢 Sort By",
-            ["Recent First", "Oldest First", "Name A-Z", "Name Z-A", "Size (Large)", "Size (Small)", "Quality (High)", "Quality (Low)"],
-            key="gallery_sort_filter"
-        )
-    
-    with col8:
-        if st.button("🔄 Reset All Filters", key="gallery_reset_filters", width='stretch'):
-            reset_filters()
-            st.rerun()
-
+                "Sort By",
+                ["Recent First", "Oldest First", "Name A-Z", "Name Z-A", "Size (Large)", "Size (Small)", "Quality (High)", "Quality (Low)"],
+                key="gallery_sort_filter"
+            )
 
 def reset_filters():
     """Reset all filters to default"""
@@ -229,40 +234,34 @@ def get_filtered_datasets(search_query=""):
         
         # ROLE-BASED DATA ACCESS
         if user_role == 'super_admin':
-            # Super Admin: Access to EVERYTHING
             accessible_clients = clients
             can_see_manual = True
             can_see_all_telemetry = True
             log_info(f"Super admin {username} accessing all data", context="Data Gallery")
             
         elif user_role == 'admin':
-            # Admin: Access to all data
             accessible_clients = clients
             can_see_manual = True
             can_see_all_telemetry = True
             log_info(f"Admin {username} accessing all data", context="Data Gallery")
             
         elif user_role == 'scientist':
-            # Scientist: Access to all manual uploads + all telemetry data for research
             accessible_clients = clients
             can_see_manual = True
             can_see_all_telemetry = True
             log_info(f"Scientist {username} accessing research data", context="Data Gallery")
             
         elif user_role == 'client':
-            # Client: Only their organization's data
-            # In a real system, you'd link users to specific clients
-            # For demo, we'll show the first client's data or filter by username
             accessible_clients = [clients[0]] if clients else []
-            can_see_manual = False  # Clients don't see manual uploads
-            can_see_all_telemetry = False  # Only their own telemetry
+            can_see_manual = False
+            can_see_all_telemetry = False
             log_info(f"Client {username} accessing organization data", context="Data Gallery")
             
         else:  # guest
-            # Guest: Very limited access, maybe only public/demo data
-            accessible_clients = []
-            can_see_manual = False
-            can_see_all_telemetry = False
+            # Guests only see flagged data
+            accessible_clients = clients  # Will filter by guest_flag
+            can_see_manual = True  # But only flagged ones
+            can_see_all_telemetry = True  # But only flagged ones
             log_info(f"Guest {username} accessing public data", context="Data Gallery")
         
         # Get Telemetry Data (role-filtered)
@@ -275,6 +274,10 @@ def get_filtered_datasets(search_query=""):
                     try:
                         files = services.get_files_by_client(client.id)
                         for file in files:
+                            # Filter for guests - only flagged files
+                            if user_role == 'guest' and not file.guest_flag:
+                                continue
+                            
                             device = services.get_device(file.device_id) if file.device_id else None
                             
                             dataset = {
@@ -291,7 +294,8 @@ def get_filtered_datasets(search_query=""):
                                 'size': calculate_file_size(file.directory),
                                 'quality': calculate_quality_score(file.directory),
                                 'records': count_records(file.directory),
-                                'access_level': get_access_level(user_role, 'telemetry')
+                                'access_level': get_access_level(user_role, 'telemetry'),
+                                'flagged_for_guest': bool(file.guest_flag)  # FROM DATABASE
                             }
                             
                             all_datasets.append(dataset)
@@ -305,37 +309,41 @@ def get_filtered_datasets(search_query=""):
                 try:
                     manual_files = services.get_manual_uploads()
                     
-                    # Scientists and admins see all, others see their own
                     for file in manual_files:
-                        # Role-based filtering for manual uploads
-                        if user_role in ['super_admin', 'admin', 'scientist']:
-                            show_file = True
-                        elif user_role == 'client':
-                            # Clients might see manual uploads from their org only
-                            show_file = False  # For now, clients don't see manual
-                        else:
-                            show_file = file.author == username  # Only their own uploads
+                        # Filter for guests - only flagged files
+                        if user_role == 'guest' and not file.guest_flag:
+                            continue
                         
-                        if show_file:
-                            dataset = {
-                                'id': file.id,
-                                'type': 'Manual',
-                                'type_icon': '📝',
-                                'name': os.path.basename(file.file_directory),
-                                'client': 'N/A',
-                                'device': file.author,
-                                'device_status': 'N/A',
-                                'location_id': 'N/A',
-                                'path': file.file_directory,
-                                'date': file.recorded_date.strftime("%Y-%m-%d %H:%M"),
-                                'size': calculate_file_size(file.file_directory),
-                                'quality': calculate_quality_score(file.file_directory),
-                                'records': count_records(file.file_directory),
-                                'notes': file.notes,
-                                'access_level': get_access_level(user_role, 'manual')
-                            }
+                        # Role-based filtering for manual uploads (non-guest)
+                        if user_role not in ['guest', 'super_admin', 'admin', 'scientist']:
+                            if user_role == 'client':
+                                show_file = False
+                            else:
+                                show_file = file.author == username
                             
-                            all_datasets.append(dataset)
+                            if not show_file:
+                                continue
+                        
+                        dataset = {
+                            'id': file.id,
+                            'type': 'Manual',
+                            'type_icon': '📝',
+                            'name': os.path.basename(file.file_directory),
+                            'client': 'N/A',
+                            'device': file.author,
+                            'device_status': 'N/A',
+                            'location_id': 'N/A',
+                            'path': file.file_directory,
+                            'date': file.recorded_date.strftime("%Y-%m-%d %H:%M"),
+                            'size': calculate_file_size(file.file_directory),
+                            'quality': calculate_quality_score(file.file_directory),
+                            'records': count_records(file.file_directory),
+                            'notes': file.notes,
+                            'access_level': get_access_level(user_role, 'manual'),
+                            'flagged_for_guest': bool(file.guest_flag)  # FROM DATABASE
+                        }
+                        
+                        all_datasets.append(dataset)
                 
                 except Exception as e:
                     log_error(f"Error loading manual files: {str(e)}", context="Data Gallery")
@@ -455,34 +463,35 @@ def render_grid_view(datasets):
 
 
 def render_dataset_card(dataset):
-    """Render a single dataset card with role-based permissions"""
+    """Render a single dataset card with role-based permissions - opens overlay on click"""
     user_role = st.session_state.get('role', 'guest')
     access_level = dataset.get('access_level', 'view_only')
     
     quality = dataset['quality']
     if quality >= 95:
         quality_color = "#10b981"
-        quality_badge = "🟢"
+        quality_badge = "High"
     elif quality >= 80:
         quality_color = "#3b82f6"
-        quality_badge = "🔵"
+        quality_badge = "Good"
     elif quality >= 60:
         quality_color = "#f59e0b"
-        quality_badge = "🟡"
+        quality_badge = "Fair"
     else:
         quality_color = "#ef4444"
-        quality_badge = "🔴"
+        quality_badge = "Low"
     
     # Access level badge
     access_badges = {
-        'full': '🔓 Full Access',
-        'read': '👁️ Read Only',
-        'view_only': '🔒 View Only'
+        'full': 'Full Access',
+        'read': 'Read Only',
+        'view_only': 'View Only'
     }
-    access_badge = access_badges.get(access_level, '🔒 Limited')
+    access_badge = access_badges.get(access_level, 'Limited')
     
-    st.markdown(f"""
-        <div class="stat-card" style="height: 320px; display: flex; flex-direction: column; justify-content: space-between;">
+    # Card HTML - clickable
+    card_html = f"""
+        <div class="stat-card" style="height: 320px; display: flex; flex-direction: column; justify-content: space-between; cursor: pointer;">
             <div>
                 <div style="font-size: 2rem; margin-bottom: 0.5rem;">
                     {dataset['type_icon']}
@@ -494,13 +503,13 @@ def render_dataset_card(dataset):
                     {dataset['type']} | {dataset['client']}
                 </div>
                 <div style="color: #60a5fa; font-size: 0.9rem; margin-bottom: 0.5rem;">
-                    🔌 {dataset['device'][:25]}{'...' if len(dataset['device']) > 25 else ''}
+                    {dataset['device'][:25]}{'...' if len(dataset['device']) > 25 else ''}
                 </div>
                 <div style="color: #94a3b8; font-size: 0.8rem; margin-bottom: 0.3rem;">
-                    💾 {dataset['size']} MB | {dataset['records']:,} records
+                    {dataset['size']} MB | {dataset['records']:,} records
                 </div>
                 <div style="color: {quality_color}; font-size: 0.8rem; margin-bottom: 0.5rem;">
-                    {quality_badge} Quality: {dataset['quality']}%
+                    Quality: {dataset['quality']}%
                 </div>
                 <div style="color: #a78bfa; font-size: 0.75rem; margin-bottom: 0.5rem;">
                     {access_badge}
@@ -508,38 +517,431 @@ def render_dataset_card(dataset):
             </div>
             <div style="margin-top: auto; padding-top: 0.5rem; border-top: 1px solid rgba(148, 163, 184, 0.2);">
                 <div style="color: #94a3b8; font-size: 0.75rem;">
-                    📅 {dataset['date']}
+                    {dataset['date']}
                 </div>
+            </div>
+        </div>
+    """
+    
+    st.markdown(card_html, unsafe_allow_html=True)
+    
+    # Click handler - using button overlay
+    if st.button("View Details", key=f"view_card_{dataset['type']}_{dataset['id']}", 
+                 use_container_width=True):
+        show_dataset_overlay(dataset)
+
+
+@st.dialog("Dataset Details", width="large")
+def show_dataset_overlay(dataset):
+    """Show dataset details in a large, pleasant overlay dialog"""
+    user_role = st.session_state.get('role', 'guest')
+    
+    quality = dataset['quality']
+    if quality >= 95:
+        quality_color = "#10b981"
+        quality_badge = "High"
+        quality_emoji = "🟢"
+    elif quality >= 80:
+        quality_color = "#3b82f6"
+        quality_badge = "Good"
+        quality_emoji = "🔵"
+    elif quality >= 60:
+        quality_color = "#f59e0b"
+        quality_badge = "Fair"
+        quality_emoji = "🟡"
+    else:
+        quality_color = "#ef4444"
+        quality_badge = "Low"
+        quality_emoji = "🔴"
+    
+    # Enhanced Header with gradient background
+    st.markdown(f"""
+        <div style="
+            background: linear-gradient(135deg, #1e3a8a 0%, #7c3aed 100%);
+            padding: 2rem;
+            border-radius: 15px;
+            margin-bottom: 2rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        ">
+            <div style="font-size: 2.5rem; margin-bottom: 0.5rem;">
+                {dataset['type_icon']}
+            </div>
+            <div style="font-size: 1.8rem; font-weight: 700; color: #ffffff; margin-bottom: 0.5rem;">
+                {dataset['name']}
+            </div>
+            <div style="color: #cbd5e1; font-size: 1rem;">
+                {dataset['type']} Dataset | {dataset['client']}
             </div>
         </div>
     """, unsafe_allow_html=True)
     
-    # Role-based action buttons
-    if access_level == 'full':
-        col_a, col_b, col_c = st.columns(3)
+    # Info cards in row
+    col_info1, col_info2, col_info3 = st.columns(3)
+    
+    with col_info1:
+        st.markdown("""
+            <div style="
+                background: linear-gradient(135deg, rgba(30, 41, 59, 0.8) 0%, rgba(51, 65, 85, 0.8) 100%);
+                padding: 1.5rem;
+                border-radius: 15px;
+                border: 1px solid rgba(148, 163, 184, 0.2);
+                height: 100%;
+            ">
+                <div style="color: #60a5fa; font-size: 0.9rem; font-weight: 600; margin-bottom: 1rem;">
+                    DATASET INFO
+                </div>
+        """, unsafe_allow_html=True)
+        
+        st.write(f"**Type:** {dataset['type']}")
+        st.write(f"**Client:** {dataset['client']}")
+        
+        if user_role != 'guest':
+            if dataset.get('location_id') and dataset['location_id'] != 'N/A':
+                st.write(f"**Location:** {dataset['location_id']}")
+            st.write(f"**Source:** {dataset['device'][:25]}{'...' if len(dataset['device']) > 25 else ''}")
+        
+        st.write(f"**Date:** {dataset['date']}")
+        st.markdown("</div>", unsafe_allow_html=True)
+    
+    with col_info2:
+        st.markdown("""
+            <div style="
+                background: linear-gradient(135deg, rgba(30, 41, 59, 0.8) 0%, rgba(51, 65, 85, 0.8) 100%);
+                padding: 1.5rem;
+                border-radius: 15px;
+                border: 1px solid rgba(148, 163, 184, 0.2);
+                height: 100%;
+            ">
+                <div style="color: #a78bfa; font-size: 0.9rem; font-weight: 600; margin-bottom: 1rem;">
+                    FILE METRICS
+                </div>
+        """, unsafe_allow_html=True)
+        
+        st.metric("Size", f"{dataset['size']} MB", delta=None)
+        st.metric("Records", f"{dataset['records']:,}", delta=None)
+        st.markdown("</div>", unsafe_allow_html=True)
+    
+    with col_info3:
+        st.markdown(f"""
+            <div style="
+                background: linear-gradient(135deg, rgba(30, 41, 59, 0.8) 0%, rgba(51, 65, 85, 0.8) 100%);
+                padding: 1.5rem;
+                border-radius: 15px;
+                border: 1px solid rgba(148, 163, 184, 0.2);
+                height: 100%;
+            ">
+                <div style="color: #10b981; font-size: 0.9rem; font-weight: 600; margin-bottom: 1rem;">
+                    QUALITY
+                </div>
+                <div style="font-size: 3rem; color: {quality_color}; margin-bottom: 0.5rem;">
+                    {quality_emoji}
+                </div>
+                <div style="font-size: 2rem; font-weight: 700; color: {quality_color};">
+                    {dataset['quality']}%
+                </div>
+                <div style="color: #94a3b8; font-size: 0.9rem; margin-top: 0.5rem;">
+                    {quality_badge} Quality
+                </div>
+            </div>
+        """, unsafe_allow_html=True)
+    
+    st.markdown("<br>", unsafe_allow_html=True)
+    
+    # # Description section with better styling
+    # st.markdown("""
+    #     <div style="
+    #         background: linear-gradient(135deg, rgba(30, 41, 59, 0.6) 0%, rgba(51, 65, 85, 0.6) 100%);
+    #         padding: 1.5rem;
+    #         border-radius: 15px;
+    #         border-left: 4px solid #60a5fa;
+    #         margin-bottom: 1.5rem;
+    #     ">
+    #         <div style="color: #60a5fa; font-size: 1rem; font-weight: 600; margin-bottom: 0.8rem;">
+    #             DESCRIPTION
+    #         </div>
+    # """, unsafe_allow_html=True)
+    
+    # if dataset['type'] == 'Telemetry':
+    #     description = f"""
+    #     <div style="color: #cbd5e1; line-height: 1.8;">
+    #         This is an automatically collected telemetry dataset from <strong>{dataset['client']}</strong>'s battery monitoring system.
+    #         The data contains <strong>{dataset['records']:,} records</strong> of battery performance metrics including voltage, 
+    #         current, and temperature measurements.
+    #     </div>
+    #     """
+    #     if user_role != 'guest':
+    #         description += f"""
+    #         <div style="color: #94a3b8; font-size: 0.9rem; margin-top: 1rem;">
+    #             <strong>Device:</strong> {dataset['device']}<br>
+    #         """
+    #         if dataset.get('location_id') != 'N/A':
+    #             description += f"<strong>Location ID:</strong> {dataset['location_id']}<br>"
+    #         description += "</div>"
+    # else:
+    #     description = f"""
+    #     <div style="color: #cbd5e1; line-height: 1.8;">
+    #         This is a manually uploaded dataset by <strong>{dataset['device']}</strong> (researcher/lab technician).
+    #         The dataset contains <strong>{dataset['records']:,} records</strong> of experimental battery data.
+    #     </div>
+    #     """
+    #     if dataset.get('notes'):
+    #         description += f"""
+    #         <div style="color: #94a3b8; font-size: 0.9rem; margin-top: 1rem; padding: 1rem; 
+    #                     background: rgba(0,0,0,0.2); border-radius: 8px;">
+    #             <strong>Notes:</strong> {dataset['notes']}
+    #         </div>
+    #         """
+
+    # # Close the div and render with unsafe_allow_html=True
+    # st.markdown(description + "</div>", unsafe_allow_html=True)
+    
+    if dataset['type'] == 'Telemetry':
+        content = (
+            f"This is an automatically collected telemetry dataset from "
+            f"<strong>{dataset['client']}</strong>'s battery monitoring system. "
+            f"The data contains <strong>{dataset['records']:,} records</strong> of battery performance metrics including voltage, "
+            f"current, and temperature measurements."
+        )
+
+        if user_role != 'guest':
+            content += f"<br><br><strong>Device:</strong> {dataset['device']}"
+            if dataset.get('location_id') != 'N/A':
+                content += f"<br><strong>Location ID:</strong> {dataset['location_id']}"
+
+    else:
+        content = (
+            f"This is a manually uploaded dataset by <strong>{dataset['device']}</strong> (researcher/lab technician). "
+            f"The dataset contains <strong>{dataset['records']:,} records</strong> of experimental battery data."
+        )
+        
+        if dataset.get('notes'):
+            content += f"<br><br><strong>Notes:</strong> {dataset['notes']}"
+
+    st.markdown(f"""
+        <div style="
+            background: linear-gradient(135deg, rgba(30, 41, 59, 0.6) 0%, rgba(51, 65, 85, 0.6) 100%);
+            padding: 1.5rem;
+            border-radius: 15px;
+            border-left: 4px solid #60a5fa;
+            margin-bottom: 1.5rem;
+        ">
+            <div style="color: #60a5fa; font-size: 1rem; font-weight: 600; margin-bottom: 0.8rem;">
+                DESCRIPTION
+            </div>
+            <div style="color: #cbd5e1; line-height: 1.8;">
+                {content}
+            </div>
+        </div>
+    """, unsafe_allow_html=True)
+
+    # Tabs for data visualization
+    tab1, tab2 = st.tabs(["📊 Data Preview", "📈 Performance Chart"])
+    
+    with tab1:
+        with st.spinner("Loading dataset preview..."):
+            try:
+                if os.path.exists(dataset['path']) and dataset['path'].endswith('.csv'):
+                    import pandas as pd
+                    _df = pd.read_csv(dataset['path'])
+                    n_rows=int(len(_df) * 0.1)
+                    df = pd.read_csv(dataset['path'], nrows=n_rows)
+                    
+                    st.markdown(f"""
+                        <div style="color: #a78bfa; font-size: 1.1rem; font-weight: 600; margin-bottom: 1rem;">
+                            DISPLAYING FIRST {n_rows} OF DATA
+                        </div>
+                    """, unsafe_allow_html=True)
+                    
+                    st.dataframe(
+                        df, 
+                        use_container_width=True, 
+                        height=400,
+                        hide_index=True
+                    )
+                    
+                    # Data summary
+                    col_s1, col_s2, col_s3, col_s4 = st.columns(4)
+                    with col_s1:
+                        st.metric("Columns", len(df.columns))
+                    with col_s2:
+                        st.metric("Rows Shown", len(df))
+                    with col_s3:
+                        st.metric("Total Records", dataset['records'])
+                    with col_s4:
+                        missing = df.isnull().sum().sum()
+                        st.metric("Missing Values", missing)
+                    
+                else:
+                    st.warning("Data preview not available - file not found or not a CSV")
+                    
+            except Exception as e:
+                log_error(f"Error loading sample data: {str(e)}", context="Data Gallery Overlay")
+                st.error("Could not load data preview")
+    
+    with tab2:
+        with st.spinner("Generating performance chart..."):
+            try:
+                if os.path.exists(dataset['path']) and dataset['path'].endswith('.csv'):
+                    import pandas as pd
+                    import plotly.express as px
+                    
+                    df = pd.read_csv(dataset['path'], nrows=100)
+                    
+                    if 'voltage' in df.columns or 'current' in df.columns or 'temperature' in df.columns:
+                        # Determine x-axis
+                        x_col = 'timestamp' if 'timestamp' in df.columns else df.columns[0]
+                        
+                        # Plot available metrics
+                        plot_cols = []
+                        if 'voltage' in df.columns:
+                            plot_cols.append('voltage')
+                        if 'current' in df.columns:
+                            plot_cols.append('current')
+                        if 'temperature' in df.columns:
+                            plot_cols.append('temperature')
+                        
+                        if plot_cols:
+                            fig = px.line(
+                                df, 
+                                x=x_col, 
+                                y=plot_cols,
+                                title='Battery Performance Metrics (First 100 Records)',
+                                labels={x_col: 'Time', 'value': 'Measurement'},
+                                template='plotly_dark'
+                            )
+                            
+                            fig.update_layout(
+                                plot_bgcolor='rgba(15, 23, 42, 0.8)',
+                                paper_bgcolor='rgba(30, 41, 59, 0.5)',
+                                font_color='#cbd5e1',
+                                height=500,
+                                hovermode='x unified',
+                                legend=dict(
+                                    orientation="h",
+                                    yanchor="bottom",
+                                    y=1.02,
+                                    xanchor="right",
+                                    x=1,
+                                    bgcolor="rgba(30, 41, 59, 0.8)",
+                                    bordercolor="rgba(148, 163, 184, 0.3)",
+                                    borderwidth=1
+                                ),
+                                xaxis=dict(
+                                    gridcolor='rgba(148, 163, 184, 0.1)',
+                                    showgrid=True
+                                ),
+                                yaxis=dict(
+                                    gridcolor='rgba(148, 163, 184, 0.1)',
+                                    showgrid=True
+                                )
+                            )
+                            
+                            fig.update_traces(
+                                line=dict(width=3),
+                                hovertemplate='<b>%{y:.2f}</b><extra></extra>'
+                            )
+                            
+                            st.plotly_chart(fig, use_container_width=True)
+                            
+                            # Chart insights
+                            st.markdown("""
+                                <div style="
+                                    background: rgba(30, 41, 59, 0.4);
+                                    padding: 1rem;
+                                    border-radius: 10px;
+                                    border-left: 3px solid #60a5fa;
+                                    margin-top: 1rem;
+                                ">
+                                    <div style="color: #60a5fa; font-weight: 600; margin-bottom: 0.5rem;">
+                                        Chart Insights
+                                    </div>
+                                    <div style="color: #94a3b8; font-size: 0.9rem;">
+                                        This visualization shows the first 100 data points. 
+                                        Hover over the chart to see detailed values.
+                                    </div>
+                                </div>
+                            """, unsafe_allow_html=True)
+                    else:
+                        st.info("No voltage, current, or temperature columns found for charting")
+                else:
+                    st.warning("Chart not available - file not found or not a CSV")
+                    
+            except Exception as e:
+                log_error(f"Error generating chart: {str(e)}", context="Data Gallery Overlay")
+                st.error("Could not generate performance chart")
+    
+    st.markdown("<br>", unsafe_allow_html=True)
+    st.markdown("---")
+    
+    # Action buttons with enhanced styling
+    st.markdown("""
+        <div style="color: #a78bfa; font-size: 1.2rem; font-weight: 600; margin-bottom: 1rem;">
+            Available Actions
+        </div>
+    """, unsafe_allow_html=True)
+    
+    if user_role == 'guest':
+        st.info("🔒 Guest users have view-only access. Please login for full features including download and analysis.")
+        
+    elif user_role in ['super_admin', 'admin', 'scientist']:
+        col_a, col_b, col_c, col_d = st.columns(4)
+        
         with col_a:
-            if st.button("👁️", key=f"gallery_view_{dataset['type']}_{dataset['id']}", help="View Details", width='stretch'):
-                show_dataset_details(dataset)
+            download_dataset_file(dataset, f"overlay_download_{dataset['type']}_{dataset['id']}")
+        
         with col_b:
-            if st.button("📥", key=f"gallery_download_{dataset['type']}_{dataset['id']}", help="Download", width='stretch'):
-                st.success(f"Downloading: {dataset['name']}")
-                log_info(f"User {st.session_state.username} downloaded {dataset['name']}", context="Data Gallery")
+            if st.button("📊 Analyze", key=f"overlay_analyze_{dataset['type']}_{dataset['id']}", 
+                        use_container_width=True, type="secondary"):
+                st.toast(f"Opening analytics for: {dataset['name']}", icon="📊")
+        
         with col_c:
-            if st.button("📊", key=f"gallery_analyze_{dataset['type']}_{dataset['id']}", help="Analyze", width='stretch'):
-                st.info(f"Opening analytics for: {dataset['name']}")
+            is_flagged = dataset.get('flagged_for_guest', False)
+            flag_label = "🚩 Unflag" if is_flagged else "🏴 Flag for Guest"
+            
+            if st.button(flag_label, key=f"overlay_flag_{dataset['type']}_{dataset['id']}", 
+                       use_container_width=True, type="secondary"):
+                toggle_guest_flag(dataset)
+                st.toast(f"Dataset {'unflagged' if is_flagged else 'flagged'} successfully!", 
+                        icon="✅")
+                log_info(f"User {st.session_state.username} {'unflagged' if is_flagged else 'flagged'} dataset {dataset['id']}", 
+                        context="Data Gallery")
+                st.rerun()
+        
+        with col_d:
+            if st.button("🗑️ Delete", key=f"overlay_delete_{dataset['type']}_{dataset['id']}", 
+                       use_container_width=True, type="secondary"):
+                st.warning("Delete functionality would be implemented here")
     
-    elif access_level == 'read':
+    else:
         col_a, col_b = st.columns(2)
+        
         with col_a:
-            if st.button("👁️", key=f"gallery_view_{dataset['type']}_{dataset['id']}", help="View Details", width='stretch'):
-                show_dataset_details(dataset)
+            download_dataset_file(dataset, f"overlay_download_{dataset['type']}_{dataset['id']}")
+        
         with col_b:
-            if st.button("📥", key=f"gallery_download_{dataset['type']}_{dataset['id']}", help="Download", width='stretch'):
-                st.success(f"Downloading: {dataset['name']}")
-    
-    else:  # view_only
-        if st.button("👁️ View Only", key=f"gallery_view_{dataset['type']}_{dataset['id']}", width='stretch'):
-            show_dataset_details(dataset, limited=True)
+            if st.button("📊 Analyze", key=f"overlay_analyze_{dataset['type']}_{dataset['id']}", 
+                        use_container_width=True, type="secondary"):
+                st.toast(f"Opening analytics for: {dataset['name']}", icon="📊")
+                
+def toggle_guest_flag(dataset):
+    """
+    Toggle guest visibility flag for a dataset in the database
+    """
+    try:
+        if dataset['type'] == 'Telemetry':
+            services.toggle_telemetry_guest_flag(dataset['id'])
+        else:  # Manual
+            services.toggle_manual_upload_guest_flag(dataset['id'])
+        
+        log_info(f"Toggled guest flag for {dataset['type']} ID {dataset['id']}", context="Data Gallery")
+        
+    except Exception as e:
+        log_error(f"Error toggling guest flag: {str(e)}", context="Data Gallery")
+
+def is_dataset_flagged_for_guest(dataset):
+    """Check if dataset is flagged for guest visibility from database"""
+    # This will be checked when building dataset dict from database
+    return dataset.get('flagged_for_guest', False)
 
 
 def render_list_view(datasets):
@@ -566,13 +968,129 @@ def render_list_view(datasets):
                 col_a, col_b = st.columns(2)
                 with col_a:
                     if st.button("View", key=f"listview_{dataset['type']}_{dataset['id']}", width='stretch'):
-                        show_dataset_details(dataset)
+                        show_dataset_overlay(dataset)
                 with col_b:
-                    if st.button("📥", key=f"listdown_{dataset['type']}_{dataset['id']}", width='stretch'):
-                        st.info("Download")
+                        download_dataset_file(dataset, f"listdown_{dataset['type']}_{dataset['id']}")
+
             
             st.markdown("---")
 
+
+def download_dataset_file(dataset, button_key):
+    """
+    Create a download button for a dataset file
+    Guests cannot download files - button will be disabled
+    
+    Args:
+        dataset: Dictionary containing dataset information with 'path' and 'name' keys
+        button_key: Unique key for the download button
+    
+    Returns:
+        bool: True if download button was created successfully, False otherwise
+    """
+    user_role = st.session_state.get('role', 'guest')
+    
+    # Disable download for guests
+    if user_role == 'guest':
+        st.button(
+            "Download",
+            disabled=True,
+            key=button_key,
+            help="Guest users cannot download files. Please login for full access.",
+            use_container_width=True
+        )
+        return False
+    
+    try:
+        file_path = dataset['path']
+        
+        # Check if file exists
+        if not os.path.exists(file_path):
+            st.button(
+                "File Not Found",
+                disabled=True,
+                key=f"{button_key}_notfound",
+                help="File does not exist on server"
+            )
+            log_error(f"Download failed - file not found: {file_path}", context="Data Gallery")
+            return False
+        
+        # Check if file is readable
+        if not os.access(file_path, os.R_OK):
+            st.button(
+                "Access Denied",
+                disabled=True,
+                key=f"{button_key}_denied",
+                help="No permission to read file"
+            )
+            log_error(f"Download failed - access denied: {file_path}", context="Data Gallery")
+            return False
+        
+        # Read file and create download button
+        with open(file_path, 'rb') as f:
+            file_data = f.read()
+        
+        # Determine MIME type based on file extension
+        file_ext = os.path.splitext(file_path)[1].lower()
+        mime_types = {
+            '.csv': 'text/csv',
+            '.txt': 'text/plain',
+            '.json': 'application/json',
+            '.xlsx': 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
+            '.pdf': 'application/pdf'
+        }
+        mime_type = mime_types.get(file_ext, 'application/octet-stream')
+        
+        # Create download button
+        downloaded = st.download_button(
+            label="Download",
+            data=file_data,
+            file_name=dataset['name'],
+            mime=mime_type,
+            key=button_key,
+            help=f"Download {dataset['name']}",
+            use_container_width=True
+        )
+        
+        # Log download action
+        if downloaded:
+            log_info(
+                f"User {st.session_state.get('username', 'Unknown')} downloaded {dataset['name']}", 
+                context="Data Gallery"
+            )
+        
+        return True
+        
+    except FileNotFoundError:
+        st.button(
+            "File Missing",
+            disabled=True,
+            key=f"{button_key}_missing",
+            help="File has been moved or deleted"
+        )
+        log_error(f"Download failed - file missing: {dataset['path']}", context="Data Gallery")
+        return False
+        
+    except PermissionError:
+        st.button(
+            "Permission Error",
+            disabled=True,
+            key=f"{button_key}_perm",
+            help="Insufficient permissions to read file"
+        )
+        log_error(f"Download failed - permission error: {dataset['path']}", context="Data Gallery")
+        return False
+        
+    except Exception as e:
+        st.button(
+            "Download Error",
+            disabled=True,
+            key=f"{button_key}_error",
+            help=f"Error: {str(e)}"
+        )
+        log_error(f"Download failed for {dataset['name']}: {str(e)}", context="Data Gallery")
+        return False
+    
 
 def render_table_view(datasets):
     """Render datasets in table view"""
@@ -685,7 +1203,7 @@ def show_dataset_details(dataset, limited=False):
             with col_x:
                 st.button("📊 View Report", key=f"gallery_report_{dataset['id']}_detail")
             with col_y:
-                st.button("📥 Export", key=f"gallery_export_{dataset['id']}_detail")
+                download_dataset_file(dataset, f"gallery_download_{dataset['id']}_detail")
         
         else:  # guest
             st.info("🔒 Limited access - Contact administrator for full access")

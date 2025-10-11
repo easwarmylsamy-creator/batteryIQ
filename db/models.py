@@ -163,6 +163,7 @@ class BatteryData(Base):
     )
     file_name: Mapped[str] = mapped_column(String(255), nullable=False)
     directory: Mapped[str] = mapped_column(String(255), nullable=False)
+    guest_flag: Mapped[bool] = mapped_column(Integer, default=0, nullable=False)  # 0=not flagged, 1=flagged for guest
 
     client: Mapped["Client"] = relationship("Client", back_populates="telemetry")
     location: Mapped["Location"] = relationship("Location", back_populates="telemetry")
@@ -183,10 +184,14 @@ class ManualUpload(Base):
     recorded_date: Mapped[datetime] = mapped_column(DateTime(timezone=True), nullable=False)
     file_directory: Mapped[str] = mapped_column(String(255), nullable=False)
     notes: Mapped[Optional[str]] = mapped_column(Text, nullable=True)
+    guest_flag: Mapped[bool] = mapped_column(Integer, default=0, nullable=False)  # 0=not flagged, 1=flagged for guest
 
     def __repr__(self) -> str:
         return f"<ManualUpload id={self.id} author={self.author!r} file={self.file_directory!r}>"
-
+    
+# ---------------------------   
+# Metrics table
+# ---------------------------
 class Metrics(Base):
     __tablename__ = "metrics"
 

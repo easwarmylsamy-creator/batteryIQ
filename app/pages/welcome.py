@@ -65,3 +65,6 @@ def render():
         if st.button("Test", width='stretch'):
             st.session_state.page = 'testLogin'
             st.rerun()
+        if st.button("Test - Dataset", width='stretch'):
+            st.session_state.page = 'compLogin'
+            st.rerun()

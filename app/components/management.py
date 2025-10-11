@@ -35,29 +35,30 @@ def render_client_management():
     col1, col2 = st.columns([2, 1])
     
     with col1:
-        try:
-            clients = get_cached_clients()
-            
-            if clients:
-                client_data = []
-                for client in clients:
-                    devices = get_cached_devices(client.id)
-                    locations = get_cached_locations(client.id)
-                    
-                    client_data.append({
-                        "ID": client.id,
-                        "Name": client.name,
-                        "Locations": len(locations),
-                        "Devices": len(devices)
-                    })
+        with st.spinner("Loading clients..."):
+            try:
+                clients = get_cached_clients()
                 
-                df = pd.DataFrame(client_data)
-                st.dataframe(df, use_container_width=True)
-            else:
-                st.info("No clients found.")
-        
-        except Exception as e:
-            st.error(f"Error loading clients: {e}")
+                if clients:
+                    client_data = []
+                    for client in clients:
+                        devices = get_cached_devices(client.id)
+                        locations = get_cached_locations(client.id)
+                        
+                        client_data.append({
+                            "ID": client.id,
+                            "Name": client.name,
+                            "Locations": len(locations),
+                            "Devices": len(devices)
+                        })
+                    
+                    df = pd.DataFrame(client_data)
+                    st.dataframe(df, use_container_width=True)
+                else:
+                    st.info("No clients found.")
+            
+            except Exception as e:
+                st.error(f"Error loading clients: {e}")
     
     with col2:
         st.markdown("#### Add New Client")
@@ -66,16 +67,18 @@ def render_client_management():
             submit_client = st.form_submit_button("Add Client", type="primary")
             
             if submit_client and new_client_name:
-                try:
-                    log_info(f"Creating new client: {new_client_name}", context="Management")
-                    services.create_client(new_client_name)
-                    log_info(f"Successfully created client: {new_client_name}", context="Management")
-                    st.success(f"Client '{new_client_name}' added!")
-                    st.cache_data.clear()
-                    st.rerun()
-                except Exception as e:
-                    log_error(f"Failed to create client '{new_client_name}': {str(e)}", context="Management")
-                    st.error(f"Error: {e}")
+                
+                with st.spinner("Creating client..."):
+                    try:
+                        log_info(f"Creating new client: {new_client_name}", context="Management")
+                        services.create_client(new_client_name)
+                        log_info(f"Successfully created client: {new_client_name}", context="Management")
+                        st.success(f"Client '{new_client_name}' added!")
+                        st.cache_data.clear()
+                        st.rerun()
+                    except Exception as e:
+                        log_error(f"Failed to create client '{new_client_name}': {str(e)}", context="Management")
+                        st.error(f"Error: {e}")
 
 
 def render_device_management():

@@ -12,14 +12,33 @@ from datetime import datetime, timedelta
 from app.components.header import render_header
 from app.components.telemetry_monitor import render_telemetry_monitor
 from app.components.upload_form import render_upload_interface
-from app.components.file_browser import render_file_browser
 from app.components.management import render_management_interface
 from app.components.data_gallery import render_data_gallery
-from app.components.dataset_viewer import render_dataset_viewer
 from app.utils.cache_utils import get_cached_clients, get_cached_devices, get_system_stats
 from app.utils.data_utils import generate_sample_battery_data
 from app.utils.logging_utils import *
 import backend.services as services
+
+def test_dataset():
+    """Render test dataset page"""
+    st.markdown("## Test Dataset Page")
+    st.info("This is a placeholder for dataset testing and visualization.")
+    tab1, tab2, tab3, tab4, tab5 = st.tabs(["Overview", "Manage", "Datasets", "Telemetry Monitor", "Manual Upload"])
+
+    with tab1:
+        st.markdown("### Go to Datasets")
+
+    with tab2:
+        st.markdown("### Go to Datasets")
+
+    with tab3:
+        render_data_gallery()
+        
+    with tab4:
+        st.markdown("### Go to Datasets")
+
+    with tab5:
+        st.markdown("### Go to Datasets")
 
 def admin_dashboard():
     """Render admin dashboard"""
@@ -116,7 +135,6 @@ def admin_dashboard():
     
     with tab3:
         render_data_gallery()
-        # render_dataset_viewer()
         # st.text("Data Gallery coming soon...")
 
     with tab2:
@@ -252,24 +270,17 @@ def client_dashboard():
 def guest_dashboard():
     """Render guest dashboard"""
     render_header()
-    
     st.markdown("## Public Dashboard")
     st.markdown("View shared battery performance data")
     st.markdown("<br>", unsafe_allow_html=True)
     
     st.info("Guest access - limited features available")
     
-    st.markdown("### Sample Battery Performance")
-    df = generate_sample_battery_data(14)
-    
-    fig = px.line(df, x='timestamp', y=['voltage', 'current', 'temperature'],
-                 title='Multi-Parameter Performance View')
-    fig.update_layout(
-        plot_bgcolor='rgba(0,0,0,0)',
-        paper_bgcolor='rgba(30,41,59,0.5)',
-        font_color='#94a3b8'
-    )
-    st.plotly_chart(fig, use_container_width=True)
+    tab1,tab2 = st.tabs(["Upload Datasets","Data Gallery"])
+    with tab1:
+        render_upload_interface()
+    with tab2:
+        render_data_gallery()
 
 
 # Add this to app/pages/dashboards.py

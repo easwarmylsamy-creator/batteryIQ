@@ -1,6 +1,4 @@
-# ============================================
-# FILE: app/main.py
-# ============================================
+# app/main.py
 import streamlit as st
 import sys
 import os
@@ -15,7 +13,7 @@ if PROJECT_ROOT not in sys.path:
 from app.config import setup_page_config
 from app.styles import apply_custom_styles
 from app.session import initialize_session_state
-from app.pages import welcome, login,testLogin, dashboards
+from app.pages import test_components, welcome, login, testLogin, dashboards
 from app.utils.logging_utils import *
 from app.components.data_gallery import render_data_gallery
 
@@ -39,31 +37,35 @@ def main():
 
         elif page == 'testLogin':
             testLogin.render()
-        
+
+        elif page == 'compLogin':
+            test_components.render()
+
+
+
         elif page == 'dashboard':
             role = st.session_state.role
             log_info(f"User {st.session_state.username} accessing {role} dashboard", context="Navigation")
             
-            if role == 'admin':
-                dashboards.admin_dashboard()
-            elif role == 'scientist':
-                dashboards.scientist_dashboard()
-            elif role == 'client':
-                dashboards.client_dashboard()
-            elif role == 'guest':
-                dashboards.guest_dashboard()
-            elif role == 'super_admin': 
-                dashboards.super_admin_dashboard()
-            else:
-                log_error(f"Invalid role '{role}' for user {st.session_state.username}", context="Navigation")
-                st.error("Invalid role. Please login again.")
-                from app.session import logout
-                logout()
-                st.rerun()
+            # Add loading screen for dashboard
+            with st.spinner(f"Loading {role} dashboard..."):
+                if role == 'admin':
+                    dashboards.admin_dashboard()
+                elif role == 'scientist':
+                    dashboards.scientist_dashboard()
+                elif role == 'client':
+                    dashboards.client_dashboard()
+                elif role == 'guest':
+                    dashboards.guest_dashboard()
+                elif role == 'super_admin': 
+                    dashboards.super_admin_dashboard()
+                else:
+                    log_error(f"Invalid role '{role}' for user {st.session_state.username}", context="Navigation")
+                    st.error("Invalid role. Please login again.")
+                    from app.session import logout
+                    logout()
+                    st.rerun()
         
-        # elif page == 'dashboard':
-        #     render_data_gallery()  # Temporary for testing UI
-
         else:
             log_warning(f"Unknown page requested: {page}", context="Navigation")
             st.session_state.page = 'welcome'
@@ -79,4 +81,3 @@ def main():
 if __name__ == "__main__":
     log_info("BatteryIQ application started", context="System")
     main()
-

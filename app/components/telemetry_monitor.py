@@ -18,7 +18,8 @@ def render_telemetry_monitor():
     col1, col2, col3 = st.columns(3)
     
     with col1:
-        clients = get_cached_clients()
+        with st.spinner("Loading clients..."):
+            clients = get_cached_clients()
         if clients:
             client_options = {f"{c.name}": c for c in clients}
             selected_client_name = st.selectbox(
@@ -44,126 +45,127 @@ def render_telemetry_monitor():
     st.markdown("<br>", unsafe_allow_html=True)
     st.markdown("#### Connected Devices")
     
-    try:
-        all_devices = []
-        log_info("Loading telemetry monitor", context="Telemetry Monitor")
-        
-        # Get devices based on client filter
-        if selected_client_name == "All Clients":
-            for client in clients:
-                devices = get_cached_devices(client.id)
+    with st.spinner("Loading devices and telemetry data..."):
+        try:
+            all_devices = []
+            log_info("Loading telemetry monitor", context="Telemetry Monitor")
+            
+            # Get devices based on client filter
+            if selected_client_name == "All Clients":
+                for client in clients:
+                    devices = get_cached_devices(client.id)
+                    for device in devices:
+                        all_devices.append({
+                            'client': client.name,
+                            'device': device,
+                            'client_id': client.id
+                        })
+            else:
+                selected_client = client_options[selected_client_name]
+                devices = get_cached_devices(selected_client.id)
                 for device in devices:
                     all_devices.append({
-                        'client': client.name,
+                        'client': selected_client.name,
                         'device': device,
-                        'client_id': client.id
+                        'client_id': selected_client.id
                     })
-        else:
-            selected_client = client_options[selected_client_name]
-            devices = get_cached_devices(selected_client.id)
-            for device in devices:
-                all_devices.append({
-                    'client': selected_client.name,
-                    'device': device,
-                    'client_id': selected_client.id
-                })
-        
-        # Apply device status filter
-        if status_filter != "All Status":
-            all_devices = filter_by_status(all_devices, status_filter)
-            log_info(f"Applied status filter: {status_filter}, {len(all_devices)} devices match", context="Telemetry Monitor")
-        
-        if all_devices:
-            # Create device cards
-            cols_per_row = 3
-            for i in range(0, len(all_devices), cols_per_row):
-                cols = st.columns(cols_per_row)
-                for j, col in enumerate(cols):
-                    if i + j < len(all_devices):
-                        device_info = all_devices[i + j]
-                        device = device_info['device']
-                        
-                        with col:
-                            try:
-                                telemetry_files = services.get_files_by_device(device.id)
+            
+            # Apply device status filter
+            if status_filter != "All Status":
+                all_devices = filter_by_status(all_devices, status_filter)
+                log_info(f"Applied status filter: {status_filter}, {len(all_devices)} devices match", context="Telemetry Monitor")
+            
+            if all_devices:
+                # Create device cards
+                cols_per_row = 3
+                for i in range(0, len(all_devices), cols_per_row):
+                    cols = st.columns(cols_per_row)
+                    for j, col in enumerate(cols):
+                        if i + j < len(all_devices):
+                            device_info = all_devices[i + j]
+                            device = device_info['device']
+                            
+                            with col:
+                                try:
+                                    telemetry_files = services.get_files_by_device(device.id)
+                                    
+                                    # Apply time range filter to files
+                                    filtered_files = filter_by_time_range(telemetry_files, time_range)
+                                    file_count = len(filtered_files)
+                                except Exception as e:
+                                    log_error(f"Error getting files for device {device.id}: {str(e)}", context="Telemetry Monitor")
+                                    file_count = 0
                                 
-                                # Apply time range filter to files
-                                filtered_files = filter_by_time_range(telemetry_files, time_range)
-                                file_count = len(filtered_files)
-                            except Exception as e:
-                                log_error(f"Error getting files for device {device.id}: {str(e)}", context="Telemetry Monitor")
-                                file_count = 0
-                            
-                            status = device.status or "active"
-                            status_icon = get_status_icon(status)
-                            
-                            st.markdown(f"""
-                                <div class="stat-card">
-                                    <div style="font-size: 1.5rem; margin-bottom: 0.5rem;">
-                                        {status_icon} {device.name}
+                                status = device.status or "active"
+                                status_icon = get_status_icon(status)
+                                
+                                st.markdown(f"""
+                                    <div class="stat-card">
+                                        <div style="font-size: 1.5rem; margin-bottom: 0.5rem;">
+                                            {status_icon} {device.name}
+                                        </div>
+                                        <div style="color: #94a3b8; font-size: 0.85rem; margin-bottom: 0.5rem;">
+                                            {device_info['client']}
+                                        </div>
+                                        <div style="color: #60a5fa; font-size: 1.2rem; margin: 0.5rem 0;">
+                                            {file_count} data files
+                                        </div>
+                                        <div style="color: #94a3b8; font-size: 0.8rem;">
+                                            Serial: {device.serial_number}<br>
+                                            Firmware: {device.firmware_version or 'N/A'}<br>
+                                            Status: {status.title()}
+                                        </div>
                                     </div>
-                                    <div style="color: #94a3b8; font-size: 0.85rem; margin-bottom: 0.5rem;">
-                                        {device_info['client']}
-                                    </div>
-                                    <div style="color: #60a5fa; font-size: 1.2rem; margin: 0.5rem 0;">
-                                        {file_count} data files
-                                    </div>
-                                    <div style="color: #94a3b8; font-size: 0.8rem;">
-                                        Serial: {device.serial_number}<br>
-                                        Firmware: {device.firmware_version or 'N/A'}<br>
-                                        Status: {status.title()}
-                                    </div>
-                                </div>
-                            """, unsafe_allow_html=True)
-            
-            # Recent telemetry
-            st.markdown("<br>", unsafe_allow_html=True)
-            st.markdown("#### Recent Telemetry Data")
-            
-            try:
-                all_telemetry = []
-                for device_info in all_devices:
-                    files = services.get_files_by_device(device_info['device'].id)
-                    
-                    # Apply time range filter
-                    filtered_files = filter_by_time_range(files, time_range)
-                    
-                    for file in filtered_files[-10:]:
-                        all_telemetry.append({
-                            'Device': device_info['device'].name,
-                            'Client': device_info['client'],
-                            'File Name': file.file_name,
-                            'Location': file.directory,
-                            'Status': device_info['device'].status or 'Active'
-                        })
+                                """, unsafe_allow_html=True)
                 
-                if all_telemetry:
-                    df = pd.DataFrame(all_telemetry)
-                    st.dataframe(df, width='stretch')
+                # Recent telemetry
+                st.markdown("<br>", unsafe_allow_html=True)
+                st.markdown("#### Recent Telemetry Data")
+                
+                try:
+                    all_telemetry = []
+                    for device_info in all_devices:
+                        files = services.get_files_by_device(device_info['device'].id)
+                        
+                        # Apply time range filter
+                        filtered_files = filter_by_time_range(files, time_range)
+                        
+                        for file in filtered_files[-10:]:
+                            all_telemetry.append({
+                                'Device': device_info['device'].name,
+                                'Client': device_info['client'],
+                                'File Name': file.file_name,
+                                'Location': file.directory,
+                                'Status': device_info['device'].status or 'Active'
+                            })
                     
-                    # Show filter summary
-                    filter_info = []
-                    if selected_client_name != "All Clients":
-                        filter_info.append(f"Client: {selected_client_name}")
-                    if status_filter != "All Status":
-                        filter_info.append(f"Status: {status_filter}")
-                    if time_range != "All Time":
-                        filter_info.append(f"Range: {time_range}")
-                    
-                    filter_text = " | ".join(filter_info) if filter_info else "No filters applied"
-                    st.info(f"Showing {len(all_telemetry)} telemetry uploads ({filter_text})")
-                else:
-                    st.info("No telemetry data available matching the selected filters.")
-            except Exception as e:
-                log_error(f"Error loading recent telemetry: {str(e)}", context="Telemetry Monitor")
-                st.error("Error loading recent telemetry data")
+                    if all_telemetry:
+                        df = pd.DataFrame(all_telemetry)
+                        st.dataframe(df, width='stretch')
+                        
+                        # Show filter summary
+                        filter_info = []
+                        if selected_client_name != "All Clients":
+                            filter_info.append(f"Client: {selected_client_name}")
+                        if status_filter != "All Status":
+                            filter_info.append(f"Status: {status_filter}")
+                        if time_range != "All Time":
+                            filter_info.append(f"Range: {time_range}")
+                        
+                        filter_text = " | ".join(filter_info) if filter_info else "No filters applied"
+                        st.info(f"Showing {len(all_telemetry)} telemetry uploads ({filter_text})")
+                    else:
+                        st.info("No telemetry data available matching the selected filters.")
+                except Exception as e:
+                    log_error(f"Error loading recent telemetry: {str(e)}", context="Telemetry Monitor")
+                    st.error("Error loading recent telemetry data")
+            
+            else:
+                st.info("No devices found matching the selected filters.")
         
-        else:
-            st.info("No devices found matching the selected filters.")
-    
-    except Exception as e:
-        log_error(f"Error in telemetry monitor: {str(e)}", context="Telemetry Monitor")
-        st.error("Error loading telemetry data. Please check logs.")
+        except Exception as e:
+            log_error(f"Error in telemetry monitor: {str(e)}", context="Telemetry Monitor")
+            st.error("Error loading telemetry data. Please check logs.")
 
 
 def filter_by_status(devices_list, status_filter):

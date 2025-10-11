@@ -11,7 +11,7 @@ def render_upload_interface():
     """Render manual upload interface"""
     st.markdown("### Manual Data Upload")
     
-    st.info("**Note:** Telemetry data is automatically collected from devices. Use this form to upload manual lab results or experimental data.")
+    st.info("**Note:** Upload battery test data in CSV format. Ensure the data is clean and properly formatted with correct header.")
     
     st.markdown("<br>", unsafe_allow_html=True)
     

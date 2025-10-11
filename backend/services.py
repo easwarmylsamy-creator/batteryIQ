@@ -460,3 +460,40 @@ def get_recent_uploads(limit: int = 10) -> List[dict]:
             })
         
         return results[:limit]
+    
+# ---------------------------
+# Guest Flag Management
+# ---------------------------
+@handle_db_errors
+def toggle_telemetry_guest_flag(telemetry_id: int) -> Optional[BatteryData]:
+    """Toggle guest flag for telemetry data"""
+    with get_session() as s:
+        data = s.query(BatteryData).filter(BatteryData.id == telemetry_id).first()
+        if data:
+            data.guest_flag = 1 if data.guest_flag == 0 else 0
+            s.flush()
+            return data
+        return None
+
+@handle_db_errors
+def toggle_manual_upload_guest_flag(upload_id: int) -> Optional[ManualUpload]:
+    """Toggle guest flag for manual upload"""
+    with get_session() as s:
+        upload = s.query(ManualUpload).filter(ManualUpload.id == upload_id).first()
+        if upload:
+            upload.guest_flag = 1 if upload.guest_flag == 0 else 0
+            s.flush()
+            return upload
+        return None
+
+@handle_db_errors
+def get_guest_flagged_telemetry() -> List[BatteryData]:
+    """Get all telemetry data flagged for guest access"""
+    with get_session() as s:
+        return s.query(BatteryData).filter(BatteryData.guest_flag == 1).all()
+
+@handle_db_errors
+def get_guest_flagged_manual_uploads() -> List[ManualUpload]:
+    """Get all manual uploads flagged for guest access"""
+    with get_session() as s:
+        return s.query(ManualUpload).filter(ManualUpload.guest_flag == 1).all()

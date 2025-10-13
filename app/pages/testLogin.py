@@ -16,7 +16,7 @@ def render():
         "Select the role to login as:",
     ("admin", "scientist", "client", "guest", "super_admin"),
     )
-    submit = st.button("Login", use_container_width=True, type="primary")
+    submit = st.button("Login", use_container_width=True, type="secondary")
 
 
     if submit:

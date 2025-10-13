@@ -107,7 +107,7 @@ def render_telemetry_monitor():
                                         <div style="color: #94a3b8; font-size: 0.85rem; margin-bottom: 0.5rem;">
                                             {device_info['client']}
                                         </div>
-                                        <div style="color: #60a5fa; font-size: 1.2rem; margin: 0.5rem 0;">
+                                        <div style="color: #53CDA8; font-size: 1.2rem; margin: 0.5rem 0;">
                                             {file_count} data files
                                         </div>
                                         <div style="color: #94a3b8; font-size: 0.8rem;">

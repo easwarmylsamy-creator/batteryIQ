@@ -66,7 +66,7 @@ def render_upload_interface():
                 st.error(f"Error reading file: {str(e)}")
         
         st.markdown("<br>", unsafe_allow_html=True)
-        submitted = st.form_submit_button("Upload Manual Data", type="primary", width='stretch')
+        submitted = st.form_submit_button("Upload Manual Data", type="secondary", width='stretch')
         
         if submitted:
             if not author or not notes or not uploaded_file:

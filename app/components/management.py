@@ -7,12 +7,19 @@ import plotly.express as px
 from backend import services
 from utils.cache_utils import get_cached_clients, get_cached_devices, get_cached_locations, get_system_stats
 from app.utils.logging_utils import *
+from app.components.user_management import render_user_management_interface
 
 def render_management_interface():
     """Render management interface"""
     st.markdown("### System Management")
     
-    mgmt_tab1, mgmt_tab2, mgmt_tab3, mgmt_tab4 = st.tabs(["Clients", "Devices", "Statistics", "Users"])
+    # UPDATED: Back to 4 tabs, removed "Add Client Setup"
+    mgmt_tab1, mgmt_tab2, mgmt_tab3, mgmt_tab4 = st.tabs([
+        "Clients", 
+        "Devices", 
+        "Statistics", 
+        "Users"
+    ])
     
     with mgmt_tab1:
         render_client_management()
@@ -24,61 +31,38 @@ def render_management_interface():
         render_statistics()
     
     with mgmt_tab4:
-        st.markdown("#### User Management")
-        st.info("User management functionality is under development.")
+        render_user_management_interface()
 
 
 def render_client_management():
     """Render client management interface"""
     st.markdown("#### Client Management")
     
-    col1, col2 = st.columns([2, 1])
-    
-    with col1:
-        with st.spinner("Loading clients..."):
-            try:
-                clients = get_cached_clients()
-                
-                if clients:
-                    client_data = []
-                    for client in clients:
-                        devices = get_cached_devices(client.id)
-                        locations = get_cached_locations(client.id)
-                        
-                        client_data.append({
-                            "ID": client.id,
-                            "Name": client.name,
-                            "Locations": len(locations),
-                            "Devices": len(devices)
-                        })
+    with st.spinner("Loading clients..."):
+        try:
+            clients = get_cached_clients()
+            
+            if clients:
+                client_data = []
+                for client in clients:
+                    devices = get_cached_devices(client.id)
+                    locations = get_cached_locations(client.id)
                     
-                    df = pd.DataFrame(client_data)
-                    st.dataframe(df, use_container_width=True)
-                else:
-                    st.info("No clients found.")
-            
-            except Exception as e:
-                st.error(f"Error loading clients: {e}")
-    
-    with col2:
-        st.markdown("#### Add New Client")
-        with st.form("add_client_form"):
-            new_client_name = st.text_input("Client Name")
-            submit_client = st.form_submit_button("Add Client", type="primary")
-            
-            if submit_client and new_client_name:
+                    client_data.append({
+                        "ID": client.id,
+                        "Name": client.name,
+                        "Locations": len(locations),
+                        "Devices": len(devices)
+                    })
                 
-                with st.spinner("Creating client..."):
-                    try:
-                        log_info(f"Creating new client: {new_client_name}", context="Management")
-                        services.create_client(new_client_name)
-                        log_info(f"Successfully created client: {new_client_name}", context="Management")
-                        st.success(f"Client '{new_client_name}' added!")
-                        st.cache_data.clear()
-                        st.rerun()
-                    except Exception as e:
-                        log_error(f"Failed to create client '{new_client_name}': {str(e)}", context="Management")
-                        st.error(f"Error: {e}")
+                df = pd.DataFrame(client_data)
+                st.dataframe(df, use_container_width=True)
+            else:
+                st.info("No clients found.")
+        
+        except Exception as e:
+            st.error(f"Error loading clients: {e}")
+    
 
 
 def render_device_management():

@@ -202,7 +202,7 @@ def render_filters():
         with col8:
             if st.button("Reset All Filters", key="gallery_reset_filters", width='stretch'):
                 reset_filters()
-                # st.rerun()
+
     else:
         st.session_state.sort_by = st.selectbox(
                 "Sort By",
@@ -258,10 +258,9 @@ def get_filtered_datasets(search_query=""):
             log_info(f"Client {username} accessing organization data", context="Data Gallery")
             
         else:  # guest
-            # Guests only see flagged data
-            accessible_clients = clients  # Will filter by guest_flag
-            can_see_manual = True  # But only flagged ones
-            can_see_all_telemetry = True  # But only flagged ones
+            accessible_clients = clients
+            can_see_manual = True
+            can_see_all_telemetry = True
             log_info(f"Guest {username} accessing public data", context="Data Gallery")
         
         # Get Telemetry Data (role-filtered)
@@ -295,7 +294,7 @@ def get_filtered_datasets(search_query=""):
                                 'quality': calculate_quality_score(file.directory),
                                 'records': count_records(file.directory),
                                 'access_level': get_access_level(user_role, 'telemetry'),
-                                'flagged_for_guest': bool(file.guest_flag)  # FROM DATABASE
+                                'flagged_for_guest': bool(file.guest_flag)
                             }
                             
                             all_datasets.append(dataset)
@@ -340,7 +339,7 @@ def get_filtered_datasets(search_query=""):
                             'records': count_records(file.file_directory),
                             'notes': file.notes,
                             'access_level': get_access_level(user_role, 'manual'),
-                            'flagged_for_guest': bool(file.guest_flag)  # FROM DATABASE
+                            'flagged_for_guest': bool(file.guest_flag)
                         }
                         
                         all_datasets.append(dataset)
@@ -472,7 +471,7 @@ def render_dataset_card(dataset):
         quality_color = "#10b981"
         quality_badge = "High"
     elif quality >= 80:
-        quality_color = "#3b82f6"
+        quality_color = "#48B88E"  # UPDATED: battery green
         quality_badge = "Good"
     elif quality >= 60:
         quality_color = "#f59e0b"
@@ -502,7 +501,7 @@ def render_dataset_card(dataset):
                 <div style="color: #94a3b8; font-size: 0.85rem; margin-bottom: 0.5rem;">
                     {dataset['type']} | {dataset['client']}
                 </div>
-                <div style="color: #60a5fa; font-size: 0.9rem; margin-bottom: 0.5rem;">
+                <div style="color: #53CDA8; font-size: 0.9rem; margin-bottom: 0.5rem;">
                     {dataset['device'][:25]}{'...' if len(dataset['device']) > 25 else ''}
                 </div>
                 <div style="color: #94a3b8; font-size: 0.8rem; margin-bottom: 0.3rem;">
@@ -511,7 +510,7 @@ def render_dataset_card(dataset):
                 <div style="color: {quality_color}; font-size: 0.8rem; margin-bottom: 0.5rem;">
                     Quality: {dataset['quality']}%
                 </div>
-                <div style="color: #a78bfa; font-size: 0.75rem; margin-bottom: 0.5rem;">
+                <div style="color: #48B88E; font-size: 0.75rem; margin-bottom: 0.5rem;">
                     {access_badge}
                 </div>
             </div>
@@ -542,7 +541,7 @@ def show_dataset_overlay(dataset):
         quality_badge = "High"
         quality_emoji = "🟢"
     elif quality >= 80:
-        quality_color = "#3b82f6"
+        quality_color = "#48B88E"  # UPDATED: battery green
         quality_badge = "Good"
         quality_emoji = "🔵"
     elif quality >= 60:
@@ -554,10 +553,10 @@ def show_dataset_overlay(dataset):
         quality_badge = "Low"
         quality_emoji = "🔴"
     
-    # Enhanced Header with gradient background
+    # Enhanced Header with gradient background - UPDATED COLORS
     st.markdown(f"""
         <div style="
-            background: linear-gradient(135deg, #1e3a8a 0%, #7c3aed 100%);
+            background: linear-gradient(135deg, #284940 0%, #327552 100%);
             padding: 2rem;
             border-radius: 15px;
             margin-bottom: 2rem;
@@ -579,32 +578,78 @@ def show_dataset_overlay(dataset):
     col_info1, col_info2, col_info3 = st.columns(3)
     
     with col_info1:
-        st.markdown("""
-            <div style="
+
+        col_info1_content = f"""
+        <div style="
                 background: linear-gradient(135deg, rgba(30, 41, 59, 0.8) 0%, rgba(51, 65, 85, 0.8) 100%);
                 padding: 1.5rem;
                 border-radius: 15px;
                 border: 1px solid rgba(148, 163, 184, 0.2);
                 height: 100%;
             ">
-                <div style="color: #60a5fa; font-size: 0.9rem; font-weight: 600; margin-bottom: 1rem;">
+                <div style="color: #53CDA8; font-size: 0.9rem; font-weight: 600; margin-bottom: 1rem;">
                     DATASET INFO
                 </div>
-        """, unsafe_allow_html=True)
-        
-        st.write(f"**Type:** {dataset['type']}")
-        st.write(f"**Client:** {dataset['client']}")
-        
+                <div style="color: #f8fafc; line-height: 2;">
+                    <div style="margin-bottom: 0.5rem;">
+                        <span style="color: #94a3b8;">Type:</span> <strong>{dataset['type']}</strong>
+                    </div>
+                    <div style="margin-bottom: 0.5rem;">
+                        <span style="color: #94a3b8;">Client:</span> <strong>{dataset['client']}</strong>
+                    </div>"""
+        loc_id = dataset.get('location_id')
+        loc = services.get_location(loc_id).address if loc_id and loc_id != 'N/A' else 'N/A'
         if user_role != 'guest':
             if dataset.get('location_id') and dataset['location_id'] != 'N/A':
-                st.write(f"**Location:** {dataset['location_id']}")
-            st.write(f"**Source:** {dataset['device'][:25]}{'...' if len(dataset['device']) > 25 else ''}")
+                col_info1_content += f'''
+                    <div style="margin-bottom: 0.5rem;">
+                        <span style="color: #94a3b8;">Location:</span> <strong>l{loc}</strong>
+                    </div>
+                    <div style="margin-bottom: 0.5rem;">
+                        <span style="color: #94a3b8;">Source:</span> <strong>{dataset['device'][:25]}{'...' if len(dataset['device']) > 25 else ''}</strong>
+                    </div>
+                '''
+            col_info1_content += f'''
+                <div style="margin-bottom: 0.5rem;">
+                        <span style="color: #94a3b8;">Date:</span> <strong>{dataset['date']}</strong>
+                </div>
+                '''
+            
         
-        st.write(f"**Date:** {dataset['date']}")
-        st.markdown("</div>", unsafe_allow_html=True)
+        # st.markdown(f"""
+        #     <div style="
+        #         background: linear-gradient(135deg, rgba(30, 41, 59, 0.8) 0%, rgba(51, 65, 85, 0.8) 100%);
+        #         padding: 1.5rem;
+        #         border-radius: 15px;
+        #         border: 1px solid rgba(148, 163, 184, 0.2);
+        #         height: 100%;
+        #     ">
+        #         <div style="color: #53CDA8; font-size: 0.9rem; font-weight: 600; margin-bottom: 1rem;">
+        #             DATASET INFO
+        #         </div>
+        #         <div style="color: #f8fafc; line-height: 2;">
+        #             <div style="margin-bottom: 0.5rem;">
+        #                 <span style="color: #94a3b8;">Type:</span> <strong>{dataset['type']}</strong>
+        #             </div>
+        #             <div style="margin-bottom: 0.5rem;">
+        #                 <span style="color: #94a3b8;">Client:</span> <strong>{dataset['client']}</strong>
+        #             </div>
+        #             {"" if user_role == 'guest' else f'''
+        #             {f'<div style="margin-bottom: 0.5rem;"><span style="color: #94a3b8;">Location:</span> <strong>{dataset["location_id"]}</strong></div>' if dataset.get('location_id') and dataset['location_id'] != 'N/A' else ''}
+        #             <div style="margin-bottom: 0.5rem;">
+        #                 <span style="color: #94a3b8;">Source:</span> <strong>{dataset['device'][:25]}{'...' if len(dataset['device']) > 25 else ''}</strong>
+        #             </div>
+        #             '''}
+        #             <div style="margin-bottom: 0.5rem;">
+        #                 <span style="color: #94a3b8;">Date:</span> <strong>{dataset['date']}</strong>
+        #             </div>
+        #         </div>
+        #     </div>
+        # """, unsafe_allow_html=True)
+        st.markdown(col_info1_content, unsafe_allow_html=True)
     
     with col_info2:
-        st.markdown("""
+        st.markdown(f"""
             <div style="
                 background: linear-gradient(135deg, rgba(30, 41, 59, 0.8) 0%, rgba(51, 65, 85, 0.8) 100%);
                 padding: 1.5rem;
@@ -612,15 +657,27 @@ def show_dataset_overlay(dataset):
                 border: 1px solid rgba(148, 163, 184, 0.2);
                 height: 100%;
             ">
-                <div style="color: #a78bfa; font-size: 0.9rem; font-weight: 600; margin-bottom: 1rem;">
+                <div style="color: #48B88E; font-size: 0.9rem; font-weight: 600; margin-bottom: 1rem;">
                     FILE METRICS
                 </div>
+                <div style="color: #f8fafc;">
+                    <div style="margin-bottom: 1.5rem;">
+                        <div style="color: #94a3b8; font-size: 0.85rem; margin-bottom: 0.3rem;">Size</div>
+                        <div style="font-size: 2rem; font-weight: 700; color: #60a5fa;">
+                            {dataset['size']} MB
+                        </div>
+                    </div>
+                    <div>
+                        <div style="color: #94a3b8; font-size: 0.85rem; margin-bottom: 0.3rem;">Records</div>
+                        <div style="font-size: 2rem; font-weight: 700; color: #60a5fa;">
+                            {dataset['records']:,}
+                        </div>
+                    </div>
+                </div>
+            </div>
         """, unsafe_allow_html=True)
-        
-        st.metric("Size", f"{dataset['size']} MB", delta=None)
-        st.metric("Records", f"{dataset['records']:,}", delta=None)
-        st.markdown("</div>", unsafe_allow_html=True)
-    
+
+
     with col_info3:
         st.markdown(f"""
             <div style="
@@ -644,56 +701,8 @@ def show_dataset_overlay(dataset):
                 </div>
             </div>
         """, unsafe_allow_html=True)
-    
-    st.markdown("<br>", unsafe_allow_html=True)
-    
-    # # Description section with better styling
-    # st.markdown("""
-    #     <div style="
-    #         background: linear-gradient(135deg, rgba(30, 41, 59, 0.6) 0%, rgba(51, 65, 85, 0.6) 100%);
-    #         padding: 1.5rem;
-    #         border-radius: 15px;
-    #         border-left: 4px solid #60a5fa;
-    #         margin-bottom: 1.5rem;
-    #     ">
-    #         <div style="color: #60a5fa; font-size: 1rem; font-weight: 600; margin-bottom: 0.8rem;">
-    #             DESCRIPTION
-    #         </div>
-    # """, unsafe_allow_html=True)
-    
-    # if dataset['type'] == 'Telemetry':
-    #     description = f"""
-    #     <div style="color: #cbd5e1; line-height: 1.8;">
-    #         This is an automatically collected telemetry dataset from <strong>{dataset['client']}</strong>'s battery monitoring system.
-    #         The data contains <strong>{dataset['records']:,} records</strong> of battery performance metrics including voltage, 
-    #         current, and temperature measurements.
-    #     </div>
-    #     """
-    #     if user_role != 'guest':
-    #         description += f"""
-    #         <div style="color: #94a3b8; font-size: 0.9rem; margin-top: 1rem;">
-    #             <strong>Device:</strong> {dataset['device']}<br>
-    #         """
-    #         if dataset.get('location_id') != 'N/A':
-    #             description += f"<strong>Location ID:</strong> {dataset['location_id']}<br>"
-    #         description += "</div>"
-    # else:
-    #     description = f"""
-    #     <div style="color: #cbd5e1; line-height: 1.8;">
-    #         This is a manually uploaded dataset by <strong>{dataset['device']}</strong> (researcher/lab technician).
-    #         The dataset contains <strong>{dataset['records']:,} records</strong> of experimental battery data.
-    #     </div>
-    #     """
-    #     if dataset.get('notes'):
-    #         description += f"""
-    #         <div style="color: #94a3b8; font-size: 0.9rem; margin-top: 1rem; padding: 1rem; 
-    #                     background: rgba(0,0,0,0.2); border-radius: 8px;">
-    #             <strong>Notes:</strong> {dataset['notes']}
-    #         </div>
-    #         """
 
-    # # Close the div and render with unsafe_allow_html=True
-    # st.markdown(description + "</div>", unsafe_allow_html=True)
+    st.markdown("<br>", unsafe_allow_html=True)
     
     if dataset['type'] == 'Telemetry':
         content = (
@@ -717,15 +726,16 @@ def show_dataset_overlay(dataset):
         if dataset.get('notes'):
             content += f"<br><br><strong>Notes:</strong> {dataset['notes']}"
 
+    # UPDATED COLORS: border and text
     st.markdown(f"""
         <div style="
             background: linear-gradient(135deg, rgba(30, 41, 59, 0.6) 0%, rgba(51, 65, 85, 0.6) 100%);
             padding: 1.5rem;
             border-radius: 15px;
-            border-left: 4px solid #60a5fa;
+            border-left: 4px solid #53CDA8;
             margin-bottom: 1.5rem;
         ">
-            <div style="color: #60a5fa; font-size: 1rem; font-weight: 600; margin-bottom: 0.8rem;">
+            <div style="color: #53CDA8; font-size: 1rem; font-weight: 600; margin-bottom: 0.8rem;">
                 DESCRIPTION
             </div>
             <div style="color: #cbd5e1; line-height: 1.8;">
@@ -735,7 +745,7 @@ def show_dataset_overlay(dataset):
     """, unsafe_allow_html=True)
 
     # Tabs for data visualization
-    tab1, tab2 = st.tabs(["📊 Data Preview", "📈 Performance Chart"])
+    tab1, tab2 = st.tabs(["Data Preview", "Performance Chart"])
     
     with tab1:
         with st.spinner("Loading dataset preview..."):
@@ -746,11 +756,11 @@ def show_dataset_overlay(dataset):
                     n_rows=int(len(_df) * 0.1)
                     df = pd.read_csv(dataset['path'], nrows=n_rows)
                     
+                    # UPDATED COLOR
                     st.markdown(f"""
-                        <div style="color: #a78bfa; font-size: 1.1rem; font-weight: 600; margin-bottom: 1rem;">
+                        <div style="color: #48B88E; font-size: 1.1rem; font-weight: 600; margin-bottom: 1rem;">
                             DISPLAYING FIRST {n_rows} OF DATA
-                        </div>
-                    """, unsafe_allow_html=True)
+                        </div>""", unsafe_allow_html=True)
                     
                     st.dataframe(
                         df, 
@@ -843,16 +853,16 @@ def show_dataset_overlay(dataset):
                             
                             st.plotly_chart(fig, use_container_width=True)
                             
-                            # Chart insights
+                            # Chart insights - UPDATED COLORS
                             st.markdown("""
                                 <div style="
                                     background: rgba(30, 41, 59, 0.4);
                                     padding: 1rem;
                                     border-radius: 10px;
-                                    border-left: 3px solid #60a5fa;
+                                    border-left: 3px solid #53CDA8;
                                     margin-top: 1rem;
                                 ">
-                                    <div style="color: #60a5fa; font-weight: 600; margin-bottom: 0.5rem;">
+                                    <div style="color: #53CDA8; font-weight: 600; margin-bottom: 0.5rem;">
                                         Chart Insights
                                     </div>
                                     <div style="color: #94a3b8; font-size: 0.9rem;">
@@ -873,9 +883,9 @@ def show_dataset_overlay(dataset):
     st.markdown("<br>", unsafe_allow_html=True)
     st.markdown("---")
     
-    # Action buttons with enhanced styling
+    # Action buttons with enhanced styling - UPDATED COLOR
     st.markdown("""
-        <div style="color: #a78bfa; font-size: 1.2rem; font-weight: 600; margin-bottom: 1rem;">
+        <div style="color: #48B88E; font-size: 1.2rem; font-weight: 600; margin-bottom: 1rem;">
             Available Actions
         </div>
     """, unsafe_allow_html=True)
@@ -884,19 +894,14 @@ def show_dataset_overlay(dataset):
         st.info("🔒 Guest users have view-only access. Please login for full features including download and analysis.")
         
     elif user_role in ['super_admin', 'admin', 'scientist']:
-        col_a, col_b, col_c, col_d = st.columns(4)
+        col_a, col_b, col_c = st.columns(3)
         
         with col_a:
             download_dataset_file(dataset, f"overlay_download_{dataset['type']}_{dataset['id']}")
         
         with col_b:
-            if st.button("📊 Analyze", key=f"overlay_analyze_{dataset['type']}_{dataset['id']}", 
-                        use_container_width=True, type="secondary"):
-                st.toast(f"Opening analytics for: {dataset['name']}", icon="📊")
-        
-        with col_c:
             is_flagged = dataset.get('flagged_for_guest', False)
-            flag_label = "🚩 Unflag" if is_flagged else "🏴 Flag for Guest"
+            flag_label = "Unflag" if is_flagged else "🏴 Flag for Guest"
             
             if st.button(flag_label, key=f"overlay_flag_{dataset['type']}_{dataset['id']}", 
                        use_container_width=True, type="secondary"):
@@ -907,21 +912,17 @@ def show_dataset_overlay(dataset):
                         context="Data Gallery")
                 st.rerun()
         
-        with col_d:
-            if st.button("🗑️ Delete", key=f"overlay_delete_{dataset['type']}_{dataset['id']}", 
+        with col_c:
+            if st.button("Delete", key=f"overlay_delete_{dataset['type']}_{dataset['id']}", 
                        use_container_width=True, type="secondary"):
                 st.warning("Delete functionality would be implemented here")
     
     else:
-        col_a, col_b = st.columns(2)
+        col_a = st.columns(1)
         
         with col_a:
             download_dataset_file(dataset, f"overlay_download_{dataset['type']}_{dataset['id']}")
         
-        with col_b:
-            if st.button("📊 Analyze", key=f"overlay_analyze_{dataset['type']}_{dataset['id']}", 
-                        use_container_width=True, type="secondary"):
-                st.toast(f"Opening analytics for: {dataset['name']}", icon="📊")
                 
 def toggle_guest_flag(dataset):
     """
@@ -940,7 +941,6 @@ def toggle_guest_flag(dataset):
 
 def is_dataset_flagged_for_guest(dataset):
     """Check if dataset is flagged for guest visibility from database"""
-    # This will be checked when building dataset dict from database
     return dataset.get('flagged_for_guest', False)
 
 
@@ -960,7 +960,16 @@ def render_list_view(datasets):
                 st.caption(f"{dataset['type']} | {dataset['client']} | {dataset['device']}")
             
             with col3:
-                quality_color = "#10b981" if dataset['quality'] >= 95 else "#3b82f6" if dataset['quality'] >= 80 else "#f59e0b" if dataset['quality'] >= 60 else "#ef4444"
+                quality = dataset['quality']
+                if quality >= 95:
+                    quality_color = "#10b981"
+                elif quality >= 80:
+                    quality_color = "#48B88E"  # UPDATED
+                elif quality >= 60:
+                    quality_color = "#f59e0b"
+                else:
+                    quality_color = "#ef4444"
+                    
                 st.markdown(f"<div style='color: {quality_color}'>⭐ Quality: {dataset['quality']}%</div>", unsafe_allow_html=True)
                 st.caption(f"💾 {dataset['size']} MB | {dataset['records']:,} records")
             
@@ -970,7 +979,7 @@ def render_list_view(datasets):
                     if st.button("View", key=f"listview_{dataset['type']}_{dataset['id']}", width='stretch'):
                         show_dataset_overlay(dataset)
                 with col_b:
-                        download_dataset_file(dataset, f"listdown_{dataset['type']}_{dataset['id']}")
+                    download_dataset_file(dataset, f"listdown_{dataset['type']}_{dataset['id']}")
 
             
             st.markdown("---")

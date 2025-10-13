@@ -1,12 +1,19 @@
 # backend/services.py
 from __future__ import annotations
 
-from typing import Optional, List
+from typing import Optional, List, Dict
 import logging
 import os
 from sqlalchemy.exc import SQLAlchemyError
 from db.session import get_session
 from db.models import Client, Location, Device, BatteryData, ManualUpload, User, Metrics
+
+from backend.user_profiles import (
+    create_user_profile, 
+    get_user_profile, 
+    update_user_profile,
+    delete_user_profile
+)
 
 # Setup logging
 logger = logging.getLogger(__name__)
@@ -497,3 +504,200 @@ def get_guest_flagged_manual_uploads() -> List[ManualUpload]:
     """Get all manual uploads flagged for guest access"""
     with get_session() as s:
         return s.query(ManualUpload).filter(ManualUpload.guest_flag == 1).all()
+    
+
+@handle_db_errors
+def create_user_with_profile(username: str, email: str, hashed_password: str, 
+                             role: str, profile_data: Dict, created_by: int = None) -> Dict:
+    """
+    Create user in database and corresponding profile in JSON
+    
+    Args:
+        username: Username
+        email: Email address
+        hashed_password: Hashed password
+        role: User role
+        profile_data: Extended profile information
+        created_by: ID of admin creating the user
+        
+    Returns:
+        Dictionary with user and profile objects
+    """
+    with get_session() as s:
+        # Create database user
+        user = User(
+            username=username,
+            email=email,
+            hashed_password=hashed_password,
+            role=role
+        )
+        s.add(user)
+        s.flush()
+        
+        # Create JSON profile
+        profile_data["created_by"] = created_by
+        profile = create_user_profile(user.id, profile_data)
+        
+        return {
+            "user": user,
+            "profile": profile,
+            "success": True
+        }
+
+
+@handle_db_errors
+def get_user_with_profile(user_id: int) -> Optional[Dict]:
+    """
+    Get user from database with profile information
+    
+    Args:
+        user_id: User ID
+        
+    Returns:
+        Dictionary with user and profile data
+    """
+    with get_session() as s:
+        user = s.query(User).filter(User.id == user_id).first()
+        
+        if not user:
+            return None
+        
+        profile = get_user_profile(user_id)
+        
+        return {
+            "user": user,
+            "profile": profile
+        }
+
+
+@handle_db_errors
+def update_user_with_profile(user_id: int, user_data: Dict = None, 
+                             profile_data: Dict = None) -> Optional[Dict]:
+    """
+    Update user in database and/or profile
+    
+    Args:
+        user_id: User ID
+        user_data: Database user fields to update (email, role, etc)
+        profile_data: Profile fields to update
+        
+    Returns:
+        Updated user and profile data
+    """
+    with get_session() as s:
+        user = s.query(User).filter(User.id == user_id).first()
+        
+        if not user:
+            return None
+        
+        # Update database user if data provided
+        if user_data:
+            for key, value in user_data.items():
+                if hasattr(user, key):
+                    setattr(user, key, value)
+            s.flush()
+        
+        # Update profile if data provided
+        profile = None
+        if profile_data:
+            profile = update_user_profile(user_id, profile_data)
+        else:
+            profile = get_user_profile(user_id)
+        
+        return {
+            "user": user,
+            "profile": profile,
+            "success": True
+        }
+
+
+@handle_db_errors
+def delete_user_with_profile(user_id: int) -> bool:
+    """
+    Delete user from database and their profile
+    
+    Args:
+        user_id: User ID
+        
+    Returns:
+        True if successful
+    """
+    with get_session() as s:
+        user = s.query(User).filter(User.id == user_id).first()
+        
+        if not user:
+            return False
+        
+        # Delete profile first
+        delete_user_profile(user_id)
+        
+        # Delete database user
+        s.delete(user)
+        s.flush()
+        
+        return True
+
+
+@handle_db_errors
+def get_all_users_with_profiles() -> List[Dict]:
+    """
+    Get all users with their profile information
+    
+    Returns:
+        List of dictionaries with user and profile data
+    """
+    with get_session() as s:
+        users = s.query(User).all()
+        
+        users_with_profiles = []
+        
+        for user in users:
+            profile = get_user_profile(user.id)
+            users_with_profiles.append({
+                "user": user,
+                "profile": profile
+            })
+        
+        return users_with_profiles
+
+
+@handle_db_errors
+def get_client_info(location_id: int = None, device_id: int = None) -> Optional[Dict]:
+    if location_id:
+        with get_session() as s:
+            location = s.query(Location).filter(Location.id == location_id).first()
+        
+            if location and location.client:
+                client = location.client
+                return {
+                    "success" : True,
+                    "id": client.id,
+                    "name": client.name,
+                    "num_sites": client.num_sites,
+                    "num_devices": client.num_devices,
+                    "location": location.address
+                }
+        
+        return {"success": False, "message": "Location not found"}
+    
+    elif device_id:
+        with get_session() as s:
+            device = s.query(Device).filter(Device.id == device_id).first()
+            
+            if device:
+                client = device.client
+                location = device.location
+                
+                return {
+                    "success" : True,
+                    "id": client.id if client else None,
+                    "name": client.name if client else None,
+                    "num_sites": client.num_sites if client else None,
+                    "num_devices": client.num_devices if client else None,
+                    "location": location.address if location else None,
+                    "device_name": device.name,
+                    "device_serial": device.serial_number
+                }
+            
+            return {"success": False, "message": "Device not found"}
+        

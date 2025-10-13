@@ -17,7 +17,6 @@ from app.styles import apply_custom_styles
 from app.session import initialize_session_state
 from app.pages import welcome, login, dashboards
 from app.utils.logging_utils import *
-from app.components.data_gallery import render_data_gallery
 
 def main():
     """Main application entry point"""
@@ -36,14 +35,6 @@ def main():
         
         elif page == 'login':
             login.render()
-
-        elif page == 'testLogin':
-            testLogin.render()
-
-        elif page == 'compLogin':
-            test_components.render()
-
-
 
         elif page == 'dashboard':
             role = st.session_state.role

@@ -3,6 +3,8 @@ import streamlit as st
 import sys
 import os
 
+from test import test_components, testLogin
+
 # Setup paths
 CURRENT_DIR = os.path.dirname(os.path.abspath(__file__))
 PROJECT_ROOT = os.path.dirname(CURRENT_DIR)
@@ -13,7 +15,7 @@ if PROJECT_ROOT not in sys.path:
 from app.config import setup_page_config
 from app.styles import apply_custom_styles
 from app.session import initialize_session_state
-from app.pages import test_components, welcome, login, testLogin, dashboards
+from app.pages import welcome, login, dashboards
 from app.utils.logging_utils import *
 from app.components.data_gallery import render_data_gallery
 

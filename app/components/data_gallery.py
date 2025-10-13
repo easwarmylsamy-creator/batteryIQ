@@ -855,7 +855,7 @@ def show_dataset_overlay(dataset):
     """, unsafe_allow_html=True)
     
     if user_role == 'guest':
-        st.info("🔒 Guest users have view-only access. Please login for full features including download and analysis.")
+        st.info(" Guest users have view-only access. Please login for full features including download and analysis.")
         
     elif user_role in ['super_admin', 'admin', 'scientist']:
         col_a, col_b, col_c = st.columns(3)
@@ -865,7 +865,7 @@ def show_dataset_overlay(dataset):
         
         with col_b:
             is_flagged = dataset.get('flagged_for_guest', False)
-            flag_label = "Unflag" if is_flagged else "🏴 Flag for Guest"
+            flag_label = "Unflag" if is_flagged else " Flag for Guest"
             
             if st.button(flag_label, key=f"overlay_flag_{dataset['type']}_{dataset['id']}", 
                        use_container_width=True, type="secondary"):
@@ -934,8 +934,8 @@ def render_list_view(datasets):
                 else:
                     quality_color = "#ef4444"
                     
-                st.markdown(f"<div style='color: {quality_color}'>⭐ Quality: {dataset['quality']}%</div>", unsafe_allow_html=True)
-                st.caption(f"💾 {dataset['size']} MB | {dataset['records']:,} records")
+                st.markdown(f"<div style='color: {quality_color}'>Quality: {dataset['quality']}%</div>", unsafe_allow_html=True)
+                st.caption(f" {dataset['size']} MB | {dataset['records']:,} records")
             
             with col4:
                 col_a, col_b = st.columns(2)
@@ -1120,7 +1120,7 @@ def show_dataset_details(dataset, limited=False):
     """Show detailed view of a dataset with role-based information"""
     user_role = st.session_state.get('role', 'guest')
     
-    with st.expander(f"📊 Dataset Details: {dataset['name']}", expanded=True):
+    with st.expander(f"Dataset Details: {dataset['name']}", expanded=True):
         col1, col2 = st.columns(2)
         
         with col1:
@@ -1179,7 +1179,7 @@ def show_dataset_details(dataset, limited=False):
                 download_dataset_file(dataset, f"gallery_download_{dataset['id']}_detail")
         
         else:  # guest
-            st.info("🔒 Limited access - Contact administrator for full access")
+            st.info(" Limited access - Contact administrator for full access")
             st.button("📋 Request Access", key=f"gallery_request_{dataset['id']}_detail")
 
 

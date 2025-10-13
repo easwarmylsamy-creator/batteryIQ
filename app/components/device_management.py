@@ -116,11 +116,9 @@ def display_device_list(device, client=None, role=None):
 
 
 def render_device_management(client=None, devices=None, locations=None):
-    print("Rendering new device management interface")
     st.markdown("### Devices Management")
     role = st.session_state.get('role')
-    print("Role:", role)
-    
+   
     if role == "admin":
         clients = get_cached_clients()
             
@@ -294,7 +292,7 @@ def render_edit_device_form(device, client_id: int):
     button_col1, button_col2 = st.columns(2)
     
     with button_col1:
-        if st.button("💾 Save Changes", key=f"save_{device.id}", type="primary", use_container_width=True):
+        if st.button(" Save Changes", key=f"save_{device.id}", type="primary", use_container_width=True):
             if not new_name or not new_serial:
                 st.error("Name and Serial Number are required")
             else:

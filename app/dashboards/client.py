@@ -13,7 +13,7 @@ from app.utils.cache_utils import (
     get_cached_devices
 )
 from app.utils.logging_utils import *
-from app.components.device_management import new_render_device_management
+from app.components.device_management import render_device_management
 
 
 def client_dashboard():
@@ -137,8 +137,7 @@ def client_dashboard():
         
         with tab2:
             st.markdown("### Test Devices Managment")
-            new_render_device_management(client=client, devices=devices, locations=locations)
-            # render_client_devices(client, devices, locations)
+            render_device_management(client=client, devices=devices, locations=locations)
         
         with tab3:
             render_client_analytics(client, devices)

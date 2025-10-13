@@ -8,31 +8,27 @@ from datetime import datetime, timezone, timedelta
 from passlib.hash import bcrypt
 from sqlalchemy.exc import IntegrityError
 
-# ------------------------------------------------------------------
 # Ensure Python finds the project root
-# ------------------------------------------------------------------
 CURRENT_DIR = os.path.dirname(os.path.abspath(__file__))
 PROJECT_ROOT = os.path.dirname(CURRENT_DIR)
 if PROJECT_ROOT not in sys.path:
     sys.path.append(PROJECT_ROOT)
 
-# ------------------------------------------------------------------
 # Imports from db package
-# ------------------------------------------------------------------
 from db.session import Base, engine, get_session
 from db.models import User, UserRole, Client, Location, Device, BatteryData, ManualUpload
 
 
 def create_schema() -> None:
     """Create all tables if they don't exist."""
-    print("Creating tables (if not exist)…")
+    print("Creating tables (if not exist)...")
     Base.metadata.create_all(bind=engine)
-    print("✅ Tables created.")
+    print("Tables created.")
 
 
 def seed_users() -> None:
     """Seed demo users with different roles"""
-    print("\n📝 Seeding users…")
+    print("\nSeeding users...")
     default_password = "password123"
 
     demo_users = [
@@ -53,16 +49,16 @@ def seed_users() -> None:
                     role=role,
                 )
                 s.add(u)
-                print(f"  ✓ Created user: {username} ({role.value})")
+                print(f"  Created user: {username} ({role.value})")
             else:
-                print(f"  ⊙ User already exists: {username}")
+                print(f"  User already exists: {username}")
         s.flush()
-    print("✅ Users seeded.")
+    print("Users seeded.")
 
 
 def seed_clients_locations_devices() -> None:
     """Seed 5 clients, each with 5 locations and 5 devices per location"""
-    print("\n🏢 Seeding clients, locations, and devices…")
+    print("\nSeeding clients, locations, and devices...")
     
     # Real New Zealand energy/tech companies
     client_names = [
@@ -73,13 +69,43 @@ def seed_clients_locations_devices() -> None:
         "Vector Limited"
     ]
     
-    # New Zealand locations (major cities and regions)
+    # New Zealand locations with nicknames and addresses
     location_templates = [
-        ["Auckland CBD, Auckland", "Manukau, Auckland", "North Shore, Auckland", "Waitakere, Auckland", "Papakura, Auckland"],
-        ["Wellington Central, Wellington", "Lower Hutt, Wellington", "Upper Hutt, Wellington", "Porirua, Wellington", "Kapiti Coast, Wellington"],
-        ["Christchurch Central, Canterbury", "Riccarton, Canterbury", "Shirley, Canterbury", "Hornby, Canterbury", "Timaru, Canterbury"],
-        ["Hamilton, Waikato", "Tauranga, Bay of Plenty", "Rotorua, Bay of Plenty", "New Plymouth, Taranaki", "Palmerston North, Manawatu"],
-        ["Dunedin, Otago", "Queenstown, Otago", "Invercargill, Southland", "Nelson, Nelson-Tasman", "Napier, Hawke's Bay"]
+        [
+            ("Auckland Central Hub", "123 Queen Street, Auckland CBD, Auckland 1010"),
+            ("Manukau Solar Farm", "45 Great South Road, Manukau, Auckland 2104"),
+            ("North Shore Battery Station", "78 Takapuna Beach Road, North Shore, Auckland 0622"),
+            ("Waitakere Wind Farm", "12 Henderson Valley Road, Waitakere, Auckland 0612"),
+            ("Papakura Grid Station", "90 Great South Road, Papakura, Auckland 2110")
+        ],
+        [
+            ("Wellington Central Office", "56 Lambton Quay, Wellington Central, Wellington 6011"),
+            ("Lower Hutt Storage", "34 High Street, Lower Hutt, Wellington 5010"),
+            ("Upper Hutt Facility", "22 Main Street, Upper Hutt, Wellington 5018"),
+            ("Porirua Battery Hub", "15 Cobham Court, Porirua, Wellington 5022"),
+            ("Kapiti Wind Station", "88 Kapiti Road, Kapiti Coast, Wellington 5032")
+        ],
+        [
+            ("Christchurch Main Hub", "199 High Street, Christchurch Central, Canterbury 8011"),
+            ("Riccarton Solar Farm", "67 Riccarton Road, Riccarton, Canterbury 8041"),
+            ("Shirley Storage Facility", "45 Shirley Road, Shirley, Canterbury 8013"),
+            ("Hornby Battery Station", "23 Main South Road, Hornby, Canterbury 8042"),
+            ("Timaru Grid Hub", "101 Stafford Street, Timaru, Canterbury 7910")
+        ],
+        [
+            ("Hamilton Energy Center", "234 Victoria Street, Hamilton, Waikato 3204"),
+            ("Tauranga Solar Array", "78 Cameron Road, Tauranga, Bay of Plenty 3110"),
+            ("Rotorua Thermal Station", "45 Fenton Street, Rotorua, Bay of Plenty 3010"),
+            ("New Plymouth Wind Farm", "12 Devon Street, New Plymouth, Taranaki 4310"),
+            ("Palmerston North Hub", "67 The Square, Palmerston North, Manawatu 4410")
+        ],
+        [
+            ("Dunedin Battery Center", "123 George Street, Dunedin, Otago 9016"),
+            ("Queenstown Storage", "45 Shotover Street, Queenstown, Otago 9300"),
+            ("Invercargill Grid Hub", "78 Dee Street, Invercargill, Southland 9810"),
+            ("Nelson Solar Farm", "34 Trafalgar Street, Nelson, Nelson-Tasman 7010"),
+            ("Napier Energy Station", "90 Marine Parade, Napier, Hawke's Bay 4110")
+        ]
     ]
     
     # Device name templates
@@ -95,27 +121,28 @@ def seed_clients_locations_devices() -> None:
                 client = Client(name=client_name, num_sites=5, num_devices=25)
                 s.add(client)
                 s.flush()
-                print(f"\n  ✓ Created client: {client_name} (ID: {client.id})")
+                print(f"\n  Created client: {client_name} (ID: {client.id})")
             else:
-                print(f"\n  ⊙ Client already exists: {client_name} (ID: {client.id})")
+                print(f"\n  Client already exists: {client_name} (ID: {client.id})")
             
             # Create 5 locations for this client
-            for loc_idx, location_address in enumerate(location_templates[client_idx], 1):
+            for loc_idx, (nickname, address) in enumerate(location_templates[client_idx], 1):
                 location = s.query(Location).filter(
                     Location.client_id == client.id,
-                    Location.address == location_address
+                    Location.address == address
                 ).first()
                 
                 if not location:
                     location = Location(
                         client_id=client.id,
-                        address=location_address
+                        nickname=nickname,
+                        address=address
                     )
                     s.add(location)
                     s.flush()
-                    print(f"    ✓ Created location: {location_address} (ID: {location.id})")
+                    print(f"    Created location: {nickname} - {address} (ID: {location.id})")
                 else:
-                    print(f"    ⊙ Location already exists: {location_address} (ID: {location.id})")
+                    print(f"    Location already exists: {nickname} (ID: {location.id})")
                 
                 # Create 5 devices for this location
                 for dev_idx in range(5):
@@ -135,16 +162,16 @@ def seed_clients_locations_devices() -> None:
                         )
                         s.add(device)
                         s.flush()
-                        print(f"      ✓ Created device: {device_name} (SN: {serial_number}, Status: {device_statuses[dev_idx]})")
+                        print(f"      Created device: {device_name} (SN: {serial_number}, Status: {device_statuses[dev_idx]})")
                     else:
-                        print(f"      ⊙ Device already exists: {device_name} (SN: {serial_number})")
+                        print(f"      Device already exists: {device_name} (SN: {serial_number})")
         
         try:
             s.flush()
-            print("\n✅ Clients, locations, and devices seeded successfully!")
+            print("\nClients, locations, and devices seeded successfully!")
         except IntegrityError as e:
             s.rollback()
-            print(f"\n❌ Error during seeding: {e.orig}")
+            print(f"\nError during seeding: {e.orig}")
 
 
 def generate_sample_csv_data(num_rows: int = 100) -> str:
@@ -189,20 +216,20 @@ def create_csv_file(file_path: str, content: str) -> bool:
         
         return True
     except Exception as e:
-        print(f"      ❌ Error creating file {file_path}: {e}")
+        print(f"      Error creating file {file_path}: {e}")
         return False
 
 
 def seed_sample_telemetry() -> None:
     """Seed sample telemetry data for first few devices with actual CSV files"""
-    print("\n📡 Seeding sample telemetry data with CSV files…")
+    print("\nSeeding sample telemetry data with CSV files...")
     
     with get_session() as s:
         # Get first 10 devices
         devices = s.query(Device).limit(10).all()
         
         if not devices:
-            print("  ⚠️  No devices found. Skipping telemetry seeding.")
+            print("  No devices found. Skipping telemetry seeding.")
             return
         
         csv_created_count = 0
@@ -214,7 +241,7 @@ def seed_sample_telemetry() -> None:
             ).first()
             
             if existing:
-                print(f"  ⊙ Telemetry already exists for device: {device.name}")
+                print(f"  Telemetry already exists for device: {device.name}")
                 continue
             
             # Generate file path
@@ -235,22 +262,22 @@ def seed_sample_telemetry() -> None:
                     directory=file_directory
                 )
                 s.add(telemetry)
-                print(f"  ✓ Created telemetry CSV and DB entry for: {device.name}")
-                print(f"    └─ File: {file_directory}")
+                print(f"  Created telemetry CSV and DB entry for: {device.name}")
+                print(f"    File: {file_directory}")
             else:
-                print(f"  ❌ Failed to create CSV for: {device.name}")
+                print(f"  Failed to create CSV for: {device.name}")
         
         try:
             s.flush()
-            print(f"✅ Sample telemetry data seeded ({csv_created_count} CSV files created).")
+            print(f"Sample telemetry data seeded ({csv_created_count} CSV files created).")
         except IntegrityError as e:
             s.rollback()
-            print(f"❌ Error seeding telemetry: {e.orig}")
+            print(f"Error seeding telemetry: {e.orig}")
 
 
 def seed_manual_uploads() -> None:
     """Seed sample manual uploads with actual CSV files"""
-    print("\n📤 Seeding sample manual uploads with CSV files…")
+    print("\nSeeding sample manual uploads with CSV files...")
     
     manual_uploads_data = [
         {
@@ -294,7 +321,7 @@ def seed_manual_uploads() -> None:
             ).first()
             
             if existing:
-                print(f"  ⊙ Manual upload already exists: {upload_data['author']}")
+                print(f"  Manual upload already exists: {upload_data['author']}")
                 continue
             
             # Generate CSV content with different characteristics for each researcher
@@ -314,23 +341,23 @@ def seed_manual_uploads() -> None:
                     notes=upload_data["notes"]
                 )
                 s.add(manual)
-                print(f"  ✓ Created manual upload CSV and DB entry by: {upload_data['author']}")
-                print(f"    └─ File: {upload_data['file_directory']}")
+                print(f"  Created manual upload CSV and DB entry by: {upload_data['author']}")
+                print(f"    File: {upload_data['file_directory']}")
             else:
-                print(f"  ❌ Failed to create CSV for: {upload_data['author']}")
+                print(f"  Failed to create CSV for: {upload_data['author']}")
         
         try:
             s.flush()
-            print(f"✅ Manual uploads seeded ({csv_created_count} CSV files created).")
+            print(f"Manual uploads seeded ({csv_created_count} CSV files created).")
         except IntegrityError as e:
             s.rollback()
-            print(f"❌ Error seeding manual uploads: {e.orig}")
+            print(f"Error seeding manual uploads: {e.orig}")
 
 
 def print_summary() -> None:
     """Print summary of seeded data"""
     print("\n" + "="*70)
-    print("📊 DATABASE SEEDING SUMMARY")
+    print("DATABASE SEEDING SUMMARY")
     print("="*70)
     
     with get_session() as s:
@@ -341,23 +368,23 @@ def print_summary() -> None:
         telemetry_count = s.query(BatteryData).count()
         manual_count = s.query(ManualUpload).count()
         
-        print(f"👥 Users:              {user_count}")
-        print(f"🏢 Clients:            {client_count}")
-        print(f"📍 Locations:          {location_count}")
-        print(f"🔌 Devices:            {device_count}")
-        print(f"📡 Telemetry Files:    {telemetry_count}")
-        print(f"📤 Manual Uploads:     {manual_count}")
+        print(f"Users:              {user_count}")
+        print(f"Clients:            {client_count}")
+        print(f"Locations:          {location_count}")
+        print(f"Devices:            {device_count}")
+        print(f"Telemetry Files:    {telemetry_count}")
+        print(f"Manual Uploads:     {manual_count}")
         print("="*70)
         
         # Show clients with their counts
-        print("\n🏢 CLIENT BREAKDOWN:")
+        print("\nCLIENT BREAKDOWN:")
         print("-"*70)
         clients = s.query(Client).all()
         for client in clients:
             locations = s.query(Location).filter(Location.client_id == client.id).count()
             devices = s.query(Device).filter(Device.client_id == client.id).count()
             print(f"  {client.name}")
-            print(f"    └─ Locations: {locations} | Devices: {devices}")
+            print(f"    Locations: {locations} | Devices: {devices}")
         print("="*70)
     
     # Count actual CSV files created
@@ -365,14 +392,14 @@ def print_summary() -> None:
     for root, dirs, files in os.walk("./data/uploads"):
         csv_file_count += len([f for f in files if f.endswith('.csv')])
     
-    print(f"\n📁 Total CSV files created: {csv_file_count}")
+    print(f"\nTotal CSV files created: {csv_file_count}")
     print("="*70)
 
 
 def main() -> None:
     """Main seeding function"""
     print("\n" + "="*70)
-    print("🌱 BatteryIQ Database Seeding Script")
+    print("BatteryIQ Database Seeding Script")
     print("="*70)
     
     create_schema()
@@ -382,8 +409,8 @@ def main() -> None:
     seed_manual_uploads()
     print_summary()
     
-    print("\n✅ All seeding complete! Your database is ready to use.")
-    print("\n💡 Default password for all users: password123")
+    print("\nAll seeding complete! Your database is ready to use.")
+    print("\nDefault password for all users: password123")
     print("="*70 + "\n")
 
 

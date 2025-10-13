@@ -132,9 +132,13 @@ def delete_client(client_id: int) -> bool:
 # Locations
 # ---------------------------
 @handle_db_errors
-def create_location(client_id: int, address: str) -> Location:
+def create_location(client_id: int, address: str, nickname: str = None) -> Location:
     with get_session() as s:
-        location = Location(client_id=client_id, address=address)
+        location = Location(
+            client_id=client_id, 
+            address=address,
+            nickname=nickname
+        )
         s.add(location)
         s.flush()
         return location

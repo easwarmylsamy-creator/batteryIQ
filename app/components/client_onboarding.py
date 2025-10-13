@@ -410,7 +410,11 @@ def submit_onboarding_data():
             for location in locations:
                 address_with_nickname = f"{location['nickname']} - {location['address']}"
                 log_info(f"Creating location: {location['nickname']}", context="Onboarding")
-                loc = services.create_location(client.id, address_with_nickname)
+                loc = services.create_location(
+                    client.id, 
+                    location['address'],
+                    nickname=location['nickname']
+)
                 
                 for device in location.get('devices', []):
                     log_info(f"Creating device: {device['name']} ({device['serial_number']})", context="Onboarding")

@@ -585,7 +585,7 @@ def show_dataset_overlay(dataset):
                 padding: 1.5rem;
                 border-radius: 15px;
                 border: 1px solid rgba(148, 163, 184, 0.2);
-                height: 100%;
+                height: 250px;
             ">
                 <div style="color: #53CDA8; font-size: 0.9rem; font-weight: 600; margin-bottom: 1rem;">
                     DATASET INFO
@@ -609,43 +609,7 @@ def show_dataset_overlay(dataset):
                         <span style="color: #94a3b8;">Source:</span> <strong>{dataset['device'][:25]}{'...' if len(dataset['device']) > 25 else ''}</strong>
                     </div>
                 '''
-            col_info1_content += f'''
-                <div style="margin-bottom: 0.5rem;">
-                        <span style="color: #94a3b8;">Date:</span> <strong>{dataset['date']}</strong>
-                </div>
-                '''
-            
-        
-        # st.markdown(f"""
-        #     <div style="
-        #         background: linear-gradient(135deg, rgba(30, 41, 59, 0.8) 0%, rgba(51, 65, 85, 0.8) 100%);
-        #         padding: 1.5rem;
-        #         border-radius: 15px;
-        #         border: 1px solid rgba(148, 163, 184, 0.2);
-        #         height: 100%;
-        #     ">
-        #         <div style="color: #53CDA8; font-size: 0.9rem; font-weight: 600; margin-bottom: 1rem;">
-        #             DATASET INFO
-        #         </div>
-        #         <div style="color: #f8fafc; line-height: 2;">
-        #             <div style="margin-bottom: 0.5rem;">
-        #                 <span style="color: #94a3b8;">Type:</span> <strong>{dataset['type']}</strong>
-        #             </div>
-        #             <div style="margin-bottom: 0.5rem;">
-        #                 <span style="color: #94a3b8;">Client:</span> <strong>{dataset['client']}</strong>
-        #             </div>
-        #             {"" if user_role == 'guest' else f'''
-        #             {f'<div style="margin-bottom: 0.5rem;"><span style="color: #94a3b8;">Location:</span> <strong>{dataset["location_id"]}</strong></div>' if dataset.get('location_id') and dataset['location_id'] != 'N/A' else ''}
-        #             <div style="margin-bottom: 0.5rem;">
-        #                 <span style="color: #94a3b8;">Source:</span> <strong>{dataset['device'][:25]}{'...' if len(dataset['device']) > 25 else ''}</strong>
-        #             </div>
-        #             '''}
-        #             <div style="margin-bottom: 0.5rem;">
-        #                 <span style="color: #94a3b8;">Date:</span> <strong>{dataset['date']}</strong>
-        #             </div>
-        #         </div>
-        #     </div>
-        # """, unsafe_allow_html=True)
+          
         st.markdown(col_info1_content, unsafe_allow_html=True)
     
     with col_info2:
@@ -655,7 +619,7 @@ def show_dataset_overlay(dataset):
                 padding: 1.5rem;
                 border-radius: 15px;
                 border: 1px solid rgba(148, 163, 184, 0.2);
-                height: 100%;
+                height: 250px;
             ">
                 <div style="color: #48B88E; font-size: 0.9rem; font-weight: 600; margin-bottom: 1rem;">
                     FILE METRICS
@@ -663,13 +627,13 @@ def show_dataset_overlay(dataset):
                 <div style="color: #f8fafc;">
                     <div style="margin-bottom: 1.5rem;">
                         <div style="color: #94a3b8; font-size: 0.85rem; margin-bottom: 0.3rem;">Size</div>
-                        <div style="font-size: 2rem; font-weight: 700; color: #60a5fa;">
+                        <div style="font-size: 1.5rem; font-weight: 700; color: #60a5fa;">
                             {dataset['size']} MB
                         </div>
                     </div>
                     <div>
                         <div style="color: #94a3b8; font-size: 0.85rem; margin-bottom: 0.3rem;">Records</div>
-                        <div style="font-size: 2rem; font-weight: 700; color: #60a5fa;">
+                        <div style="font-size: 1.5rem; font-weight: 700; color: #60a5fa;">
                             {dataset['records']:,}
                         </div>
                     </div>
@@ -685,7 +649,7 @@ def show_dataset_overlay(dataset):
                 padding: 1.5rem;
                 border-radius: 15px;
                 border: 1px solid rgba(148, 163, 184, 0.2);
-                height: 100%;
+                height: 250px;
             ">
                 <div style="color: #10b981; font-size: 0.9rem; font-weight: 600; margin-bottom: 1rem;">
                     QUALITY

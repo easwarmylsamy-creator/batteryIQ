@@ -4,7 +4,7 @@ import pandas as pd
 import time
 from passlib.hash import bcrypt
 from backend import services
-from backend.user_profiles import validate_profile_data, get_all_profiles
+
 from app.utils.logging_utils import log_info, log_error, log_warning
 from app.utils.cache_utils import get_cached_locations, get_cached_clients
 from backend.services import  get_client
@@ -230,7 +230,7 @@ def render_add_user_form():
                 try:
                     locations = get_cached_locations(selected_client_id)
                     if locations:
-                        location_options = {f"{loc.address}": loc.id for loc in locations}
+                        location_options = {f"{loc.nickname}": loc.id for loc in locations}
                         selected_location_name = st.selectbox(
                             "Assign to Location",
                             ["Select Location"] + list(location_options.keys()),

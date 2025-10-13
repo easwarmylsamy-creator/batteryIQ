@@ -89,6 +89,7 @@ class Location(Base):
         nullable=False,
         index=True,
     )
+    nickname: Mapped[Optional[str]] = mapped_column(String(120), nullable=True)
     address: Mapped[str] = mapped_column(String(255), nullable=False)
 
     client: Mapped["Client"] = relationship("Client", back_populates="locations")
@@ -104,9 +105,7 @@ class Location(Base):
     )
 
     def __repr__(self) -> str:
-        return f"<Location id={self.id} client_id={self.client_id} address={self.address!r}>"
-
-
+        return f"<Location id={self.id} nickname={self.nickname!r} address={self.address!r}>"
 # ---------------------------
 # Devices table
 # ---------------------------
@@ -136,7 +135,7 @@ class Device(Base):
     )
 
     def __repr__(self) -> str:
-        return f"<Device id={self.id} sn={self.serial_number!r}>"
+        return f"<Device id={self.id} status={self.status} sn={self.serial_number!r} client_id={self.client_id} location_id={self.location_id}>"
 
 
 # ---------------------------

@@ -1,6 +1,4 @@
-# ============================================
-# FILE: app/components/management.py
-# ============================================
+import time
 import streamlit as st
 import pandas as pd
 import plotly.express as px
@@ -8,6 +6,7 @@ from backend import services
 from utils.cache_utils import get_cached_clients, get_cached_devices, get_cached_locations, get_system_stats
 from app.utils.logging_utils import *
 from app.components.user_management import render_user_management_interface
+from app.components.device_management import render_device_management
 
 def render_management_interface():
     """Render management interface"""
@@ -26,6 +25,7 @@ def render_management_interface():
     
     with mgmt_tab2:
         render_device_management()
+        # render_device_management()
     
     with mgmt_tab3:
         render_statistics()
@@ -62,46 +62,6 @@ def render_client_management():
         
         except Exception as e:
             st.error(f"Error loading clients: {e}")
-    
-
-
-def render_device_management():
-    """Render device management interface"""
-    st.markdown("#### Device Management")
-    
-    try:
-        clients = get_cached_clients()
-        
-        if clients:
-            selected_client = st.selectbox(
-                "Select Client to View Devices",
-                clients,
-                format_func=lambda x: f"{x.name} (ID: {x.id})"
-            )
-            
-            if selected_client:
-                devices = get_cached_devices(selected_client.id)
-                
-                if devices:
-                    device_data = []
-                    for device in devices:
-                        device_data.append({
-                            "ID": device.id,
-                            "Name": device.name,
-                            "Serial": device.serial_number,
-                            "Status": device.status or "Active",
-                            "Firmware": device.firmware_version or "N/A"
-                        })
-                    
-                    df = pd.DataFrame(device_data)
-                    st.dataframe(df, use_container_width=True)
-                else:
-                    st.info("No devices found for this client.")
-        else:
-            st.info("No clients found. Please add a client first.")
-    
-    except Exception as e:
-        st.error(f"Error loading devices: {e}")
 
 
 def render_statistics():

@@ -1,0 +1,806 @@
+[2025-10-08 12:11:58] [INFO] Telemetry service started on port 8080
+[2025-10-08 12:11:58] [INFO] Telemetry receiver listening on port 8080
+[2025-10-08 12:12:42] [INFO] Telemetry service stopped
+[2025-10-08 12:17:25] [INFO] Telemetry service started on port 8080
+[2025-10-08 12:17:25] [INFO] Telemetry receiver listening on port 8080
+[2025-10-08 12:18:07] [INFO] 127.0.0.1 - "GET /health HTTP/1.1" 200 -
+[2025-10-08 12:30:23] [INFO] System: BatteryIQ application started
+[2025-10-08 12:30:26] [INFO] System: BatteryIQ application started
+[2025-10-08 12:30:26] [INFO] System: BatteryIQ application started
+[2025-10-08 12:30:34] [INFO] System: BatteryIQ application started
+[2025-10-08 12:30:34] [INFO] Authentication: Login attempt for user: admin
+[2025-10-08 12:30:35] [INFO] Authentication: Successful login for user: admin (Role: admin)
+[2025-10-08 12:30:36] [INFO] System: BatteryIQ application started
+[2025-10-08 12:30:36] [INFO] Navigation: User admin accessing admin dashboard
+[2025-10-08 12:30:36] [INFO] Cache: Fetching system statistics
+[2025-10-08 12:30:36] [INFO] Cache: Successfully fetched system statistics
+[2025-10-08 12:30:36] [INFO] Cache: Fetching clients from database
+[2025-10-08 12:30:36] [INFO] Cache: Successfully fetched 5 clients
+[2025-10-08 12:30:36] [INFO] Telemetry Monitor: Loading telemetry monitor
+[2025-10-08 12:30:36] [INFO] Cache: Fetching devices for client 1
+[2025-10-08 12:30:36] [INFO] Cache: Successfully fetched 25 devices
+[2025-10-08 12:30:36] [INFO] Cache: Fetching devices for client 2
+[2025-10-08 12:30:36] [INFO] Cache: Successfully fetched 25 devices
+[2025-10-08 12:30:36] [INFO] Cache: Fetching devices for client 3
+[2025-10-08 12:30:36] [INFO] Cache: Successfully fetched 25 devices
+[2025-10-08 12:30:36] [INFO] Cache: Fetching devices for client 4
+[2025-10-08 12:30:36] [INFO] Cache: Successfully fetched 25 devices
+[2025-10-08 12:30:36] [INFO] Cache: Fetching devices for client 5
+[2025-10-08 12:30:36] [INFO] Cache: Successfully fetched 25 devices
+[2025-10-08 12:30:37] [INFO] Data Gallery: User admin (admin) accessed data gallery
+[2025-10-08 12:30:37] [ERROR] Main: Critical error in main router: There are multiple `button` elements with the same auto-generated ID. When this element is created, it is assigned an internal ID based on the element type and provided parameters. Multiple elements with the same type and parameters will cause this error.
+
+To fix this error, please pass a unique `key` argument to the `button` element.
+[2025-10-08 12:31:37] [INFO] System: BatteryIQ application started
+[2025-10-08 12:31:40] [INFO] System: BatteryIQ application started
+[2025-10-08 12:31:40] [INFO] System: BatteryIQ application started
+[2025-10-08 12:31:46] [INFO] System: BatteryIQ application started
+[2025-10-08 12:31:46] [INFO] Authentication: Login attempt for user: admin
+[2025-10-08 12:31:46] [INFO] Authentication: Successful login for user: admin (Role: admin)
+[2025-10-08 12:31:47] [INFO] System: BatteryIQ application started
+[2025-10-08 12:31:47] [INFO] Navigation: User admin accessing admin dashboard
+[2025-10-08 12:31:47] [INFO] Cache: Fetching system statistics
+[2025-10-08 12:31:47] [INFO] Cache: Successfully fetched system statistics
+[2025-10-08 12:31:47] [INFO] Cache: Fetching clients from database
+[2025-10-08 12:31:47] [INFO] Cache: Successfully fetched 5 clients
+[2025-10-08 12:31:47] [INFO] Telemetry Monitor: Loading telemetry monitor
+[2025-10-08 12:31:47] [INFO] Cache: Fetching devices for client 1
+[2025-10-08 12:31:47] [INFO] Cache: Successfully fetched 25 devices
+[2025-10-08 12:31:47] [INFO] Cache: Fetching devices for client 2
+[2025-10-08 12:31:47] [INFO] Cache: Successfully fetched 25 devices
+[2025-10-08 12:31:47] [INFO] Cache: Fetching devices for client 3
+[2025-10-08 12:31:47] [INFO] Cache: Successfully fetched 25 devices
+[2025-10-08 12:31:47] [INFO] Cache: Fetching devices for client 4
+[2025-10-08 12:31:47] [INFO] Cache: Successfully fetched 25 devices
+[2025-10-08 12:31:47] [INFO] Cache: Fetching devices for client 5
+[2025-10-08 12:31:47] [INFO] Cache: Successfully fetched 25 devices
+[2025-10-08 12:31:48] [INFO] Cache: Fetching locations for client 1
+[2025-10-08 12:31:48] [INFO] Cache: Successfully fetched 5 locations
+[2025-10-08 12:31:48] [INFO] Cache: Fetching locations for client 2
+[2025-10-08 12:31:48] [INFO] Cache: Successfully fetched 5 locations
+[2025-10-08 12:31:48] [INFO] Cache: Fetching locations for client 3
+[2025-10-08 12:31:48] [INFO] Cache: Successfully fetched 5 locations
+[2025-10-08 12:31:48] [INFO] Cache: Fetching locations for client 4
+[2025-10-08 12:31:48] [INFO] Cache: Successfully fetched 5 locations
+[2025-10-08 12:31:48] [INFO] Cache: Fetching locations for client 5
+[2025-10-08 12:31:48] [INFO] Cache: Successfully fetched 5 locations
+[2025-10-08 12:31:49] [INFO] System: BatteryIQ application started
+[2025-10-08 12:31:49] [INFO] Navigation: User admin accessing admin dashboard
+[2025-10-08 12:31:49] [INFO] Telemetry Monitor: Loading telemetry monitor
+[2025-10-08 12:33:59] [INFO] System: BatteryIQ application started
+[2025-10-08 12:33:59] [INFO] Navigation: User admin accessing admin dashboard
+[2025-10-08 12:33:59] [INFO] Cache: Fetching system statistics
+[2025-10-08 12:33:59] [INFO] Cache: Successfully fetched system statistics
+[2025-10-08 12:33:59] [INFO] Telemetry Monitor: Loading telemetry monitor
+[2025-10-08 12:34:09] [INFO] System: BatteryIQ application started
+[2025-10-08 12:34:09] [INFO] Navigation: User admin accessing admin dashboard
+[2025-10-08 12:34:09] [INFO] Telemetry Monitor: Loading telemetry monitor
+[2025-10-08 12:39:37] [INFO] System: BatteryIQ application started
+[2025-10-08 12:39:41] [INFO] System: BatteryIQ application started
+[2025-10-08 12:39:41] [INFO] System: BatteryIQ application started
+[2025-10-08 12:39:47] [INFO] System: BatteryIQ application started
+[2025-10-08 12:39:47] [INFO] Authentication: Login attempt for user: admin
+[2025-10-08 12:39:48] [INFO] Authentication: Successful login for user: admin (Role: admin)
+[2025-10-08 12:39:48] [INFO] System: BatteryIQ application started
+[2025-10-08 12:39:49] [INFO] Navigation: User admin accessing admin dashboard
+[2025-10-08 12:39:49] [INFO] Cache: Fetching system statistics
+[2025-10-08 12:39:49] [INFO] Cache: Successfully fetched system statistics
+[2025-10-08 12:39:49] [INFO] Cache: Fetching clients from database
+[2025-10-08 12:39:49] [INFO] Cache: Successfully fetched 5 clients
+[2025-10-08 12:39:49] [INFO] Telemetry Monitor: Loading telemetry monitor
+[2025-10-08 12:39:49] [INFO] Cache: Fetching devices for client 1
+[2025-10-08 12:39:49] [INFO] Cache: Successfully fetched 25 devices
+[2025-10-08 12:39:49] [INFO] Cache: Fetching devices for client 2
+[2025-10-08 12:39:49] [INFO] Cache: Successfully fetched 25 devices
+[2025-10-08 12:39:49] [INFO] Cache: Fetching devices for client 3
+[2025-10-08 12:39:49] [INFO] Cache: Successfully fetched 25 devices
+[2025-10-08 12:39:49] [INFO] Cache: Fetching devices for client 4
+[2025-10-08 12:39:49] [INFO] Cache: Successfully fetched 25 devices
+[2025-10-08 12:39:49] [INFO] Cache: Fetching devices for client 5
+[2025-10-08 12:39:49] [INFO] Cache: Successfully fetched 25 devices
+[2025-10-08 12:39:50] [INFO] Cache: Fetching locations for client 1
+[2025-10-08 12:39:50] [INFO] Cache: Successfully fetched 5 locations
+[2025-10-08 12:39:50] [INFO] Cache: Fetching locations for client 2
+[2025-10-08 12:39:50] [INFO] Cache: Successfully fetched 5 locations
+[2025-10-08 12:39:50] [INFO] Cache: Fetching locations for client 3
+[2025-10-08 12:39:50] [INFO] Cache: Successfully fetched 5 locations
+[2025-10-08 12:39:50] [INFO] Cache: Fetching locations for client 4
+[2025-10-08 12:39:50] [INFO] Cache: Successfully fetched 5 locations
+[2025-10-08 12:39:50] [INFO] Cache: Fetching locations for client 5
+[2025-10-08 12:39:50] [INFO] Cache: Successfully fetched 5 locations
+[2025-10-08 12:39:57] [INFO] System: BatteryIQ application started
+[2025-10-08 12:39:57] [INFO] Navigation: User admin accessing admin dashboard
+[2025-10-08 12:39:57] [INFO] Telemetry Monitor: Loading telemetry monitor
+[2025-10-08 12:39:57] [INFO] Telemetry Monitor: Applied status filter: Active, 75 devices match
+[2025-10-08 12:40:09] [INFO] System: BatteryIQ application started
+[2025-10-08 12:40:09] [INFO] Navigation: User admin accessing admin dashboard
+[2025-10-08 12:40:09] [INFO] Telemetry Monitor: Loading telemetry monitor
+[2025-10-08 12:40:09] [INFO] Telemetry Monitor: Applied status filter: Inactive, 25 devices match
+[2025-10-08 12:40:13] [INFO] System: BatteryIQ application started
+[2025-10-08 12:40:13] [INFO] Navigation: User admin accessing admin dashboard
+[2025-10-08 12:40:13] [INFO] Telemetry Monitor: Loading telemetry monitor
+[2025-10-08 12:40:13] [INFO] Telemetry Monitor: Applied status filter: Maintenance, 25 devices match
+[2025-10-08 12:40:23] [INFO] System: BatteryIQ application started
+[2025-10-08 12:40:23] [INFO] Navigation: User admin accessing admin dashboard
+[2025-10-08 12:40:24] [INFO] Telemetry Monitor: Loading telemetry monitor
+[2025-10-08 12:40:24] [INFO] Telemetry Monitor: Applied status filter: Active, 75 devices match
+[2025-10-08 12:43:46] [INFO] System: BatteryIQ application started
+[2025-10-08 12:43:51] [INFO] System: BatteryIQ application started
+[2025-10-08 12:43:51] [INFO] System: BatteryIQ application started
+[2025-10-08 12:43:57] [INFO] System: BatteryIQ application started
+[2025-10-08 12:43:57] [INFO] Authentication: Login attempt for user: admin
+[2025-10-08 12:43:58] [INFO] Authentication: Successful login for user: admin (Role: admin)
+[2025-10-08 12:43:59] [INFO] System: BatteryIQ application started
+[2025-10-08 12:43:59] [INFO] Navigation: User admin accessing admin dashboard
+[2025-10-08 12:43:59] [INFO] Cache: Fetching system statistics
+[2025-10-08 12:43:59] [INFO] Cache: Successfully fetched system statistics
+[2025-10-08 12:43:59] [INFO] Cache: Fetching clients from database
+[2025-10-08 12:43:59] [INFO] Cache: Successfully fetched 5 clients
+[2025-10-08 12:43:59] [INFO] Telemetry Monitor: Loading telemetry monitor
+[2025-10-08 12:43:59] [INFO] Cache: Fetching devices for client 1
+[2025-10-08 12:43:59] [INFO] Cache: Successfully fetched 25 devices
+[2025-10-08 12:43:59] [INFO] Cache: Fetching devices for client 2
+[2025-10-08 12:43:59] [INFO] Cache: Successfully fetched 25 devices
+[2025-10-08 12:43:59] [INFO] Cache: Fetching devices for client 3
+[2025-10-08 12:43:59] [INFO] Cache: Successfully fetched 25 devices
+[2025-10-08 12:43:59] [INFO] Cache: Fetching devices for client 4
+[2025-10-08 12:43:59] [INFO] Cache: Successfully fetched 25 devices
+[2025-10-08 12:43:59] [INFO] Cache: Fetching devices for client 5
+[2025-10-08 12:43:59] [INFO] Cache: Successfully fetched 25 devices
+[2025-10-08 12:44:00] [INFO] Cache: Fetching locations for client 1
+[2025-10-08 12:44:00] [INFO] Cache: Successfully fetched 5 locations
+[2025-10-08 12:44:00] [INFO] Cache: Fetching locations for client 2
+[2025-10-08 12:44:00] [INFO] Cache: Successfully fetched 5 locations
+[2025-10-08 12:44:00] [INFO] Cache: Fetching locations for client 3
+[2025-10-08 12:44:00] [INFO] Cache: Successfully fetched 5 locations
+[2025-10-08 12:44:00] [INFO] Cache: Fetching locations for client 4
+[2025-10-08 12:44:00] [INFO] Cache: Successfully fetched 5 locations
+[2025-10-08 12:44:00] [INFO] Cache: Fetching locations for client 5
+[2025-10-08 12:44:00] [INFO] Cache: Successfully fetched 5 locations
+[2025-10-08 12:44:29] [INFO] System: BatteryIQ application started
+[2025-10-08 12:44:33] [INFO] System: BatteryIQ application started
+[2025-10-08 12:44:33] [INFO] System: BatteryIQ application started
+[2025-10-08 12:44:39] [INFO] System: BatteryIQ application started
+[2025-10-08 12:44:39] [INFO] Authentication: Login attempt for user: admin
+[2025-10-08 12:44:40] [INFO] Authentication: Successful login for user: admin (Role: admin)
+[2025-10-08 12:44:41] [INFO] System: BatteryIQ application started
+[2025-10-08 12:44:41] [INFO] Navigation: User admin accessing admin dashboard
+[2025-10-08 12:44:41] [INFO] Cache: Fetching system statistics
+[2025-10-08 12:44:41] [INFO] Cache: Successfully fetched system statistics
+[2025-10-08 12:44:41] [INFO] Cache: Fetching clients from database
+[2025-10-08 12:44:41] [INFO] Cache: Successfully fetched 5 clients
+[2025-10-08 12:44:41] [INFO] Telemetry Monitor: Loading telemetry monitor
+[2025-10-08 12:44:41] [INFO] Cache: Fetching devices for client 1
+[2025-10-08 12:44:41] [INFO] Cache: Successfully fetched 25 devices
+[2025-10-08 12:44:41] [INFO] Cache: Fetching devices for client 2
+[2025-10-08 12:44:41] [INFO] Cache: Successfully fetched 25 devices
+[2025-10-08 12:44:41] [INFO] Cache: Fetching devices for client 3
+[2025-10-08 12:44:41] [INFO] Cache: Successfully fetched 25 devices
+[2025-10-08 12:44:41] [INFO] Cache: Fetching devices for client 4
+[2025-10-08 12:44:41] [INFO] Cache: Successfully fetched 25 devices
+[2025-10-08 12:44:41] [INFO] Cache: Fetching devices for client 5
+[2025-10-08 12:44:41] [INFO] Cache: Successfully fetched 25 devices
+[2025-10-08 12:44:42] [INFO] Data Gallery: User admin (admin) accessed data gallery
+[2025-10-08 12:44:42] [ERROR] Main: Critical error in main router: There are multiple `button` elements with the same auto-generated ID. When this element is created, it is assigned an internal ID based on the element type and provided parameters. Multiple elements with the same type and parameters will cause this error.
+
+To fix this error, please pass a unique `key` argument to the `button` element.
+[2025-10-08 13:07:29] [INFO] System: BatteryIQ application started
+[2025-10-08 13:07:31] [INFO] System: BatteryIQ application started
+[2025-10-08 13:07:31] [INFO] System: BatteryIQ application started
+[2025-10-08 13:07:38] [INFO] System: BatteryIQ application started
+[2025-10-08 13:07:38] [INFO] Authentication: Login attempt for user: admin
+[2025-10-08 13:07:38] [INFO] Authentication: Successful login for user: admin (Role: admin)
+[2025-10-08 13:07:39] [INFO] System: BatteryIQ application started
+[2025-10-08 13:07:39] [INFO] Navigation: User admin accessing admin dashboard
+[2025-10-08 13:07:39] [INFO] Cache: Fetching system statistics
+[2025-10-08 13:07:39] [INFO] Cache: Successfully fetched system statistics
+[2025-10-08 13:07:39] [INFO] Cache: Fetching clients from database
+[2025-10-08 13:07:39] [INFO] Cache: Successfully fetched 5 clients
+[2025-10-08 13:07:40] [INFO] Cache: Fetching clients from database
+[2025-10-08 13:07:40] [INFO] Cache: Successfully fetched 5 clients
+[2025-10-08 13:07:40] [INFO] Telemetry Monitor: Loading telemetry monitor
+[2025-10-08 13:07:40] [INFO] Cache: Fetching devices for client 1
+[2025-10-08 13:07:40] [INFO] Cache: Successfully fetched 25 devices
+[2025-10-08 13:07:40] [INFO] Cache: Fetching devices for client 2
+[2025-10-08 13:07:40] [INFO] Cache: Successfully fetched 25 devices
+[2025-10-08 13:07:40] [INFO] Cache: Fetching devices for client 3
+[2025-10-08 13:07:40] [INFO] Cache: Successfully fetched 25 devices
+[2025-10-08 13:07:40] [INFO] Cache: Fetching devices for client 4
+[2025-10-08 13:07:40] [INFO] Cache: Successfully fetched 25 devices
+[2025-10-08 13:07:40] [INFO] Cache: Fetching devices for client 5
+[2025-10-08 13:07:40] [INFO] Cache: Successfully fetched 25 devices
+[2025-10-08 13:07:41] [INFO] Data Gallery: User admin (admin) accessed data gallery
+[2025-10-08 13:07:41] [ERROR] Main: Critical error in main router: There are multiple `button` elements with the same auto-generated ID. When this element is created, it is assigned an internal ID based on the element type and provided parameters. Multiple elements with the same type and parameters will cause this error.
+
+To fix this error, please pass a unique `key` argument to the `button` element.
+[2025-10-08 13:15:25] [INFO] System: BatteryIQ application started
+[2025-10-08 13:15:27] [INFO] System: BatteryIQ application started
+[2025-10-08 13:15:27] [INFO] System: BatteryIQ application started
+[2025-10-08 13:15:33] [INFO] System: BatteryIQ application started
+[2025-10-08 13:15:33] [INFO] Authentication: Login attempt for user: admin
+[2025-10-08 13:15:34] [WARNING] Authentication: Failed login attempt for user: admin
+[2025-10-08 13:15:52] [INFO] System: BatteryIQ application started
+[2025-10-08 13:15:52] [INFO] Authentication: Login attempt for user: admin
+[2025-10-08 13:15:52] [INFO] Authentication: Successful login for user: admin (Role: admin)
+[2025-10-08 13:15:53] [INFO] System: BatteryIQ application started
+[2025-10-08 13:15:53] [INFO] Navigation: User admin accessing admin dashboard
+[2025-10-08 13:15:53] [INFO] Cache: Fetching system statistics
+[2025-10-08 13:15:53] [INFO] Cache: Successfully fetched system statistics
+[2025-10-08 13:15:53] [INFO] Cache: Fetching clients from database
+[2025-10-08 13:15:53] [INFO] Cache: Successfully fetched 5 clients
+[2025-10-08 13:15:54] [INFO] Cache: Fetching clients from database
+[2025-10-08 13:15:54] [INFO] Cache: Successfully fetched 5 clients
+[2025-10-08 13:15:54] [INFO] Telemetry Monitor: Loading telemetry monitor
+[2025-10-08 13:15:54] [INFO] Cache: Fetching devices for client 1
+[2025-10-08 13:15:54] [INFO] Cache: Successfully fetched 25 devices
+[2025-10-08 13:15:54] [INFO] Cache: Fetching devices for client 2
+[2025-10-08 13:15:54] [INFO] Cache: Successfully fetched 25 devices
+[2025-10-08 13:15:54] [INFO] Cache: Fetching devices for client 3
+[2025-10-08 13:15:54] [INFO] Cache: Successfully fetched 25 devices
+[2025-10-08 13:15:54] [INFO] Cache: Fetching devices for client 4
+[2025-10-08 13:15:54] [INFO] Cache: Successfully fetched 25 devices
+[2025-10-08 13:15:54] [INFO] Cache: Fetching devices for client 5
+[2025-10-08 13:15:54] [INFO] Cache: Successfully fetched 25 devices
+[2025-10-08 13:15:55] [INFO] Data Gallery: User admin (admin) accessed data gallery
+[2025-10-08 13:15:55] [ERROR] Main: Critical error in main router: There are multiple `button` elements with the same auto-generated ID. When this element is created, it is assigned an internal ID based on the element type and provided parameters. Multiple elements with the same type and parameters will cause this error.
+
+To fix this error, please pass a unique `key` argument to the `button` element.
+[2025-10-08 13:20:28] [INFO] System: BatteryIQ application started
+[2025-10-08 13:20:31] [INFO] System: BatteryIQ application started
+[2025-10-08 13:20:31] [INFO] System: BatteryIQ application started
+[2025-10-08 13:20:37] [INFO] System: BatteryIQ application started
+[2025-10-08 13:20:37] [INFO] Authentication: Login attempt for user: admin
+[2025-10-08 13:20:38] [INFO] Authentication: Successful login for user: admin (Role: admin)
+[2025-10-08 13:20:39] [INFO] System: BatteryIQ application started
+[2025-10-08 13:20:39] [INFO] Navigation: User admin accessing admin dashboard
+[2025-10-08 13:20:39] [INFO] Cache: Fetching system statistics
+[2025-10-08 13:20:39] [INFO] Cache: Successfully fetched system statistics
+[2025-10-08 13:20:39] [INFO] Cache: Fetching clients from database
+[2025-10-08 13:20:39] [INFO] Cache: Successfully fetched 5 clients
+[2025-10-08 13:20:39] [INFO] Cache: Fetching clients from database
+[2025-10-08 13:20:39] [INFO] Cache: Successfully fetched 5 clients
+[2025-10-08 13:20:39] [INFO] Telemetry Monitor: Loading telemetry monitor
+[2025-10-08 13:20:39] [INFO] Cache: Fetching devices for client 1
+[2025-10-08 13:20:39] [INFO] Cache: Successfully fetched 25 devices
+[2025-10-08 13:20:39] [INFO] Cache: Fetching devices for client 2
+[2025-10-08 13:20:39] [INFO] Cache: Successfully fetched 25 devices
+[2025-10-08 13:20:39] [INFO] Cache: Fetching devices for client 3
+[2025-10-08 13:20:39] [INFO] Cache: Successfully fetched 25 devices
+[2025-10-08 13:20:39] [INFO] Cache: Fetching devices for client 4
+[2025-10-08 13:20:39] [INFO] Cache: Successfully fetched 25 devices
+[2025-10-08 13:20:39] [INFO] Cache: Fetching devices for client 5
+[2025-10-08 13:20:39] [INFO] Cache: Successfully fetched 25 devices
+[2025-10-08 13:20:40] [INFO] Data Gallery: User admin (admin) accessed data gallery
+[2025-10-08 13:20:40] [ERROR] Main: Critical error in main router: There are multiple `button` elements with the same auto-generated ID. When this element is created, it is assigned an internal ID based on the element type and provided parameters. Multiple elements with the same type and parameters will cause this error.
+
+To fix this error, please pass a unique `key` argument to the `button` element.
+[2025-10-08 13:24:41] [INFO] System: BatteryIQ application started
+[2025-10-08 13:24:45] [INFO] System: BatteryIQ application started
+[2025-10-08 13:24:45] [INFO] System: BatteryIQ application started
+[2025-10-08 13:24:51] [INFO] System: BatteryIQ application started
+[2025-10-08 13:24:51] [INFO] Authentication: Login attempt for user: admin
+[2025-10-08 13:24:52] [INFO] Authentication: Successful login for user: admin (Role: admin)
+[2025-10-08 13:24:53] [INFO] System: BatteryIQ application started
+[2025-10-08 13:24:53] [INFO] Navigation: User admin accessing admin dashboard
+[2025-10-08 13:24:53] [INFO] Cache: Fetching system statistics
+[2025-10-08 13:24:53] [INFO] Cache: Successfully fetched system statistics
+[2025-10-08 13:24:53] [INFO] Cache: Fetching clients from database
+[2025-10-08 13:24:53] [INFO] Cache: Successfully fetched 5 clients
+[2025-10-08 13:24:53] [INFO] Cache: Fetching clients from database
+[2025-10-08 13:24:53] [INFO] Cache: Successfully fetched 5 clients
+[2025-10-08 13:24:53] [INFO] Telemetry Monitor: Loading telemetry monitor
+[2025-10-08 13:24:53] [INFO] Cache: Fetching devices for client 1
+[2025-10-08 13:24:53] [INFO] Cache: Successfully fetched 25 devices
+[2025-10-08 13:24:53] [INFO] Cache: Fetching devices for client 2
+[2025-10-08 13:24:53] [INFO] Cache: Successfully fetched 25 devices
+[2025-10-08 13:24:53] [INFO] Cache: Fetching devices for client 3
+[2025-10-08 13:24:53] [INFO] Cache: Successfully fetched 25 devices
+[2025-10-08 13:24:53] [INFO] Cache: Fetching devices for client 4
+[2025-10-08 13:24:53] [INFO] Cache: Successfully fetched 25 devices
+[2025-10-08 13:24:53] [INFO] Cache: Fetching devices for client 5
+[2025-10-08 13:24:53] [INFO] Cache: Successfully fetched 25 devices
+[2025-10-08 13:24:55] [INFO] Data Gallery: User admin (admin) accessed data gallery
+[2025-10-08 13:24:55] [ERROR] Main: Critical error in main router: There are multiple `button` elements with the same auto-generated ID. When this element is created, it is assigned an internal ID based on the element type and provided parameters. Multiple elements with the same type and parameters will cause this error.
+
+To fix this error, please pass a unique `key` argument to the `button` element.
+[2025-10-08 13:25:55] [INFO] System: BatteryIQ application started
+[2025-10-08 13:25:55] [INFO] Navigation: User admin accessing admin dashboard
+[2025-10-08 13:25:56] [INFO] System: BatteryIQ application started
+[2025-10-08 13:25:58] [INFO] System: BatteryIQ application started
+[2025-10-08 13:25:58] [INFO] System: BatteryIQ application started
+[2025-10-08 13:26:00] [INFO] System: BatteryIQ application started
+[2025-10-08 13:26:00] [INFO] Test Authentication: Test Login
+[2025-10-08 13:26:00] [INFO] Authentication:  Successful login for user: admin (Role: admin)
+[2025-10-08 13:26:01] [INFO] System: BatteryIQ application started
+[2025-10-08 13:26:01] [INFO] Navigation: User admin accessing admin dashboard
+[2025-10-08 13:26:01] [INFO] Cache: Fetching system statistics
+[2025-10-08 13:26:01] [INFO] Cache: Successfully fetched system statistics
+[2025-10-08 13:26:01] [INFO] Telemetry Monitor: Loading telemetry monitor
+[2025-10-08 13:26:02] [INFO] Data Gallery: User admin (admin) accessed data gallery
+[2025-10-08 13:26:02] [ERROR] Main: Critical error in main router: There are multiple `button` elements with the same auto-generated ID. When this element is created, it is assigned an internal ID based on the element type and provided parameters. Multiple elements with the same type and parameters will cause this error.
+
+To fix this error, please pass a unique `key` argument to the `button` element.
+[2025-10-08 13:28:05] [INFO] System: BatteryIQ application started
+[2025-10-08 13:28:07] [INFO] System: BatteryIQ application started
+[2025-10-08 13:28:08] [INFO] System: BatteryIQ application started
+[2025-10-08 13:28:09] [INFO] System: BatteryIQ application started
+[2025-10-08 13:28:09] [INFO] Test Authentication: Test Login
+[2025-10-08 13:28:10] [INFO] Authentication:  Successful login for user: admin (Role: admin)
+[2025-10-08 13:28:10] [INFO] System: BatteryIQ application started
+[2025-10-08 13:28:10] [INFO] Navigation: User admin accessing admin dashboard
+[2025-10-08 13:28:10] [INFO] Cache: Fetching system statistics
+[2025-10-08 13:28:10] [INFO] Cache: Successfully fetched system statistics
+[2025-10-08 13:28:10] [INFO] Cache: Fetching clients from database
+[2025-10-08 13:28:10] [INFO] Cache: Successfully fetched 5 clients
+[2025-10-08 13:28:11] [INFO] Cache: Fetching clients from database
+[2025-10-08 13:28:11] [INFO] Cache: Successfully fetched 5 clients
+[2025-10-08 13:28:11] [INFO] Telemetry Monitor: Loading telemetry monitor
+[2025-10-08 13:28:11] [INFO] Cache: Fetching devices for client 1
+[2025-10-08 13:28:11] [INFO] Cache: Successfully fetched 25 devices
+[2025-10-08 13:28:11] [INFO] Cache: Fetching devices for client 2
+[2025-10-08 13:28:11] [INFO] Cache: Successfully fetched 25 devices
+[2025-10-08 13:28:11] [INFO] Cache: Fetching devices for client 3
+[2025-10-08 13:28:11] [INFO] Cache: Successfully fetched 25 devices
+[2025-10-08 13:28:11] [INFO] Cache: Fetching devices for client 4
+[2025-10-08 13:28:11] [INFO] Cache: Successfully fetched 25 devices
+[2025-10-08 13:28:11] [INFO] Cache: Fetching devices for client 5
+[2025-10-08 13:28:11] [INFO] Cache: Successfully fetched 25 devices
+[2025-10-08 13:28:12] [INFO] Cache: Fetching locations for client 1
+[2025-10-08 13:28:12] [INFO] Cache: Successfully fetched 5 locations
+[2025-10-08 13:28:12] [INFO] Cache: Fetching locations for client 2
+[2025-10-08 13:28:12] [INFO] Cache: Successfully fetched 5 locations
+[2025-10-08 13:28:12] [INFO] Cache: Fetching locations for client 3
+[2025-10-08 13:28:12] [INFO] Cache: Successfully fetched 5 locations
+[2025-10-08 13:28:12] [INFO] Cache: Fetching locations for client 4
+[2025-10-08 13:28:12] [INFO] Cache: Successfully fetched 5 locations
+[2025-10-08 13:28:12] [INFO] Cache: Fetching locations for client 5
+[2025-10-08 13:28:12] [INFO] Cache: Successfully fetched 5 locations
+[2025-10-08 13:28:12] [INFO] Cache: Fetching system statistics
+[2025-10-08 13:28:12] [INFO] Cache: Successfully fetched system statistics
+[2025-10-08 13:30:17] [INFO] System: BatteryIQ application started
+[2025-10-08 13:30:20] [INFO] System: BatteryIQ application started
+[2025-10-08 13:30:20] [INFO] System: BatteryIQ application started
+[2025-10-08 13:30:21] [INFO] System: BatteryIQ application started
+[2025-10-08 13:30:21] [INFO] Test Authentication: Test Login
+[2025-10-08 13:30:21] [INFO] Authentication:  Successful login for user: admin (Role: admin)
+[2025-10-08 13:30:22] [INFO] System: BatteryIQ application started
+[2025-10-08 13:30:22] [INFO] Navigation: User admin accessing admin dashboard
+[2025-10-08 13:30:22] [INFO] Cache: Fetching system statistics
+[2025-10-08 13:30:22] [INFO] Cache: Successfully fetched system statistics
+[2025-10-08 13:30:22] [INFO] Cache: Fetching clients from database
+[2025-10-08 13:30:22] [INFO] Cache: Successfully fetched 5 clients
+[2025-10-08 13:30:23] [INFO] Cache: Fetching clients from database
+[2025-10-08 13:30:23] [INFO] Cache: Successfully fetched 5 clients
+[2025-10-08 13:30:23] [INFO] Telemetry Monitor: Loading telemetry monitor
+[2025-10-08 13:30:23] [INFO] Cache: Fetching devices for client 1
+[2025-10-08 13:30:23] [INFO] Cache: Successfully fetched 25 devices
+[2025-10-08 13:30:23] [INFO] Cache: Fetching devices for client 2
+[2025-10-08 13:30:23] [INFO] Cache: Successfully fetched 25 devices
+[2025-10-08 13:30:23] [INFO] Cache: Fetching devices for client 3
+[2025-10-08 13:30:23] [INFO] Cache: Successfully fetched 25 devices
+[2025-10-08 13:30:23] [INFO] Cache: Fetching devices for client 4
+[2025-10-08 13:30:23] [INFO] Cache: Successfully fetched 25 devices
+[2025-10-08 13:30:23] [INFO] Cache: Fetching devices for client 5
+[2025-10-08 13:30:23] [INFO] Cache: Successfully fetched 25 devices
+[2025-10-08 13:30:24] [INFO] Data Gallery: User admin (admin) accessed data gallery
+[2025-10-08 13:30:24] [ERROR] Main: Critical error in main router: There are multiple `button` elements with the same auto-generated ID. When this element is created, it is assigned an internal ID based on the element type and provided parameters. Multiple elements with the same type and parameters will cause this error.
+
+To fix this error, please pass a unique `key` argument to the `button` element.
+[2025-10-08 13:45:49] [INFO] System: BatteryIQ application started
+[2025-10-08 13:45:52] [INFO] System: BatteryIQ application started
+[2025-10-08 13:45:52] [INFO] System: BatteryIQ application started
+[2025-10-08 13:45:58] [INFO] System: BatteryIQ application started
+[2025-10-08 13:45:58] [INFO] Authentication: Login attempt for user: admin
+[2025-10-08 13:45:59] [INFO] Authentication: Successful login for user: admin (Role: admin)
+[2025-10-08 13:45:59] [INFO] System: BatteryIQ application started
+[2025-10-08 13:45:59] [INFO] Navigation: User admin accessing admin dashboard
+[2025-10-08 13:45:59] [INFO] Cache: Fetching system statistics
+[2025-10-08 13:45:59] [INFO] Cache: Successfully fetched system statistics
+[2025-10-08 13:45:59] [INFO] Cache: Fetching clients from database
+[2025-10-08 13:45:59] [INFO] Cache: Successfully fetched 5 clients
+[2025-10-08 13:46:00] [INFO] Cache: Fetching clients from database
+[2025-10-08 13:46:00] [INFO] Cache: Successfully fetched 5 clients
+[2025-10-08 13:46:00] [INFO] Telemetry Monitor: Loading telemetry monitor
+[2025-10-08 13:46:00] [INFO] Cache: Fetching devices for client 1
+[2025-10-08 13:46:00] [INFO] Cache: Successfully fetched 25 devices
+[2025-10-08 13:46:00] [INFO] Cache: Fetching devices for client 2
+[2025-10-08 13:46:00] [INFO] Cache: Successfully fetched 25 devices
+[2025-10-08 13:46:00] [INFO] Cache: Fetching devices for client 3
+[2025-10-08 13:46:00] [INFO] Cache: Successfully fetched 25 devices
+[2025-10-08 13:46:00] [INFO] Cache: Fetching devices for client 4
+[2025-10-08 13:46:00] [INFO] Cache: Successfully fetched 25 devices
+[2025-10-08 13:46:00] [INFO] Cache: Fetching devices for client 5
+[2025-10-08 13:46:00] [INFO] Cache: Successfully fetched 25 devices
+[2025-10-08 13:46:01] [ERROR] Main: Critical error in main router: There are multiple elements with the same `key='view_5'`. To fix this, please make sure that the `key` argument is unique for each element you create.
+[2025-10-08 13:48:21] [INFO] System: BatteryIQ application started
+[2025-10-08 13:48:21] [INFO] Navigation: User admin accessing admin dashboard
+[2025-10-08 13:48:21] [INFO] Cache: Fetching system statistics
+[2025-10-08 13:48:21] [INFO] Cache: Successfully fetched system statistics
+[2025-10-08 13:48:21] [INFO] Telemetry Monitor: Loading telemetry monitor
+[2025-10-08 13:48:21] [INFO] Cache: Fetching locations for client 1
+[2025-10-08 13:48:21] [INFO] Cache: Successfully fetched 5 locations
+[2025-10-08 13:48:21] [INFO] Cache: Fetching locations for client 2
+[2025-10-08 13:48:21] [INFO] Cache: Successfully fetched 5 locations
+[2025-10-08 13:48:21] [INFO] Cache: Fetching locations for client 3
+[2025-10-08 13:48:21] [INFO] Cache: Successfully fetched 5 locations
+[2025-10-08 13:48:21] [INFO] Cache: Fetching locations for client 4
+[2025-10-08 13:48:21] [INFO] Cache: Successfully fetched 5 locations
+[2025-10-08 13:48:21] [INFO] Cache: Fetching locations for client 5
+[2025-10-08 13:48:21] [INFO] Cache: Successfully fetched 5 locations
+[2025-10-08 13:48:21] [INFO] Cache: Fetching system statistics
+[2025-10-08 13:48:21] [INFO] Cache: Successfully fetched system statistics
+[2025-10-08 13:48:46] [INFO] System: BatteryIQ application started
+[2025-10-08 13:48:46] [INFO] Navigation: User admin accessing admin dashboard
+[2025-10-08 13:48:46] [INFO] Telemetry Monitor: Loading telemetry monitor
+[2025-10-08 13:48:46] [INFO] System: BatteryIQ application started
+[2025-10-08 13:48:46] [INFO] Navigation: User admin accessing admin dashboard
+[2025-10-08 13:48:46] [INFO] Telemetry Monitor: Loading telemetry monitor
+[2025-10-08 13:48:55] [INFO] System: BatteryIQ application started
+[2025-10-08 13:48:55] [INFO] Navigation: User admin accessing admin dashboard
+[2025-10-08 13:48:55] [INFO] Telemetry Monitor: Loading telemetry monitor
+[2025-10-08 13:48:55] [ERROR] Main: Critical error in main router: There are multiple elements with the same `key='view_5'`. To fix this, please make sure that the `key` argument is unique for each element you create.
+[2025-10-08 13:48:59] [INFO] System: BatteryIQ application started
+[2025-10-08 13:48:59] [INFO] Navigation: User admin accessing admin dashboard
+[2025-10-08 13:48:59] [INFO] Telemetry Monitor: Loading telemetry monitor
+[2025-10-08 13:49:06] [INFO] System: BatteryIQ application started
+[2025-10-08 13:49:06] [INFO] Navigation: User admin accessing admin dashboard
+[2025-10-08 13:49:06] [INFO] Telemetry Monitor: Loading telemetry monitor
+[2025-10-08 13:49:34] [INFO] System: BatteryIQ application started
+[2025-10-08 13:49:34] [INFO] Navigation: User admin accessing admin dashboard
+[2025-10-08 13:49:34] [INFO] Cache: Fetching system statistics
+[2025-10-08 13:49:34] [INFO] Cache: Successfully fetched system statistics
+[2025-10-08 13:49:34] [INFO] Telemetry Monitor: Loading telemetry monitor
+[2025-10-08 13:49:35] [INFO] Cache: Fetching system statistics
+[2025-10-08 13:49:35] [INFO] Cache: Successfully fetched system statistics
+[2025-10-08 13:49:40] [INFO] System: BatteryIQ application started
+[2025-10-08 13:49:40] [INFO] Navigation: User admin accessing admin dashboard
+[2025-10-08 13:49:40] [INFO] Telemetry Monitor: Loading telemetry monitor
+[2025-10-08 13:50:22] [INFO] System: BatteryIQ application started
+[2025-10-08 13:50:22] [INFO] Navigation: User admin accessing admin dashboard
+[2025-10-08 13:50:22] [INFO] Telemetry Monitor: Loading telemetry monitor
+[2025-10-08 13:50:23] [INFO] System: BatteryIQ application started
+[2025-10-08 13:50:23] [INFO] Navigation: User admin accessing admin dashboard
+[2025-10-08 13:50:23] [INFO] Telemetry Monitor: Loading telemetry monitor
+[2025-10-08 13:50:27] [INFO] System: BatteryIQ application started
+[2025-10-08 13:50:27] [INFO] Navigation: User admin accessing admin dashboard
+[2025-10-08 13:50:28] [INFO] Telemetry Monitor: Loading telemetry monitor
+[2025-10-08 13:50:35] [INFO] System: BatteryIQ application started
+[2025-10-08 13:50:35] [INFO] Navigation: User admin accessing admin dashboard
+[2025-10-08 13:50:35] [INFO] Cache: Fetching system statistics
+[2025-10-08 13:50:35] [INFO] Cache: Successfully fetched system statistics
+[2025-10-08 13:50:35] [INFO] Telemetry Monitor: Loading telemetry monitor
+[2025-10-08 13:50:36] [INFO] Cache: Fetching system statistics
+[2025-10-08 13:50:36] [INFO] Cache: Successfully fetched system statistics
+[2025-10-08 13:50:42] [INFO] System: BatteryIQ application started
+[2025-10-08 13:50:42] [INFO] Navigation: User admin accessing admin dashboard
+[2025-10-08 13:50:42] [INFO] Telemetry Monitor: Loading telemetry monitor
+[2025-10-08 13:50:49] [INFO] System: BatteryIQ application started
+[2025-10-08 13:50:49] [INFO] Navigation: User admin accessing admin dashboard
+[2025-10-08 13:50:49] [INFO] Telemetry Monitor: Loading telemetry monitor
+[2025-10-08 13:50:53] [INFO] System: BatteryIQ application started
+[2025-10-08 13:50:53] [INFO] Navigation: User admin accessing admin dashboard
+[2025-10-08 13:50:54] [INFO] Telemetry Monitor: Loading telemetry monitor
+[2025-10-08 13:50:58] [INFO] System: BatteryIQ application started
+[2025-10-08 13:50:58] [INFO] Navigation: User admin accessing admin dashboard
+[2025-10-08 13:50:59] [INFO] Telemetry Monitor: Loading telemetry monitor
+[2025-10-08 13:51:00] [INFO] Cache: Fetching clients from database
+[2025-10-08 13:51:00] [INFO] Cache: Successfully fetched 5 clients
+[2025-10-08 13:55:18] [INFO] System: BatteryIQ application started
+[2025-10-08 13:55:20] [INFO] System: BatteryIQ application started
+[2025-10-08 13:55:20] [INFO] System: BatteryIQ application started
+[2025-10-08 13:55:27] [INFO] System: BatteryIQ application started
+[2025-10-08 13:55:27] [INFO] Authentication: Login attempt for user: admin
+[2025-10-08 13:55:28] [INFO] Authentication: Successful login for user: admin (Role: admin)
+[2025-10-08 13:55:29] [INFO] System: BatteryIQ application started
+[2025-10-08 13:55:29] [INFO] Navigation: User admin accessing admin dashboard
+[2025-10-08 13:55:29] [INFO] Cache: Fetching system statistics
+[2025-10-08 13:55:29] [INFO] Cache: Successfully fetched system statistics
+[2025-10-08 13:55:29] [INFO] Cache: Fetching clients from database
+[2025-10-08 13:55:29] [INFO] Cache: Successfully fetched 5 clients
+[2025-10-08 13:55:30] [INFO] Cache: Fetching clients from database
+[2025-10-08 13:55:30] [INFO] Cache: Successfully fetched 5 clients
+[2025-10-08 13:55:30] [INFO] Telemetry Monitor: Loading telemetry monitor
+[2025-10-08 13:55:30] [INFO] Cache: Fetching devices for client 1
+[2025-10-08 13:55:30] [INFO] Cache: Successfully fetched 25 devices
+[2025-10-08 13:55:30] [INFO] Cache: Fetching devices for client 2
+[2025-10-08 13:55:30] [INFO] Cache: Successfully fetched 25 devices
+[2025-10-08 13:55:30] [INFO] Cache: Fetching devices for client 3
+[2025-10-08 13:55:30] [INFO] Cache: Successfully fetched 25 devices
+[2025-10-08 13:55:30] [INFO] Cache: Fetching devices for client 4
+[2025-10-08 13:55:30] [INFO] Cache: Successfully fetched 25 devices
+[2025-10-08 13:55:30] [INFO] Cache: Fetching devices for client 5
+[2025-10-08 13:55:30] [INFO] Cache: Successfully fetched 25 devices
+[2025-10-08 13:55:31] [ERROR] Main: Critical error in main router: There are multiple elements with the same `key='view_5'`. To fix this, please make sure that the `key` argument is unique for each element you create.
+[2025-10-08 13:55:41] [INFO] System: BatteryIQ application started
+[2025-10-08 13:55:41] [INFO] Navigation: User admin accessing admin dashboard
+[2025-10-08 13:55:41] [INFO] Telemetry Monitor: Loading telemetry monitor
+[2025-10-08 13:55:42] [INFO] Cache: Fetching locations for client 1
+[2025-10-08 13:55:42] [INFO] Cache: Successfully fetched 5 locations
+[2025-10-08 13:55:42] [INFO] Cache: Fetching locations for client 2
+[2025-10-08 13:55:42] [INFO] Cache: Successfully fetched 5 locations
+[2025-10-08 13:55:42] [INFO] Cache: Fetching locations for client 3
+[2025-10-08 13:55:42] [INFO] Cache: Successfully fetched 5 locations
+[2025-10-08 13:55:42] [INFO] Cache: Fetching locations for client 4
+[2025-10-08 13:55:42] [INFO] Cache: Successfully fetched 5 locations
+[2025-10-08 13:55:42] [INFO] Cache: Fetching locations for client 5
+[2025-10-08 13:55:42] [INFO] Cache: Successfully fetched 5 locations
+[2025-10-08 13:55:42] [INFO] Cache: Fetching system statistics
+[2025-10-08 13:55:42] [INFO] Cache: Successfully fetched system statistics
+[2025-10-08 13:55:51] [INFO] System: BatteryIQ application started
+[2025-10-08 13:55:51] [INFO] Navigation: User admin accessing admin dashboard
+[2025-10-08 13:55:51] [INFO] Telemetry Monitor: Loading telemetry monitor
+[2025-10-08 13:55:52] [ERROR] Main: Critical error in main router: There are multiple elements with the same `key='view_5'`. To fix this, please make sure that the `key` argument is unique for each element you create.
+[2025-10-08 14:10:42] [INFO] System: BatteryIQ application started
+[2025-10-08 14:10:46] [INFO] System: BatteryIQ application started
+[2025-10-08 14:10:46] [INFO] System: BatteryIQ application started
+[2025-10-08 14:10:53] [INFO] System: BatteryIQ application started
+[2025-10-08 14:10:53] [INFO] Authentication: Login attempt for user: admin
+[2025-10-08 14:10:54] [WARNING] Authentication: Failed login attempt for user: admin
+[2025-10-08 14:10:56] [INFO] System: BatteryIQ application started
+[2025-10-08 14:10:56] [INFO] Authentication: Login attempt for user: admin
+[2025-10-08 14:10:57] [INFO] Authentication: Successful login for user: admin (Role: admin)
+[2025-10-08 14:10:58] [INFO] System: BatteryIQ application started
+[2025-10-08 14:10:58] [INFO] Navigation: User admin accessing admin dashboard
+[2025-10-08 14:10:58] [INFO] Cache: Fetching system statistics
+[2025-10-08 14:10:58] [INFO] Cache: Successfully fetched system statistics
+[2025-10-08 14:10:58] [INFO] Cache: Fetching clients from database
+[2025-10-08 14:10:58] [INFO] Cache: Successfully fetched 5 clients
+[2025-10-08 14:10:58] [INFO] Cache: Fetching clients from database
+[2025-10-08 14:10:58] [INFO] Cache: Successfully fetched 5 clients
+[2025-10-08 14:10:58] [INFO] Telemetry Monitor: Loading telemetry monitor
+[2025-10-08 14:10:58] [INFO] Cache: Fetching devices for client 1
+[2025-10-08 14:10:59] [INFO] Cache: Successfully fetched 25 devices
+[2025-10-08 14:10:59] [INFO] Cache: Fetching devices for client 2
+[2025-10-08 14:10:59] [INFO] Cache: Successfully fetched 25 devices
+[2025-10-08 14:10:59] [INFO] Cache: Fetching devices for client 3
+[2025-10-08 14:10:59] [INFO] Cache: Successfully fetched 25 devices
+[2025-10-08 14:10:59] [INFO] Cache: Fetching devices for client 4
+[2025-10-08 14:10:59] [INFO] Cache: Successfully fetched 25 devices
+[2025-10-08 14:10:59] [INFO] Cache: Fetching devices for client 5
+[2025-10-08 14:10:59] [INFO] Cache: Successfully fetched 25 devices
+[2025-10-08 14:11:00] [ERROR] Main: Critical error in main router: There are multiple elements with the same `key='view_5'`. To fix this, please make sure that the `key` argument is unique for each element you create.
+[2025-10-08 14:13:39] [INFO] System: BatteryIQ application started
+[2025-10-08 14:13:41] [INFO] System: BatteryIQ application started
+[2025-10-08 14:13:41] [INFO] System: BatteryIQ application started
+[2025-10-08 14:13:43] [INFO] System: BatteryIQ application started
+[2025-10-08 14:13:43] [INFO] Test Authentication: Test Login
+[2025-10-08 14:13:43] [INFO] Authentication:  Successful login for user: admin (Role: admin)
+[2025-10-08 14:13:43] [INFO] System: BatteryIQ application started
+[2025-10-08 14:13:43] [INFO] Navigation: User admin accessing admin dashboard
+[2025-10-08 14:13:43] [INFO] Cache: Fetching system statistics
+[2025-10-08 14:13:43] [INFO] Cache: Successfully fetched system statistics
+[2025-10-08 14:13:43] [INFO] Cache: Fetching clients from database
+[2025-10-08 14:13:43] [INFO] Cache: Successfully fetched 5 clients
+[2025-10-08 14:13:44] [INFO] Cache: Fetching clients from database
+[2025-10-08 14:13:44] [INFO] Cache: Successfully fetched 5 clients
+[2025-10-08 14:13:44] [INFO] Telemetry Monitor: Loading telemetry monitor
+[2025-10-08 14:13:44] [INFO] Cache: Fetching devices for client 1
+[2025-10-08 14:13:44] [INFO] Cache: Successfully fetched 25 devices
+[2025-10-08 14:13:44] [INFO] Cache: Fetching devices for client 2
+[2025-10-08 14:13:44] [INFO] Cache: Successfully fetched 25 devices
+[2025-10-08 14:13:44] [INFO] Cache: Fetching devices for client 3
+[2025-10-08 14:13:44] [INFO] Cache: Successfully fetched 25 devices
+[2025-10-08 14:13:44] [INFO] Cache: Fetching devices for client 4
+[2025-10-08 14:13:44] [INFO] Cache: Successfully fetched 25 devices
+[2025-10-08 14:13:44] [INFO] Cache: Fetching devices for client 5
+[2025-10-08 14:13:44] [INFO] Cache: Successfully fetched 25 devices
+[2025-10-08 14:13:45] [ERROR] Main: Critical error in main router: There are multiple elements with the same `key='view_5'`. To fix this, please make sure that the `key` argument is unique for each element you create.
+[2025-10-08 14:16:32] [INFO] System: BatteryIQ application started
+[2025-10-08 14:16:34] [INFO] System: BatteryIQ application started
+[2025-10-08 14:16:34] [INFO] System: BatteryIQ application started
+[2025-10-08 14:16:36] [INFO] System: BatteryIQ application started
+[2025-10-08 14:16:36] [INFO] Test Authentication: Test Login
+[2025-10-08 14:16:36] [INFO] Authentication:  Successful login for user: admin (Role: admin)
+[2025-10-08 14:16:36] [INFO] System: BatteryIQ application started
+[2025-10-08 14:16:36] [INFO] Navigation: User admin accessing admin dashboard
+[2025-10-08 14:16:36] [INFO] Cache: Fetching system statistics
+[2025-10-08 14:16:37] [INFO] Cache: Successfully fetched system statistics
+[2025-10-08 14:16:37] [INFO] Cache: Fetching clients from database
+[2025-10-08 14:16:37] [INFO] Cache: Successfully fetched 5 clients
+[2025-10-08 14:16:37] [INFO] Cache: Fetching clients from database
+[2025-10-08 14:16:37] [INFO] Cache: Successfully fetched 5 clients
+[2025-10-08 14:16:37] [INFO] Telemetry Monitor: Loading telemetry monitor
+[2025-10-08 14:16:37] [INFO] Cache: Fetching devices for client 1
+[2025-10-08 14:16:37] [INFO] Cache: Successfully fetched 25 devices
+[2025-10-08 14:16:37] [INFO] Cache: Fetching devices for client 2
+[2025-10-08 14:16:37] [INFO] Cache: Successfully fetched 25 devices
+[2025-10-08 14:16:37] [INFO] Cache: Fetching devices for client 3
+[2025-10-08 14:16:37] [INFO] Cache: Successfully fetched 25 devices
+[2025-10-08 14:16:37] [INFO] Cache: Fetching devices for client 4
+[2025-10-08 14:16:37] [INFO] Cache: Successfully fetched 25 devices
+[2025-10-08 14:16:37] [INFO] Cache: Fetching devices for client 5
+[2025-10-08 14:16:37] [INFO] Cache: Successfully fetched 25 devices
+[2025-10-08 14:16:38] [INFO] Cache: Fetching locations for client 1
+[2025-10-08 14:16:38] [INFO] Cache: Successfully fetched 5 locations
+[2025-10-08 14:16:38] [INFO] Cache: Fetching locations for client 2
+[2025-10-08 14:16:38] [INFO] Cache: Successfully fetched 5 locations
+[2025-10-08 14:16:38] [INFO] Cache: Fetching locations for client 3
+[2025-10-08 14:16:38] [INFO] Cache: Successfully fetched 5 locations
+[2025-10-08 14:16:38] [INFO] Cache: Fetching locations for client 4
+[2025-10-08 14:16:38] [INFO] Cache: Successfully fetched 5 locations
+[2025-10-08 14:16:38] [INFO] Cache: Fetching locations for client 5
+[2025-10-08 14:16:38] [INFO] Cache: Successfully fetched 5 locations
+[2025-10-08 14:16:38] [INFO] Cache: Fetching system statistics
+[2025-10-08 14:16:38] [INFO] Cache: Successfully fetched system statistics
+[2025-10-08 15:09:09] [INFO] System: BatteryIQ application started
+[2025-10-08 15:09:12] [INFO] System: BatteryIQ application started
+[2025-10-08 15:09:13] [INFO] System: BatteryIQ application started
+[2025-10-08 15:09:14] [INFO] System: BatteryIQ application started
+[2025-10-08 15:09:14] [INFO] Test Authentication: Test Login
+[2025-10-08 15:09:14] [INFO] Authentication:  Successful login for user: admin (Role: admin)
+[2025-10-08 15:09:15] [INFO] System: BatteryIQ application started
+[2025-10-08 15:09:15] [INFO] Navigation: User admin accessing admin dashboard
+[2025-10-08 15:09:15] [INFO] Cache: Fetching system statistics
+[2025-10-08 15:09:15] [INFO] Cache: Successfully fetched system statistics
+[2025-10-08 15:09:15] [INFO] Cache: Fetching clients from database
+[2025-10-08 15:09:15] [INFO] Cache: Successfully fetched 5 clients
+[2025-10-08 15:09:16] [INFO] Cache: Fetching clients from database
+[2025-10-08 15:09:16] [INFO] Cache: Successfully fetched 5 clients
+[2025-10-08 15:09:16] [INFO] Telemetry Monitor: Loading telemetry monitor
+[2025-10-08 15:09:16] [INFO] Cache: Fetching devices for client 1
+[2025-10-08 15:09:16] [INFO] Cache: Successfully fetched 25 devices
+[2025-10-08 15:09:16] [INFO] Cache: Fetching devices for client 2
+[2025-10-08 15:09:16] [INFO] Cache: Successfully fetched 25 devices
+[2025-10-08 15:09:16] [INFO] Cache: Fetching devices for client 3
+[2025-10-08 15:09:16] [INFO] Cache: Successfully fetched 25 devices
+[2025-10-08 15:09:16] [INFO] Cache: Fetching devices for client 4
+[2025-10-08 15:09:16] [INFO] Cache: Successfully fetched 25 devices
+[2025-10-08 15:09:16] [INFO] Cache: Fetching devices for client 5
+[2025-10-08 15:09:16] [INFO] Cache: Successfully fetched 25 devices
+[2025-10-08 15:09:17] [INFO] Cache: Fetching locations for client 1
+[2025-10-08 15:09:17] [INFO] Cache: Successfully fetched 5 locations
+[2025-10-08 15:09:17] [INFO] Cache: Fetching locations for client 2
+[2025-10-08 15:09:17] [INFO] Cache: Successfully fetched 5 locations
+[2025-10-08 15:09:17] [INFO] Cache: Fetching locations for client 3
+[2025-10-08 15:09:17] [INFO] Cache: Successfully fetched 5 locations
+[2025-10-08 15:09:17] [INFO] Cache: Fetching locations for client 4
+[2025-10-08 15:09:17] [INFO] Cache: Successfully fetched 5 locations
+[2025-10-08 15:09:17] [INFO] Cache: Fetching locations for client 5
+[2025-10-08 15:09:17] [INFO] Cache: Successfully fetched 5 locations
+[2025-10-08 15:09:17] [INFO] Cache: Fetching system statistics
+[2025-10-08 15:09:17] [INFO] Cache: Successfully fetched system statistics
+[2025-10-08 15:09:49] [INFO] System: BatteryIQ application started
+[2025-10-08 15:09:55] [INFO] System: BatteryIQ application started
+[2025-10-08 15:09:55] [INFO] System: BatteryIQ application started
+[2025-10-08 15:09:56] [INFO] System: BatteryIQ application started
+[2025-10-08 15:09:56] [INFO] Test Authentication: Test Login
+[2025-10-08 15:09:56] [INFO] Authentication:  Successful login for user: admin (Role: admin)
+[2025-10-08 15:09:57] [INFO] System: BatteryIQ application started
+[2025-10-08 15:09:57] [INFO] Navigation: User admin accessing admin dashboard
+[2025-10-08 15:09:57] [INFO] Cache: Fetching system statistics
+[2025-10-08 15:09:57] [INFO] Cache: Successfully fetched system statistics
+[2025-10-08 15:09:57] [INFO] Cache: Fetching clients from database
+[2025-10-08 15:09:57] [INFO] Cache: Successfully fetched 5 clients
+[2025-10-08 15:09:57] [INFO] Cache: Fetching clients from database
+[2025-10-08 15:09:57] [INFO] Cache: Successfully fetched 5 clients
+[2025-10-08 15:09:57] [INFO] Telemetry Monitor: Loading telemetry monitor
+[2025-10-08 15:09:57] [INFO] Cache: Fetching devices for client 1
+[2025-10-08 15:09:57] [INFO] Cache: Successfully fetched 25 devices
+[2025-10-08 15:09:57] [INFO] Cache: Fetching devices for client 2
+[2025-10-08 15:09:57] [INFO] Cache: Successfully fetched 25 devices
+[2025-10-08 15:09:57] [INFO] Cache: Fetching devices for client 3
+[2025-10-08 15:09:57] [INFO] Cache: Successfully fetched 25 devices
+[2025-10-08 15:09:57] [INFO] Cache: Fetching devices for client 4
+[2025-10-08 15:09:57] [INFO] Cache: Successfully fetched 25 devices
+[2025-10-08 15:09:57] [INFO] Cache: Fetching devices for client 5
+[2025-10-08 15:09:57] [INFO] Cache: Successfully fetched 25 devices
+[2025-10-08 15:09:58] [INFO] Data Gallery: User admin (admin) accessed data gallery
+[2025-10-08 15:09:58] [ERROR] Main: Critical error in main router: There are multiple `button` elements with the same auto-generated ID. When this element is created, it is assigned an internal ID based on the element type and provided parameters. Multiple elements with the same type and parameters will cause this error.
+
+To fix this error, please pass a unique `key` argument to the `button` element.
+[2025-10-08 15:10:55] [INFO] System: BatteryIQ application started
+[2025-10-08 15:10:59] [INFO] System: BatteryIQ application started
+[2025-10-08 15:10:59] [INFO] System: BatteryIQ application started
+[2025-10-08 15:11:01] [INFO] System: BatteryIQ application started
+[2025-10-08 15:11:01] [INFO] Test Authentication: Test Login
+[2025-10-08 15:11:01] [INFO] Authentication:  Successful login for user: admin (Role: admin)
+[2025-10-08 15:11:01] [INFO] System: BatteryIQ application started
+[2025-10-08 15:11:01] [INFO] Navigation: User admin accessing admin dashboard
+[2025-10-08 15:11:01] [INFO] Cache: Fetching system statistics
+[2025-10-08 15:11:01] [INFO] Cache: Successfully fetched system statistics
+[2025-10-08 15:11:01] [INFO] Cache: Fetching clients from database
+[2025-10-08 15:11:01] [INFO] Cache: Successfully fetched 5 clients
+[2025-10-08 15:11:02] [INFO] Cache: Fetching clients from database
+[2025-10-08 15:11:02] [INFO] Cache: Successfully fetched 5 clients
+[2025-10-08 15:11:02] [INFO] Telemetry Monitor: Loading telemetry monitor
+[2025-10-08 15:11:02] [INFO] Cache: Fetching devices for client 1
+[2025-10-08 15:11:02] [INFO] Cache: Successfully fetched 25 devices
+[2025-10-08 15:11:02] [INFO] Cache: Fetching devices for client 2
+[2025-10-08 15:11:02] [INFO] Cache: Successfully fetched 25 devices
+[2025-10-08 15:11:02] [INFO] Cache: Fetching devices for client 3
+[2025-10-08 15:11:02] [INFO] Cache: Successfully fetched 25 devices
+[2025-10-08 15:11:02] [INFO] Cache: Fetching devices for client 4
+[2025-10-08 15:11:02] [INFO] Cache: Successfully fetched 25 devices
+[2025-10-08 15:11:02] [INFO] Cache: Fetching devices for client 5
+[2025-10-08 15:11:02] [INFO] Cache: Successfully fetched 25 devices
+[2025-10-08 15:11:03] [INFO] Data Gallery: User admin (admin) accessed data gallery
+[2025-10-08 15:11:03] [ERROR] Main: Critical error in main router: There are multiple `button` elements with the same auto-generated ID. When this element is created, it is assigned an internal ID based on the element type and provided parameters. Multiple elements with the same type and parameters will cause this error.
+
+To fix this error, please pass a unique `key` argument to the `button` element.
+[2025-10-08 15:31:10] [INFO] System: BatteryIQ application started
+[2025-10-08 15:31:12] [INFO] System: BatteryIQ application started
+[2025-10-08 15:31:12] [INFO] System: BatteryIQ application started
+[2025-10-08 15:31:14] [INFO] System: BatteryIQ application started
+[2025-10-08 15:31:14] [INFO] Test Authentication: Test Login
+[2025-10-08 15:31:14] [INFO] Authentication:  Successful login for user: admin (Role: admin)
+[2025-10-08 15:31:15] [INFO] System: BatteryIQ application started
+[2025-10-08 15:31:15] [INFO] Navigation: User admin accessing admin dashboard
+[2025-10-08 15:31:15] [INFO] Cache: Fetching system statistics
+[2025-10-08 15:31:15] [INFO] Cache: Successfully fetched system statistics
+[2025-10-08 15:31:15] [INFO] Cache: Fetching clients from database
+[2025-10-08 15:31:15] [INFO] Cache: Successfully fetched 5 clients
+[2025-10-08 15:31:16] [INFO] Cache: Fetching clients from database
+[2025-10-08 15:31:16] [INFO] Cache: Successfully fetched 5 clients
+[2025-10-08 15:31:16] [INFO] Telemetry Monitor: Loading telemetry monitor
+[2025-10-08 15:31:16] [INFO] Cache: Fetching devices for client 1
+[2025-10-08 15:31:16] [INFO] Cache: Successfully fetched 25 devices
+[2025-10-08 15:31:16] [INFO] Cache: Fetching devices for client 2
+[2025-10-08 15:31:16] [INFO] Cache: Successfully fetched 25 devices
+[2025-10-08 15:31:16] [INFO] Cache: Fetching devices for client 3
+[2025-10-08 15:31:16] [INFO] Cache: Successfully fetched 25 devices
+[2025-10-08 15:31:16] [INFO] Cache: Fetching devices for client 4
+[2025-10-08 15:31:16] [INFO] Cache: Successfully fetched 25 devices
+[2025-10-08 15:31:16] [INFO] Cache: Fetching devices for client 5
+[2025-10-08 15:31:16] [INFO] Cache: Successfully fetched 25 devices
+[2025-10-08 15:31:17] [INFO] Data Gallery: User admin (admin) accessed data gallery
+[2025-10-08 15:31:17] [INFO] Data Gallery: Admin admin accessing all data
+[2025-10-08 15:31:17] [INFO] Data Gallery: User admin (admin) viewing 15 datasets
+[2025-10-08 15:31:17] [INFO] Cache: Fetching locations for client 1
+[2025-10-08 15:31:17] [INFO] Cache: Successfully fetched 5 locations
+[2025-10-08 15:31:17] [INFO] Cache: Fetching locations for client 2
+[2025-10-08 15:31:17] [INFO] Cache: Successfully fetched 5 locations
+[2025-10-08 15:31:17] [INFO] Cache: Fetching locations for client 3
+[2025-10-08 15:31:17] [INFO] Cache: Successfully fetched 5 locations
+[2025-10-08 15:31:17] [INFO] Cache: Fetching locations for client 4
+[2025-10-08 15:31:17] [INFO] Cache: Successfully fetched 5 locations
+[2025-10-08 15:31:17] [INFO] Cache: Fetching locations for client 5
+[2025-10-08 15:31:17] [INFO] Cache: Successfully fetched 5 locations
+[2025-10-08 15:31:17] [INFO] Cache: Fetching system statistics
+[2025-10-08 15:31:17] [INFO] Cache: Successfully fetched system statistics
+[2025-10-08 15:31:33] [INFO] System: BatteryIQ application started
+[2025-10-08 15:31:33] [INFO] Navigation: User admin accessing admin dashboard
+[2025-10-08 15:31:34] [INFO] Telemetry Monitor: Loading telemetry monitor
+[2025-10-08 15:31:35] [INFO] Data Gallery: User admin (admin) accessed data gallery
+[2025-10-08 15:31:35] [INFO] Data Gallery: Admin admin accessing all data
+[2025-10-08 15:31:35] [INFO] Data Gallery: User admin (admin) viewing 5 datasets
+[2025-10-08 15:31:45] [INFO] System: BatteryIQ application started
+[2025-10-08 15:31:45] [INFO] Navigation: User admin accessing admin dashboard
+[2025-10-08 15:31:46] [INFO] Telemetry Monitor: Loading telemetry monitor
+[2025-10-08 15:31:47] [INFO] Data Gallery: User admin (admin) accessed data gallery
+[2025-10-08 15:31:47] [INFO] Data Gallery: Admin admin accessing all data
+[2025-10-08 15:31:47] [INFO] Data Gallery: User admin (admin) viewing 0 datasets
+[2025-10-08 15:31:51] [INFO] System: BatteryIQ application started
+[2025-10-08 15:31:51] [INFO] Navigation: User admin accessing admin dashboard
+[2025-10-08 15:31:51] [INFO] Telemetry Monitor: Loading telemetry monitor
+[2025-10-08 15:31:52] [INFO] Data Gallery: User admin (admin) accessed data gallery
+[2025-10-08 15:31:52] [INFO] Data Gallery: Admin admin accessing all data
+[2025-10-08 15:31:52] [INFO] Data Gallery: User admin (admin) viewing 10 datasets
+[2025-10-08 15:32:14] [INFO] System: BatteryIQ application started
+[2025-10-08 15:32:14] [INFO] Navigation: User admin accessing admin dashboard
+[2025-10-08 15:32:14] [INFO] Telemetry Monitor: Loading telemetry monitor
+[2025-10-08 15:32:15] [INFO] Data Gallery: User admin (admin) accessed data gallery
+[2025-10-08 15:32:15] [INFO] Data Gallery: Admin admin accessing all data
+[2025-10-08 15:32:15] [INFO] Data Gallery: User admin (admin) viewing 10 datasets
+[2025-10-08 15:32:20] [INFO] System: BatteryIQ application started
+[2025-10-08 15:32:20] [INFO] Navigation: User admin accessing admin dashboard
+[2025-10-08 15:32:20] [INFO] Cache: Fetching system statistics
+[2025-10-08 15:32:20] [INFO] Cache: Successfully fetched system statistics
+[2025-10-08 15:32:21] [INFO] Telemetry Monitor: Loading telemetry monitor
+[2025-10-08 15:32:22] [INFO] Data Gallery: User admin (admin) accessed data gallery
+[2025-10-08 15:32:22] [INFO] Data Gallery: Admin admin accessing all data
+[2025-10-08 15:32:22] [INFO] Data Gallery: User admin (admin) viewing 10 datasets
+[2025-10-08 15:32:22] [INFO] Cache: Fetching system statistics
+[2025-10-08 15:32:22] [INFO] Cache: Successfully fetched system statistics
+[2025-10-08 15:32:27] [INFO] System: BatteryIQ application started
+[2025-10-08 15:32:27] [INFO] Navigation: User admin accessing admin dashboard
+[2025-10-08 15:32:27] [INFO] Telemetry Monitor: Loading telemetry monitor
+[2025-10-08 15:32:28] [INFO] Data Gallery: User admin (admin) accessed data gallery
+[2025-10-08 15:32:28] [INFO] Data Gallery: Admin admin accessing all data
+[2025-10-08 15:32:29] [INFO] Data Gallery: User admin (admin) viewing 10 datasets
+[2025-10-08 15:32:29] [INFO] Data Gallery: User admin downloaded SN-0102005_sample.csv
+[2025-10-08 15:32:48] [INFO] System: BatteryIQ application started
+[2025-10-08 15:32:48] [INFO] Navigation: User admin accessing admin dashboard
+[2025-10-08 15:32:48] [INFO] Telemetry Monitor: Loading telemetry monitor
+[2025-10-08 15:32:49] [INFO] Data Gallery: User admin (admin) accessed data gallery
+[2025-10-08 15:32:49] [INFO] Data Gallery: Admin admin accessing all data
+[2025-10-08 15:32:49] [INFO] Data Gallery: User admin (admin) viewing 10 datasets

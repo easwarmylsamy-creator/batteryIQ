@@ -1,0 +1,599 @@
+[2025-10-12 15:38:56] [INFO] System: BatteryIQ application started
+[2025-10-12 15:39:41] [INFO] System: BatteryIQ application started
+[2025-10-12 15:39:41] [INFO] System: BatteryIQ application started
+[2025-10-12 15:39:43] [INFO] System: BatteryIQ application started
+[2025-10-12 15:39:43] [INFO] Test Authentication: Test Login
+[2025-10-12 15:39:43] [INFO] Authentication:  Successful login for user: admin (Role: admin)
+[2025-10-12 15:39:44] [INFO] System: BatteryIQ application started
+[2025-10-12 15:39:44] [INFO] Navigation: User admin accessing admin dashboard
+[2025-10-12 15:39:44] [INFO] Cache: Fetching system statistics
+[2025-10-12 15:39:44] [INFO] Cache: Successfully fetched system statistics
+[2025-10-12 15:39:44] [INFO] Cache: Fetching clients from database
+[2025-10-12 15:39:44] [INFO] Cache: Successfully fetched 5 clients
+[2025-10-12 15:39:44] [INFO] Cache: Fetching clients from database
+[2025-10-12 15:39:44] [INFO] Cache: Successfully fetched 5 clients
+[2025-10-12 15:39:44] [INFO] Telemetry Monitor: Loading telemetry monitor
+[2025-10-12 15:39:44] [INFO] Cache: Fetching devices for client 1
+[2025-10-12 15:39:44] [INFO] Cache: Successfully fetched 25 devices
+[2025-10-12 15:39:44] [INFO] Cache: Fetching devices for client 2
+[2025-10-12 15:39:44] [INFO] Cache: Successfully fetched 25 devices
+[2025-10-12 15:39:44] [INFO] Cache: Fetching devices for client 3
+[2025-10-12 15:39:44] [INFO] Cache: Successfully fetched 25 devices
+[2025-10-12 15:39:44] [INFO] Cache: Fetching devices for client 4
+[2025-10-12 15:39:44] [INFO] Cache: Successfully fetched 25 devices
+[2025-10-12 15:39:44] [INFO] Cache: Fetching devices for client 5
+[2025-10-12 15:39:44] [INFO] Cache: Successfully fetched 25 devices
+[2025-10-12 15:39:44] [INFO] Data Gallery: Admin admin accessing all data
+[2025-10-12 15:39:45] [INFO] Data Gallery: User admin (admin) viewing 15 datasets
+[2025-10-12 15:39:45] [INFO] Cache: Fetching locations for client 1
+[2025-10-12 15:39:45] [INFO] Cache: Successfully fetched 5 locations
+[2025-10-12 15:39:45] [INFO] Cache: Fetching locations for client 2
+[2025-10-12 15:39:45] [INFO] Cache: Successfully fetched 5 locations
+[2025-10-12 15:39:45] [INFO] Cache: Fetching locations for client 3
+[2025-10-12 15:39:45] [INFO] Cache: Successfully fetched 5 locations
+[2025-10-12 15:39:45] [INFO] Cache: Fetching locations for client 4
+[2025-10-12 15:39:45] [INFO] Cache: Successfully fetched 5 locations
+[2025-10-12 15:39:45] [INFO] Cache: Fetching locations for client 5
+[2025-10-12 15:39:45] [INFO] Cache: Successfully fetched 5 locations
+[2025-10-12 15:39:45] [INFO] Cache: Fetching system statistics
+[2025-10-12 15:39:45] [INFO] Cache: Successfully fetched system statistics
+[2025-10-12 15:39:57] [INFO] System: BatteryIQ application started
+[2025-10-12 15:39:57] [INFO] Navigation: User admin accessing admin dashboard
+[2025-10-12 15:39:57] [INFO] Telemetry Monitor: Loading telemetry monitor
+[2025-10-12 15:39:57] [INFO] Data Gallery: Admin admin accessing all data
+[2025-10-12 15:39:57] [INFO] Data Gallery: User admin (admin) viewing 15 datasets
+[2025-10-12 15:43:10] [INFO] System: BatteryIQ application started
+[2025-10-12 15:43:15] [INFO] System: BatteryIQ application started
+[2025-10-12 15:43:16] [INFO] System: BatteryIQ application started
+[2025-10-12 15:43:19] [INFO] System: BatteryIQ application started
+[2025-10-12 15:43:19] [INFO] Test Authentication: Test Login
+[2025-10-12 15:43:19] [INFO] Authentication:  Successful login for user: admin (Role: admin)
+[2025-10-12 15:43:20] [INFO] System: BatteryIQ application started
+[2025-10-12 15:43:20] [INFO] Navigation: User admin accessing admin dashboard
+[2025-10-12 15:43:20] [INFO] Cache: Fetching system statistics
+[2025-10-12 15:43:20] [INFO] Cache: Successfully fetched system statistics
+[2025-10-12 15:43:20] [INFO] Cache: Fetching clients from database
+[2025-10-12 15:43:20] [INFO] Cache: Successfully fetched 5 clients
+[2025-10-12 15:43:21] [INFO] Cache: Fetching clients from database
+[2025-10-12 15:43:21] [INFO] Cache: Successfully fetched 5 clients
+[2025-10-12 15:43:21] [INFO] Telemetry Monitor: Loading telemetry monitor
+[2025-10-12 15:43:21] [INFO] Cache: Fetching devices for client 1
+[2025-10-12 15:43:21] [INFO] Cache: Successfully fetched 25 devices
+[2025-10-12 15:43:21] [INFO] Cache: Fetching devices for client 2
+[2025-10-12 15:43:21] [INFO] Cache: Successfully fetched 25 devices
+[2025-10-12 15:43:21] [INFO] Cache: Fetching devices for client 3
+[2025-10-12 15:43:21] [INFO] Cache: Successfully fetched 25 devices
+[2025-10-12 15:43:21] [INFO] Cache: Fetching devices for client 4
+[2025-10-12 15:43:21] [INFO] Cache: Successfully fetched 25 devices
+[2025-10-12 15:43:21] [INFO] Cache: Fetching devices for client 5
+[2025-10-12 15:43:21] [INFO] Cache: Successfully fetched 25 devices
+[2025-10-12 15:43:22] [INFO] Data Gallery: Admin admin accessing all data
+[2025-10-12 15:43:22] [INFO] Data Gallery: User admin (admin) viewing 15 datasets
+[2025-10-12 15:43:22] [INFO] Cache: Fetching locations for client 1
+[2025-10-12 15:43:22] [INFO] Cache: Successfully fetched 5 locations
+[2025-10-12 15:43:22] [INFO] Cache: Fetching locations for client 2
+[2025-10-12 15:43:22] [INFO] Cache: Successfully fetched 5 locations
+[2025-10-12 15:43:22] [INFO] Cache: Fetching locations for client 3
+[2025-10-12 15:43:22] [INFO] Cache: Successfully fetched 5 locations
+[2025-10-12 15:43:22] [INFO] Cache: Fetching locations for client 4
+[2025-10-12 15:43:22] [INFO] Cache: Successfully fetched 5 locations
+[2025-10-12 15:43:22] [INFO] Cache: Fetching locations for client 5
+[2025-10-12 15:43:22] [INFO] Cache: Successfully fetched 5 locations
+[2025-10-12 15:43:22] [INFO] Cache: Fetching system statistics
+[2025-10-12 15:43:22] [INFO] Cache: Successfully fetched system statistics
+[2025-10-12 15:43:47] [INFO] System: BatteryIQ application started
+[2025-10-12 15:43:47] [INFO] Navigation: User admin accessing admin dashboard
+[2025-10-12 15:43:48] [INFO] System: BatteryIQ application started
+[2025-10-12 15:43:48] [INFO] Navigation: User admin accessing admin dashboard
+[2025-10-12 15:43:48] [INFO] Telemetry Monitor: Loading telemetry monitor
+[2025-10-12 15:43:49] [INFO] Data Gallery: Admin admin accessing all data
+[2025-10-12 15:43:49] [INFO] Data Gallery: User admin (admin) viewing 15 datasets
+[2025-10-12 15:43:49] [INFO] Onboarding: Client info entered: Client onboarding Test
+[2025-10-12 15:43:49] [INFO] System: BatteryIQ application started
+[2025-10-12 15:43:49] [INFO] Navigation: User admin accessing admin dashboard
+[2025-10-12 15:43:50] [INFO] Telemetry Monitor: Loading telemetry monitor
+[2025-10-12 15:43:51] [INFO] Data Gallery: Admin admin accessing all data
+[2025-10-12 15:43:51] [INFO] Data Gallery: User admin (admin) viewing 15 datasets
+[2025-10-12 15:56:11] [INFO] System: BatteryIQ application started
+[2025-10-12 15:56:13] [INFO] System: BatteryIQ application started
+[2025-10-12 15:56:13] [INFO] System: BatteryIQ application started
+[2025-10-12 15:56:14] [INFO] System: BatteryIQ application started
+[2025-10-12 15:56:14] [INFO] Test Authentication: Test Login
+[2025-10-12 15:56:14] [INFO] Authentication:  Successful login for user: admin (Role: admin)
+[2025-10-12 15:56:15] [INFO] System: BatteryIQ application started
+[2025-10-12 15:56:15] [INFO] Navigation: User admin accessing admin dashboard
+[2025-10-12 15:56:15] [INFO] Cache: Fetching system statistics
+[2025-10-12 15:56:15] [INFO] Cache: Successfully fetched system statistics
+[2025-10-12 15:56:15] [INFO] Cache: Fetching clients from database
+[2025-10-12 15:56:15] [INFO] Cache: Successfully fetched 5 clients
+[2025-10-12 15:56:16] [INFO] Cache: Fetching clients from database
+[2025-10-12 15:56:16] [INFO] Cache: Successfully fetched 5 clients
+[2025-10-12 15:56:16] [INFO] Cache: Fetching devices for client 1
+[2025-10-12 15:56:16] [INFO] Cache: Successfully fetched 25 devices
+[2025-10-12 15:56:16] [INFO] Cache: Fetching locations for client 1
+[2025-10-12 15:56:16] [INFO] Cache: Successfully fetched 5 locations
+[2025-10-12 15:56:16] [INFO] Cache: Fetching devices for client 2
+[2025-10-12 15:56:16] [INFO] Cache: Successfully fetched 25 devices
+[2025-10-12 15:56:16] [INFO] Cache: Fetching locations for client 2
+[2025-10-12 15:56:16] [INFO] Cache: Successfully fetched 5 locations
+[2025-10-12 15:56:16] [INFO] Cache: Fetching devices for client 3
+[2025-10-12 15:56:16] [INFO] Cache: Successfully fetched 25 devices
+[2025-10-12 15:56:16] [INFO] Cache: Fetching locations for client 3
+[2025-10-12 15:56:16] [INFO] Cache: Successfully fetched 5 locations
+[2025-10-12 15:56:16] [INFO] Cache: Fetching devices for client 4
+[2025-10-12 15:56:16] [INFO] Cache: Successfully fetched 25 devices
+[2025-10-12 15:56:16] [INFO] Cache: Fetching locations for client 4
+[2025-10-12 15:56:16] [INFO] Cache: Successfully fetched 5 locations
+[2025-10-12 15:56:16] [INFO] Cache: Fetching devices for client 5
+[2025-10-12 15:56:16] [INFO] Cache: Successfully fetched 25 devices
+[2025-10-12 15:56:16] [INFO] Cache: Fetching locations for client 5
+[2025-10-12 15:56:16] [INFO] Cache: Successfully fetched 5 locations
+[2025-10-12 15:56:16] [INFO] Cache: Fetching system statistics
+[2025-10-12 15:56:16] [INFO] Cache: Successfully fetched system statistics
+[2025-10-12 15:56:16] [INFO] Data Gallery: Admin admin accessing all data
+[2025-10-12 15:56:16] [INFO] Data Gallery: User admin (admin) viewing 15 datasets
+[2025-10-12 15:56:16] [INFO] Telemetry Monitor: Loading telemetry monitor
+[2025-10-12 15:56:25] [INFO] System: BatteryIQ application started
+[2025-10-12 15:56:25] [INFO] Navigation: User admin accessing admin dashboard
+[2025-10-12 15:56:25] [INFO] Data Gallery: Admin admin accessing all data
+[2025-10-12 15:56:25] [INFO] Data Gallery: User admin (admin) viewing 15 datasets
+[2025-10-12 15:56:25] [INFO] Telemetry Monitor: Loading telemetry monitor
+[2025-10-12 15:56:32] [INFO] System: BatteryIQ application started
+[2025-10-12 15:56:32] [INFO] Navigation: User admin accessing admin dashboard
+[2025-10-12 15:56:33] [INFO] Data Gallery: Admin admin accessing all data
+[2025-10-12 15:56:33] [INFO] Data Gallery: User admin (admin) viewing 15 datasets
+[2025-10-12 15:56:33] [INFO] Telemetry Monitor: Loading telemetry monitor
+[2025-10-12 15:56:34] [INFO] Onboarding: Client info entered: Client onboarding Test
+[2025-10-12 15:56:34] [INFO] System: BatteryIQ application started
+[2025-10-12 15:56:34] [INFO] Navigation: User admin accessing admin dashboard
+[2025-10-12 15:56:35] [INFO] Data Gallery: Admin admin accessing all data
+[2025-10-12 15:56:35] [INFO] Data Gallery: User admin (admin) viewing 15 datasets
+[2025-10-12 15:56:35] [INFO] Telemetry Monitor: Loading telemetry monitor
+[2025-10-12 15:56:51] [INFO] System: BatteryIQ application started
+[2025-10-12 15:56:51] [INFO] Navigation: User admin accessing admin dashboard
+[2025-10-12 15:56:51] [INFO] Data Gallery: Admin admin accessing all data
+[2025-10-12 15:56:52] [INFO] Data Gallery: User admin (admin) viewing 15 datasets
+[2025-10-12 15:56:52] [INFO] Telemetry Monitor: Loading telemetry monitor
+[2025-10-12 15:57:02] [INFO] System: BatteryIQ application started
+[2025-10-12 15:57:02] [INFO] Navigation: User admin accessing admin dashboard
+[2025-10-12 15:57:02] [INFO] System: BatteryIQ application started
+[2025-10-12 15:57:02] [INFO] Navigation: User admin accessing admin dashboard
+[2025-10-12 15:57:02] [INFO] Data Gallery: Admin admin accessing all data
+[2025-10-12 15:57:02] [INFO] Data Gallery: User admin (admin) viewing 15 datasets
+[2025-10-12 15:57:03] [INFO] Telemetry Monitor: Loading telemetry monitor
+[2025-10-12 15:57:04] [INFO] Onboarding: Location info entered: HQ
+[2025-10-12 15:57:04] [INFO] System: BatteryIQ application started
+[2025-10-12 15:57:04] [INFO] Navigation: User admin accessing admin dashboard
+[2025-10-12 15:57:04] [INFO] Data Gallery: Admin admin accessing all data
+[2025-10-12 15:57:05] [INFO] Data Gallery: User admin (admin) viewing 15 datasets
+[2025-10-12 15:57:05] [INFO] Telemetry Monitor: Loading telemetry monitor
+[2025-10-12 15:57:14] [INFO] System: BatteryIQ application started
+[2025-10-12 15:57:14] [INFO] Navigation: User admin accessing admin dashboard
+[2025-10-12 15:57:15] [INFO] Data Gallery: Admin admin accessing all data
+[2025-10-12 15:57:15] [INFO] Data Gallery: User admin (admin) viewing 15 datasets
+[2025-10-12 15:57:15] [INFO] Telemetry Monitor: Loading telemetry monitor
+[2025-10-12 15:57:18] [INFO] System: BatteryIQ application started
+[2025-10-12 15:57:18] [INFO] Navigation: User admin accessing admin dashboard
+[2025-10-12 15:57:18] [INFO] Cache: Fetching system statistics
+[2025-10-12 15:57:18] [INFO] Cache: Successfully fetched system statistics
+[2025-10-12 15:57:19] [INFO] Cache: Fetching system statistics
+[2025-10-12 15:57:19] [INFO] Cache: Successfully fetched system statistics
+[2025-10-12 15:57:19] [INFO] Data Gallery: Admin admin accessing all data
+[2025-10-12 15:57:19] [INFO] Data Gallery: User admin (admin) viewing 15 datasets
+[2025-10-12 15:57:19] [INFO] Telemetry Monitor: Loading telemetry monitor
+[2025-10-12 15:58:16] [INFO] System: BatteryIQ application started
+[2025-10-12 15:58:16] [INFO] Navigation: User admin accessing admin dashboard
+[2025-10-12 15:58:17] [INFO] System: BatteryIQ application started
+[2025-10-12 15:58:17] [INFO] Navigation: User admin accessing admin dashboard
+[2025-10-12 15:58:17] [INFO] Data Gallery: Admin admin accessing all data
+[2025-10-12 15:58:17] [INFO] Data Gallery: User admin (admin) viewing 15 datasets
+[2025-10-12 15:58:18] [INFO] Telemetry Monitor: Loading telemetry monitor
+[2025-10-12 15:58:19] [INFO] Onboarding: Device added: Dummy 1 (abc12345)
+[2025-10-12 15:58:19] [INFO] System: BatteryIQ application started
+[2025-10-12 15:58:19] [INFO] Navigation: User admin accessing admin dashboard
+[2025-10-12 15:58:19] [INFO] Cache: Fetching system statistics
+[2025-10-12 15:58:19] [INFO] Cache: Successfully fetched system statistics
+[2025-10-12 15:58:19] [INFO] Cache: Fetching system statistics
+[2025-10-12 15:58:19] [INFO] Cache: Successfully fetched system statistics
+[2025-10-12 15:58:19] [INFO] Data Gallery: Admin admin accessing all data
+[2025-10-12 15:58:19] [INFO] Data Gallery: User admin (admin) viewing 15 datasets
+[2025-10-12 15:58:19] [INFO] Telemetry Monitor: Loading telemetry monitor
+[2025-10-12 15:58:26] [INFO] System: BatteryIQ application started
+[2025-10-12 15:58:26] [INFO] Navigation: User admin accessing admin dashboard
+[2025-10-12 15:58:27] [INFO] Data Gallery: Admin admin accessing all data
+[2025-10-12 15:58:27] [INFO] Data Gallery: User admin (admin) viewing 15 datasets
+[2025-10-12 15:58:27] [INFO] Telemetry Monitor: Loading telemetry monitor
+[2025-10-12 15:58:28] [INFO] Onboarding: Location completed, returning to add more locations
+[2025-10-12 15:58:28] [INFO] System: BatteryIQ application started
+[2025-10-12 15:58:28] [INFO] Navigation: User admin accessing admin dashboard
+[2025-10-12 15:58:28] [INFO] Data Gallery: Admin admin accessing all data
+[2025-10-12 15:58:28] [INFO] Data Gallery: User admin (admin) viewing 15 datasets
+[2025-10-12 15:58:28] [INFO] Telemetry Monitor: Loading telemetry monitor
+[2025-10-12 15:59:25] [INFO] System: BatteryIQ application started
+[2025-10-12 15:59:25] [INFO] Navigation: User admin accessing admin dashboard
+[2025-10-12 15:59:25] [INFO] Cache: Fetching system statistics
+[2025-10-12 15:59:25] [INFO] Cache: Successfully fetched system statistics
+[2025-10-12 15:59:25] [INFO] Cache: Fetching system statistics
+[2025-10-12 15:59:25] [INFO] Cache: Successfully fetched system statistics
+[2025-10-12 15:59:25] [INFO] Data Gallery: Admin admin accessing all data
+[2025-10-12 15:59:26] [INFO] Data Gallery: User admin (admin) viewing 15 datasets
+[2025-10-12 15:59:26] [INFO] Telemetry Monitor: Loading telemetry monitor
+[2025-10-12 16:06:14] [INFO] System: BatteryIQ application started
+[2025-10-12 16:06:16] [INFO] System: BatteryIQ application started
+[2025-10-12 16:06:16] [INFO] System: BatteryIQ application started
+[2025-10-12 16:06:18] [INFO] System: BatteryIQ application started
+[2025-10-12 16:06:18] [INFO] Test Authentication: Test Login
+[2025-10-12 16:06:18] [INFO] Authentication:  Successful login for user: admin (Role: admin)
+[2025-10-12 16:06:19] [INFO] System: BatteryIQ application started
+[2025-10-12 16:06:19] [INFO] Navigation: User admin accessing admin dashboard
+[2025-10-12 16:06:19] [INFO] Cache: Fetching system statistics
+[2025-10-12 16:06:19] [INFO] Cache: Successfully fetched system statistics
+[2025-10-12 16:06:19] [INFO] Cache: Fetching clients from database
+[2025-10-12 16:06:19] [INFO] Cache: Successfully fetched 5 clients
+[2025-10-12 16:06:20] [INFO] Cache: Fetching clients from database
+[2025-10-12 16:06:20] [INFO] Cache: Successfully fetched 5 clients
+[2025-10-12 16:06:20] [INFO] Cache: Fetching devices for client 1
+[2025-10-12 16:06:20] [INFO] Cache: Successfully fetched 25 devices
+[2025-10-12 16:06:20] [INFO] Cache: Fetching locations for client 1
+[2025-10-12 16:06:20] [INFO] Cache: Successfully fetched 5 locations
+[2025-10-12 16:06:20] [INFO] Cache: Fetching devices for client 2
+[2025-10-12 16:06:20] [INFO] Cache: Successfully fetched 25 devices
+[2025-10-12 16:06:20] [INFO] Cache: Fetching locations for client 2
+[2025-10-12 16:06:20] [INFO] Cache: Successfully fetched 5 locations
+[2025-10-12 16:06:20] [INFO] Cache: Fetching devices for client 3
+[2025-10-12 16:06:20] [INFO] Cache: Successfully fetched 25 devices
+[2025-10-12 16:06:20] [INFO] Cache: Fetching locations for client 3
+[2025-10-12 16:06:20] [INFO] Cache: Successfully fetched 5 locations
+[2025-10-12 16:06:20] [INFO] Cache: Fetching devices for client 4
+[2025-10-12 16:06:20] [INFO] Cache: Successfully fetched 25 devices
+[2025-10-12 16:06:20] [INFO] Cache: Fetching locations for client 4
+[2025-10-12 16:06:20] [INFO] Cache: Successfully fetched 5 locations
+[2025-10-12 16:06:20] [INFO] Cache: Fetching devices for client 5
+[2025-10-12 16:06:20] [INFO] Cache: Successfully fetched 25 devices
+[2025-10-12 16:06:20] [INFO] Cache: Fetching locations for client 5
+[2025-10-12 16:06:20] [INFO] Cache: Successfully fetched 5 locations
+[2025-10-12 16:06:20] [INFO] Cache: Fetching system statistics
+[2025-10-12 16:06:20] [INFO] Cache: Successfully fetched system statistics
+[2025-10-12 16:06:20] [INFO] Data Gallery: Admin admin accessing all data
+[2025-10-12 16:06:20] [INFO] Data Gallery: User admin (admin) viewing 15 datasets
+[2025-10-12 16:06:20] [INFO] Telemetry Monitor: Loading telemetry monitor
+[2025-10-12 16:06:40] [INFO] Onboarding: Client info entered: Client Onboard Testing
+[2025-10-12 16:06:40] [INFO] System: BatteryIQ application started
+[2025-10-12 16:06:40] [INFO] Navigation: User admin accessing admin dashboard
+[2025-10-12 16:06:41] [INFO] Data Gallery: Admin admin accessing all data
+[2025-10-12 16:06:41] [INFO] Data Gallery: User admin (admin) viewing 15 datasets
+[2025-10-12 16:06:41] [INFO] Telemetry Monitor: Loading telemetry monitor
+[2025-10-12 16:18:43] [INFO] System: BatteryIQ application started
+[2025-10-12 16:18:46] [INFO] System: BatteryIQ application started
+[2025-10-12 16:18:46] [INFO] System: BatteryIQ application started
+[2025-10-12 16:18:49] [INFO] System: BatteryIQ application started
+[2025-10-12 16:18:49] [INFO] Test Authentication: Test Login
+[2025-10-12 16:18:49] [INFO] Authentication:  Successful login for user: admin (Role: admin)
+[2025-10-12 16:18:49] [INFO] System: BatteryIQ application started
+[2025-10-12 16:18:49] [INFO] Navigation: User admin accessing admin dashboard
+[2025-10-12 16:18:49] [INFO] Cache: Fetching system statistics
+[2025-10-12 16:18:49] [INFO] Cache: Successfully fetched system statistics
+[2025-10-12 16:18:49] [INFO] Cache: Fetching clients from database
+[2025-10-12 16:18:50] [INFO] Cache: Successfully fetched 5 clients
+[2025-10-12 16:18:59] [INFO] System: BatteryIQ application started
+[2025-10-12 16:18:59] [INFO] Navigation: User admin accessing admin dashboard
+[2025-10-12 16:20:05] [INFO] System: BatteryIQ application started
+[2025-10-12 16:20:05] [INFO] System: BatteryIQ application started
+[2025-10-12 16:20:09] [INFO] System: BatteryIQ application started
+[2025-10-12 16:20:09] [INFO] System: BatteryIQ application started
+[2025-10-12 16:20:10] [INFO] System: BatteryIQ application started
+[2025-10-12 16:20:10] [INFO] Test Authentication: Test Login
+[2025-10-12 16:20:10] [INFO] Authentication:  Successful login for user: admin (Role: admin)
+[2025-10-12 16:20:11] [INFO] System: BatteryIQ application started
+[2025-10-12 16:20:11] [INFO] Navigation: User admin accessing admin dashboard
+[2025-10-12 16:20:11] [INFO] Cache: Fetching system statistics
+[2025-10-12 16:20:11] [INFO] Cache: Successfully fetched system statistics
+[2025-10-12 16:20:11] [INFO] Cache: Fetching clients from database
+[2025-10-12 16:20:11] [INFO] Cache: Successfully fetched 5 clients
+[2025-10-12 16:20:16] [INFO] System: BatteryIQ application started
+[2025-10-12 16:20:16] [INFO] Navigation: User admin accessing admin dashboard
+[2025-10-12 16:20:16] [INFO] System: BatteryIQ application started
+[2025-10-12 16:20:16] [INFO] Navigation: User admin accessing admin dashboard
+[2025-10-12 16:20:16] [INFO] Cache: Fetching clients from database
+[2025-10-12 16:20:16] [INFO] Cache: Successfully fetched 5 clients
+[2025-10-12 16:20:16] [INFO] Cache: Fetching devices for client 1
+[2025-10-12 16:20:16] [INFO] Cache: Successfully fetched 25 devices
+[2025-10-12 16:20:16] [INFO] Cache: Fetching locations for client 1
+[2025-10-12 16:20:16] [INFO] Cache: Successfully fetched 5 locations
+[2025-10-12 16:20:16] [INFO] Cache: Fetching devices for client 2
+[2025-10-12 16:20:16] [INFO] Cache: Successfully fetched 25 devices
+[2025-10-12 16:20:16] [INFO] Cache: Fetching locations for client 2
+[2025-10-12 16:20:16] [INFO] Cache: Successfully fetched 5 locations
+[2025-10-12 16:20:16] [INFO] Cache: Fetching devices for client 3
+[2025-10-12 16:20:16] [INFO] Cache: Successfully fetched 25 devices
+[2025-10-12 16:20:16] [INFO] Cache: Fetching locations for client 3
+[2025-10-12 16:20:16] [INFO] Cache: Successfully fetched 5 locations
+[2025-10-12 16:20:16] [INFO] Cache: Fetching devices for client 4
+[2025-10-12 16:20:16] [INFO] Cache: Successfully fetched 25 devices
+[2025-10-12 16:20:16] [INFO] Cache: Fetching locations for client 4
+[2025-10-12 16:20:16] [INFO] Cache: Successfully fetched 5 locations
+[2025-10-12 16:20:16] [INFO] Cache: Fetching devices for client 5
+[2025-10-12 16:20:16] [INFO] Cache: Successfully fetched 25 devices
+[2025-10-12 16:20:16] [INFO] Cache: Fetching locations for client 5
+[2025-10-12 16:20:16] [INFO] Cache: Successfully fetched 5 locations
+[2025-10-12 16:20:16] [INFO] Cache: Fetching system statistics
+[2025-10-12 16:20:16] [INFO] Cache: Successfully fetched system statistics
+[2025-10-12 16:20:19] [INFO] System: BatteryIQ application started
+[2025-10-12 16:20:19] [INFO] Navigation: User admin accessing admin dashboard
+[2025-10-12 16:20:19] [INFO] System: BatteryIQ application started
+[2025-10-12 16:20:19] [INFO] Navigation: User admin accessing admin dashboard
+[2025-10-12 16:20:19] [INFO] Data Gallery: Admin admin accessing all data
+[2025-10-12 16:20:19] [INFO] Data Gallery: User admin (admin) viewing 15 datasets
+[2025-10-12 16:20:21] [INFO] System: BatteryIQ application started
+[2025-10-12 16:20:21] [INFO] Navigation: User admin accessing admin dashboard
+[2025-10-12 16:20:22] [INFO] System: BatteryIQ application started
+[2025-10-12 16:20:22] [INFO] Navigation: User admin accessing admin dashboard
+[2025-10-12 16:20:22] [INFO] Telemetry Monitor: Loading telemetry monitor
+[2025-10-12 16:20:25] [INFO] System: BatteryIQ application started
+[2025-10-12 16:20:25] [INFO] Navigation: User admin accessing admin dashboard
+[2025-10-12 16:20:25] [INFO] System: BatteryIQ application started
+[2025-10-12 16:20:25] [INFO] Navigation: User admin accessing admin dashboard
+[2025-10-12 16:20:27] [INFO] System: BatteryIQ application started
+[2025-10-12 16:20:27] [INFO] Navigation: User admin accessing admin dashboard
+[2025-10-12 16:20:27] [INFO] System: BatteryIQ application started
+[2025-10-12 16:20:27] [INFO] Navigation: User admin accessing admin dashboard
+[2025-10-12 16:21:02] [INFO] Onboarding: Client info entered: Client Onboarding Test
+[2025-10-12 16:21:02] [INFO] System: BatteryIQ application started
+[2025-10-12 16:21:02] [INFO] Navigation: User admin accessing admin dashboard
+[2025-10-12 16:21:34] [INFO] Onboarding: Location info entered: Test Locaiton
+[2025-10-12 16:21:34] [INFO] System: BatteryIQ application started
+[2025-10-12 16:21:34] [INFO] Navigation: User admin accessing admin dashboard
+[2025-10-12 16:21:34] [INFO] Cache: Fetching system statistics
+[2025-10-12 16:21:34] [INFO] Cache: Successfully fetched system statistics
+[2025-10-12 16:21:54] [INFO] Onboarding: Device added: Dummy 1 (abc12345)
+[2025-10-12 16:22:58] [INFO] Onboarding: Device added: Dummy 2 (gfds12345)
+[2025-10-12 16:23:22] [INFO] Onboarding: Location completed, returning to add more locations
+[2025-10-12 16:23:22] [INFO] System: BatteryIQ application started
+[2025-10-12 16:23:22] [INFO] Navigation: User admin accessing admin dashboard
+[2025-10-12 16:23:22] [INFO] Cache: Fetching system statistics
+[2025-10-12 16:23:22] [INFO] Cache: Successfully fetched system statistics
+[2025-10-12 16:24:06] [INFO] Onboarding: Location info entered: Test Location 2
+[2025-10-12 16:24:06] [INFO] System: BatteryIQ application started
+[2025-10-12 16:24:06] [INFO] Navigation: User admin accessing admin dashboard
+[2025-10-12 16:24:19] [INFO] Onboarding: Device added: Dummy 3 (fd1234)
+[2025-10-12 16:24:22] [INFO] Onboarding: Location completed, returning to add more locations
+[2025-10-12 16:24:23] [INFO] System: BatteryIQ application started
+[2025-10-12 16:24:23] [INFO] Navigation: User admin accessing admin dashboard
+[2025-10-12 16:24:23] [INFO] Cache: Fetching system statistics
+[2025-10-12 16:24:23] [INFO] Cache: Successfully fetched system statistics
+[2025-10-12 16:24:30] [INFO] System: BatteryIQ application started
+[2025-10-12 16:24:30] [INFO] Navigation: User admin accessing admin dashboard
+[2025-10-12 16:24:48] [INFO] Onboarding: Creating client: Client Onboarding Test
+[2025-10-12 16:24:48] [INFO] Onboarding: Creating location: Test Locaiton
+[2025-10-12 16:24:49] [INFO] Onboarding: Creating device: Dummy 1 (abc12345)
+[2025-10-12 16:24:49] [INFO] Onboarding: Creating device: Dummy 2 (gfds12345)
+[2025-10-12 16:24:49] [INFO] Onboarding: Creating location: Test Location 2
+[2025-10-12 16:24:49] [INFO] Onboarding: Creating device: Dummy 3 (fd1234)
+[2025-10-12 16:24:49] [INFO] Onboarding: Onboarding completed: Client Onboarding Test - 2 locations, 3 devices
+[2025-10-12 16:24:51] [INFO] System: BatteryIQ application started
+[2025-10-12 16:24:51] [INFO] Navigation: User admin accessing admin dashboard
+[2025-10-12 16:24:51] [INFO] Cache: Fetching system statistics
+[2025-10-12 16:24:51] [INFO] Cache: Successfully fetched system statistics
+[2025-10-12 16:24:51] [INFO] Cache: Fetching clients from database
+[2025-10-12 16:24:51] [INFO] Cache: Successfully fetched 6 clients
+[2025-10-12 16:24:56] [INFO] System: BatteryIQ application started
+[2025-10-12 16:24:56] [INFO] Navigation: User admin accessing admin dashboard
+[2025-10-12 16:24:56] [INFO] System: BatteryIQ application started
+[2025-10-12 16:24:56] [INFO] Navigation: User admin accessing admin dashboard
+[2025-10-12 16:24:56] [INFO] Cache: Fetching clients from database
+[2025-10-12 16:24:56] [INFO] Cache: Successfully fetched 6 clients
+[2025-10-12 16:24:56] [INFO] Cache: Fetching devices for client 1
+[2025-10-12 16:24:56] [INFO] Cache: Successfully fetched 25 devices
+[2025-10-12 16:24:56] [INFO] Cache: Fetching locations for client 1
+[2025-10-12 16:24:56] [INFO] Cache: Successfully fetched 5 locations
+[2025-10-12 16:24:56] [INFO] Cache: Fetching devices for client 2
+[2025-10-12 16:24:56] [INFO] Cache: Successfully fetched 25 devices
+[2025-10-12 16:24:56] [INFO] Cache: Fetching locations for client 2
+[2025-10-12 16:24:56] [INFO] Cache: Successfully fetched 5 locations
+[2025-10-12 16:24:56] [INFO] Cache: Fetching devices for client 3
+[2025-10-12 16:24:56] [INFO] Cache: Successfully fetched 25 devices
+[2025-10-12 16:24:56] [INFO] Cache: Fetching locations for client 3
+[2025-10-12 16:24:56] [INFO] Cache: Successfully fetched 5 locations
+[2025-10-12 16:24:56] [INFO] Cache: Fetching devices for client 4
+[2025-10-12 16:24:56] [INFO] Cache: Successfully fetched 25 devices
+[2025-10-12 16:24:56] [INFO] Cache: Fetching locations for client 4
+[2025-10-12 16:24:56] [INFO] Cache: Successfully fetched 5 locations
+[2025-10-12 16:24:56] [INFO] Cache: Fetching devices for client 5
+[2025-10-12 16:24:56] [INFO] Cache: Successfully fetched 25 devices
+[2025-10-12 16:24:56] [INFO] Cache: Fetching locations for client 5
+[2025-10-12 16:24:56] [INFO] Cache: Successfully fetched 5 locations
+[2025-10-12 16:24:56] [INFO] Cache: Fetching devices for client 6
+[2025-10-12 16:24:56] [INFO] Cache: Successfully fetched 3 devices
+[2025-10-12 16:24:56] [INFO] Cache: Fetching locations for client 6
+[2025-10-12 16:24:56] [INFO] Cache: Successfully fetched 2 locations
+[2025-10-12 16:24:56] [INFO] Cache: Fetching system statistics
+[2025-10-12 16:24:56] [INFO] Cache: Successfully fetched system statistics
+[2025-10-12 16:29:48] [INFO] System: BatteryIQ application started
+[2025-10-12 16:29:50] [INFO] System: BatteryIQ application started
+[2025-10-12 16:29:50] [INFO] System: BatteryIQ application started
+[2025-10-12 16:29:52] [INFO] System: BatteryIQ application started
+[2025-10-12 16:29:52] [INFO] Test Authentication: Test Login
+[2025-10-12 16:29:52] [INFO] Authentication:  Successful login for user: admin (Role: admin)
+[2025-10-12 16:29:53] [INFO] System: BatteryIQ application started
+[2025-10-12 16:29:53] [INFO] Navigation: User admin accessing admin dashboard
+[2025-10-12 16:29:53] [INFO] Cache: Fetching system statistics
+[2025-10-12 16:29:53] [INFO] Cache: Successfully fetched system statistics
+[2025-10-12 16:29:53] [INFO] Cache: Fetching clients from database
+[2025-10-12 16:29:53] [INFO] Cache: Successfully fetched 6 clients
+[2025-10-12 16:29:57] [INFO] System: BatteryIQ application started
+[2025-10-12 16:29:57] [INFO] Navigation: User admin accessing admin dashboard
+[2025-10-12 16:29:58] [INFO] System: BatteryIQ application started
+[2025-10-12 16:29:58] [INFO] Navigation: User admin accessing admin dashboard
+[2025-10-12 16:30:02] [INFO] System: BatteryIQ application started
+[2025-10-12 16:30:02] [INFO] Navigation: User admin accessing admin dashboard
+[2025-10-12 16:30:03] [INFO] System: BatteryIQ application started
+[2025-10-12 16:30:03] [INFO] Navigation: User admin accessing admin dashboard
+[2025-10-12 16:42:38] [INFO] System: BatteryIQ application started
+[2025-10-12 16:42:41] [INFO] System: BatteryIQ application started
+[2025-10-12 16:42:41] [INFO] System: BatteryIQ application started
+[2025-10-12 16:42:46] [INFO] System: BatteryIQ application started
+[2025-10-12 16:42:49] [INFO] System: BatteryIQ application started
+[2025-10-12 16:42:49] [INFO] System: BatteryIQ application started
+[2025-10-12 16:43:04] [INFO] System: BatteryIQ application started
+[2025-10-12 16:43:04] [INFO] Authentication: Login attempt for user: admin
+[2025-10-12 16:43:05] [INFO] Authentication: Successful login for user: admin (Role: admin)
+[2025-10-12 16:43:05] [INFO] System: BatteryIQ application started
+[2025-10-12 16:43:05] [INFO] Navigation: User admin accessing admin dashboard
+[2025-10-12 16:43:06] [INFO] Cache: Fetching system statistics
+[2025-10-12 16:43:06] [INFO] Cache: Successfully fetched system statistics
+[2025-10-12 16:43:06] [INFO] Cache: Fetching clients from database
+[2025-10-12 16:43:06] [INFO] Cache: Successfully fetched 6 clients
+[2025-10-12 16:43:11] [INFO] System: BatteryIQ application started
+[2025-10-12 16:43:11] [INFO] Navigation: User admin accessing admin dashboard
+[2025-10-12 16:43:11] [INFO] System: BatteryIQ application started
+[2025-10-12 16:43:11] [INFO] Navigation: User admin accessing admin dashboard
+[2025-10-12 16:43:11] [INFO] Cache: Fetching clients from database
+[2025-10-12 16:43:11] [INFO] Cache: Successfully fetched 6 clients
+[2025-10-12 16:43:11] [INFO] Cache: Fetching devices for client 1
+[2025-10-12 16:43:11] [INFO] Cache: Successfully fetched 25 devices
+[2025-10-12 16:43:11] [INFO] Cache: Fetching locations for client 1
+[2025-10-12 16:43:11] [INFO] Cache: Successfully fetched 5 locations
+[2025-10-12 16:43:11] [INFO] Cache: Fetching devices for client 2
+[2025-10-12 16:43:11] [INFO] Cache: Successfully fetched 25 devices
+[2025-10-12 16:43:11] [INFO] Cache: Fetching locations for client 2
+[2025-10-12 16:43:11] [INFO] Cache: Successfully fetched 5 locations
+[2025-10-12 16:43:11] [INFO] Cache: Fetching devices for client 3
+[2025-10-12 16:43:11] [INFO] Cache: Successfully fetched 25 devices
+[2025-10-12 16:43:11] [INFO] Cache: Fetching locations for client 3
+[2025-10-12 16:43:11] [INFO] Cache: Successfully fetched 5 locations
+[2025-10-12 16:43:11] [INFO] Cache: Fetching devices for client 4
+[2025-10-12 16:43:11] [INFO] Cache: Successfully fetched 25 devices
+[2025-10-12 16:43:11] [INFO] Cache: Fetching locations for client 4
+[2025-10-12 16:43:11] [INFO] Cache: Successfully fetched 5 locations
+[2025-10-12 16:43:11] [INFO] Cache: Fetching devices for client 5
+[2025-10-12 16:43:11] [INFO] Cache: Successfully fetched 25 devices
+[2025-10-12 16:43:11] [INFO] Cache: Fetching locations for client 5
+[2025-10-12 16:43:11] [INFO] Cache: Successfully fetched 5 locations
+[2025-10-12 16:43:11] [INFO] Cache: Fetching devices for client 6
+[2025-10-12 16:43:11] [INFO] Cache: Successfully fetched 3 devices
+[2025-10-12 16:43:11] [INFO] Cache: Fetching locations for client 6
+[2025-10-12 16:43:11] [INFO] Cache: Successfully fetched 2 locations
+[2025-10-12 16:43:11] [INFO] Cache: Fetching system statistics
+[2025-10-12 16:43:11] [INFO] Cache: Successfully fetched system statistics
+[2025-10-12 16:43:14] [INFO] System: BatteryIQ application started
+[2025-10-12 16:43:14] [INFO] Navigation: User admin accessing admin dashboard
+[2025-10-12 16:43:14] [INFO] System: BatteryIQ application started
+[2025-10-12 16:43:14] [INFO] Navigation: User admin accessing admin dashboard
+[2025-10-12 16:43:14] [INFO] Data Gallery: Admin admin accessing all data
+[2025-10-12 16:43:14] [INFO] Data Gallery: User admin (admin) viewing 15 datasets
+[2025-10-12 16:43:16] [INFO] System: BatteryIQ application started
+[2025-10-12 16:43:16] [INFO] Navigation: User admin accessing admin dashboard
+[2025-10-12 16:43:16] [INFO] System: BatteryIQ application started
+[2025-10-12 16:43:16] [INFO] Navigation: User admin accessing admin dashboard
+[2025-10-12 16:43:16] [INFO] Telemetry Monitor: Loading telemetry monitor
+[2025-10-12 16:43:18] [INFO] System: BatteryIQ application started
+[2025-10-12 16:43:18] [INFO] Navigation: User admin accessing admin dashboard
+[2025-10-12 16:43:18] [INFO] System: BatteryIQ application started
+[2025-10-12 16:43:18] [INFO] Navigation: User admin accessing admin dashboard
+[2025-10-12 16:43:20] [INFO] System: BatteryIQ application started
+[2025-10-12 16:43:20] [INFO] Navigation: User admin accessing admin dashboard
+[2025-10-12 16:43:20] [INFO] System: BatteryIQ application started
+[2025-10-12 16:43:20] [INFO] Navigation: User admin accessing admin dashboard
+[2025-10-12 17:16:45] [INFO] System: BatteryIQ application started
+[2025-10-12 17:16:51] [INFO] System: BatteryIQ application started
+[2025-10-12 17:16:51] [INFO] System: BatteryIQ application started
+[2025-10-12 17:17:00] [INFO] System: BatteryIQ application started
+[2025-10-12 17:17:02] [INFO] System: BatteryIQ application started
+[2025-10-12 17:17:02] [INFO] System: BatteryIQ application started
+[2025-10-12 17:17:04] [INFO] System: BatteryIQ application started
+[2025-10-12 17:17:04] [INFO] Test Authentication: Test Login
+[2025-10-12 17:17:04] [INFO] Authentication:  Successful login for user: admin (Role: admin)
+[2025-10-12 17:17:05] [INFO] System: BatteryIQ application started
+[2025-10-12 17:17:05] [INFO] Navigation: User admin accessing admin dashboard
+[2025-10-12 17:17:05] [INFO] Cache: Fetching system statistics
+[2025-10-12 17:17:05] [INFO] Cache: Successfully fetched system statistics
+[2025-10-12 17:17:05] [INFO] Cache: Fetching clients from database
+[2025-10-12 17:17:05] [INFO] Cache: Successfully fetched 6 clients
+[2025-10-12 17:17:07] [INFO] System: BatteryIQ application started
+[2025-10-12 17:17:07] [INFO] Navigation: User admin accessing admin dashboard
+[2025-10-12 17:17:07] [INFO] System: BatteryIQ application started
+[2025-10-12 17:17:07] [INFO] Navigation: User admin accessing admin dashboard
+[2025-10-12 17:17:07] [INFO] Cache: Fetching clients from database
+[2025-10-12 17:17:07] [INFO] Cache: Successfully fetched 6 clients
+[2025-10-12 17:17:07] [INFO] Cache: Fetching devices for client 1
+[2025-10-12 17:17:07] [INFO] Cache: Successfully fetched 25 devices
+[2025-10-12 17:17:07] [INFO] Cache: Fetching locations for client 1
+[2025-10-12 17:17:07] [INFO] Cache: Successfully fetched 5 locations
+[2025-10-12 17:17:07] [INFO] Cache: Fetching devices for client 2
+[2025-10-12 17:17:07] [INFO] Cache: Successfully fetched 25 devices
+[2025-10-12 17:17:07] [INFO] Cache: Fetching locations for client 2
+[2025-10-12 17:17:07] [INFO] Cache: Successfully fetched 5 locations
+[2025-10-12 17:17:07] [INFO] Cache: Fetching devices for client 3
+[2025-10-12 17:17:07] [INFO] Cache: Successfully fetched 25 devices
+[2025-10-12 17:17:07] [INFO] Cache: Fetching locations for client 3
+[2025-10-12 17:17:07] [INFO] Cache: Successfully fetched 5 locations
+[2025-10-12 17:17:07] [INFO] Cache: Fetching devices for client 4
+[2025-10-12 17:17:07] [INFO] Cache: Successfully fetched 25 devices
+[2025-10-12 17:17:07] [INFO] Cache: Fetching locations for client 4
+[2025-10-12 17:17:07] [INFO] Cache: Successfully fetched 5 locations
+[2025-10-12 17:17:07] [INFO] Cache: Fetching devices for client 5
+[2025-10-12 17:17:07] [INFO] Cache: Successfully fetched 25 devices
+[2025-10-12 17:17:07] [INFO] Cache: Fetching locations for client 5
+[2025-10-12 17:17:07] [INFO] Cache: Successfully fetched 5 locations
+[2025-10-12 17:17:07] [INFO] Cache: Fetching devices for client 6
+[2025-10-12 17:17:07] [INFO] Cache: Successfully fetched 3 devices
+[2025-10-12 17:17:07] [INFO] Cache: Fetching locations for client 6
+[2025-10-12 17:17:07] [INFO] Cache: Successfully fetched 2 locations
+[2025-10-12 17:17:07] [INFO] Cache: Fetching system statistics
+[2025-10-12 17:17:07] [INFO] Cache: Successfully fetched system statistics
+[2025-10-12 17:17:09] [INFO] System: BatteryIQ application started
+[2025-10-12 17:17:09] [INFO] Navigation: User admin accessing admin dashboard
+[2025-10-12 17:17:09] [INFO] System: BatteryIQ application started
+[2025-10-12 17:17:09] [INFO] Navigation: User admin accessing admin dashboard
+[2025-10-12 17:17:09] [INFO] Data Gallery: Admin admin accessing all data
+[2025-10-12 17:17:09] [INFO] Data Gallery: User admin (admin) viewing 15 datasets
+[2025-10-12 17:17:11] [INFO] System: BatteryIQ application started
+[2025-10-12 17:17:11] [INFO] Navigation: User admin accessing admin dashboard
+[2025-10-12 17:17:11] [INFO] System: BatteryIQ application started
+[2025-10-12 17:17:11] [INFO] Navigation: User admin accessing admin dashboard
+[2025-10-12 17:17:11] [INFO] Telemetry Monitor: Loading telemetry monitor
+[2025-10-12 17:17:13] [INFO] System: BatteryIQ application started
+[2025-10-12 17:17:13] [INFO] Navigation: User admin accessing admin dashboard
+[2025-10-12 17:17:13] [INFO] System: BatteryIQ application started
+[2025-10-12 17:17:13] [INFO] Navigation: User admin accessing admin dashboard
+[2025-10-12 17:17:15] [INFO] System: BatteryIQ application started
+[2025-10-12 17:17:15] [INFO] Navigation: User admin accessing admin dashboard
+[2025-10-12 17:17:15] [INFO] System: BatteryIQ application started
+[2025-10-12 17:17:15] [INFO] Navigation: User admin accessing admin dashboard
+[2025-10-12 17:17:39] [INFO] System: BatteryIQ application started
+[2025-10-12 17:17:39] [INFO] Navigation: User admin accessing admin dashboard
+[2025-10-12 17:17:39] [INFO] System: BatteryIQ application started
+[2025-10-12 17:17:39] [INFO] Navigation: User admin accessing admin dashboard
+[2025-10-12 17:18:49] [INFO] System: BatteryIQ application started
+[2025-10-12 17:18:49] [INFO] Navigation: User admin accessing admin dashboard
+[2025-10-12 17:18:49] [INFO] Cache: Fetching system statistics
+[2025-10-12 17:18:49] [INFO] Cache: Successfully fetched system statistics
+[2025-10-12 17:18:49] [INFO] System: BatteryIQ application started
+[2025-10-12 17:18:49] [INFO] Navigation: User admin accessing admin dashboard
+[2025-10-12 17:18:49] [INFO] Data Gallery: Admin admin accessing all data
+[2025-10-12 17:18:49] [INFO] Data Gallery: User admin (admin) viewing 15 datasets
+[2025-10-12 17:18:51] [INFO] System: BatteryIQ application started
+[2025-10-12 17:18:51] [INFO] Navigation: User admin accessing admin dashboard
+[2025-10-12 17:18:51] [INFO] System: BatteryIQ application started
+[2025-10-12 17:18:51] [INFO] Navigation: User admin accessing admin dashboard
+[2025-10-12 17:18:52] [INFO] Telemetry Monitor: Loading telemetry monitor
+[2025-10-12 17:18:52] [INFO] System: BatteryIQ application started
+[2025-10-12 17:18:52] [INFO] Navigation: User admin accessing admin dashboard
+[2025-10-12 17:18:52] [INFO] System: BatteryIQ application started
+[2025-10-12 17:18:52] [INFO] Navigation: User admin accessing admin dashboard
+[2025-10-12 17:18:54] [INFO] System: BatteryIQ application started
+[2025-10-12 17:18:54] [INFO] Navigation: User admin accessing admin dashboard
+[2025-10-12 17:18:54] [INFO] System: BatteryIQ application started
+[2025-10-12 17:18:54] [INFO] Navigation: User admin accessing admin dashboard
+[2025-10-12 17:19:29] [INFO] System: BatteryIQ application started
+[2025-10-12 17:19:35] [INFO] System: BatteryIQ application started
+[2025-10-12 17:19:35] [INFO] System: BatteryIQ application started
+[2025-10-12 17:19:38] [INFO] System: BatteryIQ application started
+[2025-10-12 17:19:38] [INFO] Test Authentication: Test Login
+[2025-10-12 17:19:38] [INFO] Authentication:  Successful login for user: admin (Role: admin)
+[2025-10-12 17:19:39] [INFO] System: BatteryIQ application started
+[2025-10-12 17:19:39] [INFO] Navigation: User admin accessing admin dashboard
+[2025-10-12 17:19:39] [INFO] Cache: Fetching system statistics
+[2025-10-12 17:19:39] [INFO] Cache: Successfully fetched system statistics
+[2025-10-12 17:19:39] [INFO] Cache: Fetching clients from database
+[2025-10-12 17:19:39] [INFO] Cache: Successfully fetched 6 clients

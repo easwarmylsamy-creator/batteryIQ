@@ -3,7 +3,3 @@ __pycache__/
 /data
 /logs
 /test/*
-/data
-
-!/data/user_profiles/.gitkeep
-/data/user_profiles/*.json

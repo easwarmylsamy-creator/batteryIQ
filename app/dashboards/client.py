@@ -352,37 +352,34 @@ def render_client_analytics(client, devices):
         combined_df = pd.concat(all_data, ignore_index=True)
         
         # Charts
-        col_c1, col_c2 = st.columns(2)
-        
-        with col_c1:
-            if metric_type in ["Voltage", "All Metrics"]:
-                if 'voltage' in combined_df.columns:
-                    st.markdown("#### Voltage Trends")
-                    fig = px.line(combined_df, x='timestamp' if 'timestamp' in combined_df.columns else combined_df.columns[0],
-                                y='voltage', color='device' if len(selected_devices) > 1 else None,
-                                title='Voltage Over Time')
-                    fig.update_layout(
-                        plot_bgcolor='rgba(0,0,0,0)',
-                        paper_bgcolor='rgba(30,41,59,0.5)',
-                        font_color='#94a3b8',
-                        height=300
-                    )
-                    st.plotly_chart(fig, use_container_width=True)
-        
-        with col_c2:
-            if metric_type in ["Current", "All Metrics"]:
-                if 'current' in combined_df.columns:
-                    st.markdown("#### Current Trends")
-                    fig = px.line(combined_df, x='timestamp' if 'timestamp' in combined_df.columns else combined_df.columns[0],
-                                y='current', color='device' if len(selected_devices) > 1 else None,
-                                title='Current Over Time')
-                    fig.update_layout(
-                        plot_bgcolor='rgba(0,0,0,0)',
-                        paper_bgcolor='rgba(30,41,59,0.5)',
-                        font_color='#94a3b8',
-                        height=300
-                    )
-                    st.plotly_chart(fig, use_container_width=True)
+
+        if metric_type in ["Voltage", "All Metrics"]:
+            if 'voltage' in combined_df.columns:
+                st.markdown("#### Voltage Trends")
+                fig = px.line(combined_df, x='timestamp' if 'timestamp' in combined_df.columns else combined_df.columns[0],
+                            y='voltage', color='device' if len(selected_devices) > 1 else None,
+                            title='Voltage Over Time')
+                fig.update_layout(
+                    plot_bgcolor='rgba(0,0,0,0)',
+                    paper_bgcolor='rgba(30,41,59,0.5)',
+                    font_color='#94a3b8',
+                    height=300
+                )
+                st.plotly_chart(fig, use_container_width=True)
+
+        if metric_type in ["Current", "All Metrics"]:
+            if 'current' in combined_df.columns:
+                st.markdown("#### Current Trends")
+                fig = px.line(combined_df, x='timestamp' if 'timestamp' in combined_df.columns else combined_df.columns[0],
+                            y='current', color='device' if len(selected_devices) > 1 else None,
+                            title='Current Over Time')
+                fig.update_layout(
+                    plot_bgcolor='rgba(0,0,0,0)',
+                    paper_bgcolor='rgba(30,41,59,0.5)',
+                    font_color='#94a3b8',
+                    height=300
+                )
+                st.plotly_chart(fig, use_container_width=True)
         
         # Temperature chart (full width)
         if metric_type in ["Temperature", "All Metrics"]:
